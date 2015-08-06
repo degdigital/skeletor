@@ -4,8 +4,6 @@
 
 The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS and Babel.
 
----
-
 ## Installation Instructions
 1. In your terminal, navigate to your project's root directory.
 2. Type `mkdir ui && cd $_` to create a new UI directory and navigate into it.
