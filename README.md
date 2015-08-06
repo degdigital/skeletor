@@ -1,7 +1,9 @@
-![Skeletor](https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s320x320/e15/11378223_919327878090231_1165808606_n.jpg "Skeletor")
-
 # Skeletor
 The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS and Babel.
+
+![Skeletor](https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s320x320/e15/11378223_919327878090231_1165808606_n.jpg "Skeletor")
+
+---
 
 ## Installation Instructions
 1. In your terminal, navigate to your project's root directory.
