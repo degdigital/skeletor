@@ -12,6 +12,10 @@
 		bundles[commonBundleName] = [
 			'app'
 		];
+		System.config({
+			baseURL: '../../js/',
+			bundles: bundles
+		});
 		System.import('app');
 	</script>
 	
