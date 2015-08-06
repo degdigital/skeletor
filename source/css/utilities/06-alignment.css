@@ -1,0 +1,15 @@
+.align {
+
+	&-left {
+		@mixin align-left;
+	}
+
+	&-center {
+		@mixin align-center;
+	}
+
+	&-right {
+		@mixin align-right;
+	}
+
+}

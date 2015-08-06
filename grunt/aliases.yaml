@@ -1,0 +1,19 @@
+default:
+    - sass_globbing
+    - postcss
+    - babel
+    - uglify
+    - 'shell:patternlab'
+    - copy
+    - prettify
+
+'prettycopy':
+    - copy
+    - prettify
+
+'install-patternlab':
+    - 'gitclone:patternlab'
+    - 'shell:patternlab'
+
+'build-patternlab':
+	- 'shell:patternlab'

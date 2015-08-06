@@ -1,0 +1,23 @@
+	<script src="../../js/system.js"></script>
+	<script>
+		var commonBundleName = 'commonBundle',
+			polyfills = [];
+
+		if(polyfills.length) {
+			commonBundleName += '-' + polyfills.join('-');
+		}
+
+		commonBundleName += '.js';
+		var bundles = {};
+		bundles[commonBundleName] = [
+			'app'
+		];
+		System.import('app');
+	</script>
+	
+	<!-- Begin Pattern Lab JS -->
+	{% pattern-lab-foot %}
+	<!-- End Pattern Lab JS -->
+	
+	</body>
+</html>
