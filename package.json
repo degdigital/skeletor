@@ -1,6 +1,7 @@
 {
     "name": "UIPROJECT",
     "description": "DEG UI Project",
+    "license": "MIT",
     "repository": "Assembla",
     "version": "0.1.0",
     "devDependencies": {
