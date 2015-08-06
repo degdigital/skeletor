@@ -4,7 +4,7 @@
     "license": "MIT",
     "repository": "Assembla",
     "version": "0.1.0",
-    "devDependencies": {
+    "dependencies": {
         "autoprefixer-core": "^5.1.7",
         "babel-core": "^4.4.6",
         "csswring": "^3.0.1",
