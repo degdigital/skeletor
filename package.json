@@ -16,7 +16,7 @@
         "grunt-postcss": "^0.3.0",
         "grunt-prettify": "^0.4.0",
         "grunt-sass-globbing": "^1.2.0",
-        "grunt-shell": "^=1.1.1",
+        "grunt-shell": "^1.1.1",
         "load-grunt-config": "^0.16.0",
         "postcss": "^4.0.0",
         "postcss-calc": "^4.0.0",
