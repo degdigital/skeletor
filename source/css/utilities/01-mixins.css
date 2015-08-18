@@ -31,15 +31,12 @@
 
 @define-mixin align-left {
 	text-align: left;
-	width: 100%;
 }
 
 @define-mixin align-center {
 	text-align: center;
-	width: 100%;
 }
 
 @define-mixin align-right {
 	text-align: right;
-	width: 100%;
 }
