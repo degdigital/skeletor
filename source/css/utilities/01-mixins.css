@@ -28,15 +28,3 @@
 		line-height: 1;
 	}
 }
-
-@define-mixin align-left {
-	text-align: left;
-}
-
-@define-mixin align-center {
-	text-align: center;
-}
-
-@define-mixin align-right {
-	text-align: right;
-}
