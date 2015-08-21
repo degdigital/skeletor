@@ -1,7 +1,7 @@
 tmp/
 node_modules
-ui/public
-!ui/public/styleguide
+public
+!public/styleguide
 js/trans
 
 *.suo

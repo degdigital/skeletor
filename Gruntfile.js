@@ -9,9 +9,6 @@ module.exports = function(grunt) {
             js: 'source/js/src',
             patterns: 'source/_patterns'
         },
-        trans: {
-            js: 'source/js/trans',
-        },
         dist: {
             api: 'public/api',
             css: 'public/css',
