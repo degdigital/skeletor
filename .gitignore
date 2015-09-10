@@ -1,6 +1,6 @@
 tmp/
 node_modules
-ui/public
+ui/public/*
 !ui/public/styleguide
 js/trans
 
