@@ -4,11 +4,11 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.css %>",
             "src": [
-                "**/*.css", 
-                "!atoms/**/*", 
-                "!molecules/**/*", 
-                "!organisms/**/*", 
-                "!templates/**/*", 
+                "**/*.css",
+                "!atoms/**/*",
+                "!molecules/**/*",
+                "!organisms/**/*",
+                "!templates/**/*",
                 "!utilities/**/*"
             ],
             "dest": "<%= paths.app.css %>"
@@ -19,7 +19,7 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.fonts %>",
             "src": [
-                "**/*", 
+                "**/*",
                 "!selection.json"
             ],
             "dest": "<%= paths.app.fonts %>"
@@ -38,8 +38,8 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.js %>",
             "src": [
-                "**/*.js", 
-                "!src/**/*", 
+                "**/*.js",
+                "!src/**/*",
                 "!trans/**/*"
             ],
             "dest": "<%= paths.app.js %>"
@@ -49,19 +49,19 @@ module.exports = {
         "files": [{
             "expand": true,
             "cwd": "<%= paths.dist.patterns %>",
-            "src": ["**/*-templates-*.html", "!**/*-templates-*.escaped.html"],
+            "src": ["**/*-pages-*.html", "!**/*-pages-*.escaped.html"],
             "dest": "<%= paths.app.patterns %>/",
             "flatten": true,
             "filter": 'isFile',
             "rename": function(dest, src) {
-                return dest + src.substr(16);
+                return dest + src.substr(12);
             }
         }],
         "options": {
             "process": function (content, srcpath) {
                 return content.replace(/<!-- Begin Pattern Lab -->[\s\S]*<!-- End Pattern Lab -->/ig, "")
                               .replace(/<!-- Begin Pattern Lab JS -->[\s\S]*<!-- End Pattern Lab JS -->/ig, "")
-                              .replace(/..\/..\//g, "")
+                              .replace(/\.\.\/\.\.\//g, "")
                               .replace(/\.css\?[0-9]*/,".css")
             }
         }
