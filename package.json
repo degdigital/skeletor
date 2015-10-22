@@ -24,7 +24,7 @@
     "postcss-mixins": "^1.0.0",
     "postcss-nested": "^1.0.0np",
     "time-grunt": "^1.2.0",
-    "jspm": "^0.16.11"
+    "jspm": "^0.16.13"
   },
   "jspm": {
     "directories": {
