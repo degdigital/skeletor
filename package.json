@@ -3,7 +3,7 @@
   "description": "DEG UI Project",
   "license": "MIT",
   "repository": "Assembla",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "autoprefixer": "^6.0.0",
     "csswring": "^4.0.0",
