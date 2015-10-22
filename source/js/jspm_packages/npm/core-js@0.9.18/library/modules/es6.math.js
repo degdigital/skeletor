@@ -1,6 +1,6 @@
 /* */ 
 var Infinity = 1 / 0,
-    $def = require("./$.def"),
+    $def = require('./$.def'),
     E = Math.E,
     pow = Math.pow,
     abs = Math.abs,

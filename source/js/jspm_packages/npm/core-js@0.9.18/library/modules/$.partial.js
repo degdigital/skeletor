@@ -1,8 +1,8 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    invoke = require("./$.invoke"),
-    assertFunction = require("./$.assert").fn;
+var $ = require('./$'),
+    invoke = require('./$.invoke'),
+    assertFunction = require('./$.assert').fn;
 module.exports = function() {
   var fn = assertFunction(this),
       length = arguments.length,

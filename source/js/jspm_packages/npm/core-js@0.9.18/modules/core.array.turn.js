@@ -1,8 +1,8 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
-    assertFunction = require("./$.assert").fn;
+var $ = require('./$'),
+    $def = require('./$.def'),
+    assertFunction = require('./$.assert').fn;
 $def($def.P + $def.F, 'Array', {turn: function(fn, target) {
     assertFunction(fn);
     var memo = target == undefined ? [] : Object(target),
@@ -14,4 +14,4 @@ $def($def.P + $def.F, 'Array', {turn: function(fn, target) {
         break;
     return memo;
   }});
-require("./$.unscope")('turn');
+require('./$.unscope')('turn');

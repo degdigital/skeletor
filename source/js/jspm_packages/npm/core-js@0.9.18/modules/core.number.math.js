@@ -1,8 +1,8 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
-    invoke = require("./$.invoke"),
+var $ = require('./$'),
+    $def = require('./$.def'),
+    invoke = require('./$.invoke'),
     methods = {};
 methods.random = function(lim) {
   var a = +this,

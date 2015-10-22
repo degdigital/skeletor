@@ -1,10 +1,10 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    cof = require("./$.cof"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    cof = require('./$.cof'),
+    $def = require('./$.def'),
     toLength = $.toLength;
-$def($def.P + $def.F * !require("./$.throws")(function() {
+$def($def.P + $def.F * !require('./$.throws')(function() {
   'q'.endsWith(/./);
 }), 'String', {endsWith: function endsWith(searchString) {
     if (cof(searchString) == 'RegExp')

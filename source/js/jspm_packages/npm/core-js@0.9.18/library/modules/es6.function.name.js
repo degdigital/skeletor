@@ -1,6 +1,6 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
+var $ = require('./$'),
     NAME = 'name',
     setDesc = $.setDesc,
     FunctionProto = Function.prototype;

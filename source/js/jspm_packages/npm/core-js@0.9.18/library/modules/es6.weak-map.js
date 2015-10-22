@@ -1,7 +1,7 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    weak = require("./$.collection-weak"),
+var $ = require('./$'),
+    weak = require('./$.collection-weak'),
     leakStore = weak.leakStore,
     ID = weak.ID,
     WEAK = weak.WEAK,
@@ -9,7 +9,7 @@ var $ = require("./$"),
     isObject = $.isObject,
     isExtensible = Object.isExtensible || isObject,
     tmp = {};
-var $WeakMap = require("./$.collection")('WeakMap', function(get) {
+var $WeakMap = require('./$.collection')('WeakMap', function(get) {
   return function WeakMap() {
     return get(this, arguments[0]);
   };
@@ -30,7 +30,7 @@ if (new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7) {
   $.each.call(['delete', 'has', 'get', 'set'], function(key) {
     var proto = $WeakMap.prototype,
         method = proto[key];
-    require("./$.redef")(proto, key, function(a, b) {
+    require('./$.redef')(proto, key, function(a, b) {
       if (isObject(a) && !isExtensible(a)) {
         var result = leakStore(this)[key](a, b);
         return key == 'set' ? this : result;

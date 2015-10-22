@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/core.date");
-module.exports = require("../../modules/$").core.addLocale;
+require('../../modules/core.date');
+module.exports = require('../../modules/$').core.addLocale;

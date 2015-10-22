@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/core.object");
-module.exports = require("../../modules/$").core.Object.classof;
+require('../../modules/core.object');
+module.exports = require('../../modules/$').core.Object.classof;

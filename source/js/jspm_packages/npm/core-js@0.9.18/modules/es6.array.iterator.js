@@ -1,11 +1,11 @@
 /* */ 
-var $ = require("./$"),
-    setUnscope = require("./$.unscope"),
-    ITER = require("./$.uid").safe('iter'),
-    $iter = require("./$.iter"),
+var $ = require('./$'),
+    setUnscope = require('./$.unscope'),
+    ITER = require('./$.uid').safe('iter'),
+    $iter = require('./$.iter'),
     step = $iter.step,
     Iterators = $iter.Iterators;
-require("./$.iter-define")(Array, 'Array', function(iterated, kind) {
+require('./$.iter-define')(Array, 'Array', function(iterated, kind) {
   $.set(this, ITER, {
     o: $.toObject(iterated),
     i: 0,

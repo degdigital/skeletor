@@ -1,5 +1,5 @@
 /* */ 
-var $ = require("./$"),
+var $ = require('./$'),
     toString = {}.toString,
     getNames = $.getNames;
 var windowNames = typeof window == 'object' && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];

@@ -1,5 +1,5 @@
 /* */ 
-var $ = require("./$"),
+var $ = require('./$'),
     global = $.g,
     core = $.core,
     isFunction = $.isFunction;

@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    TAG = require("./$.wks")('toStringTag'),
+var $ = require('./$'),
+    TAG = require('./$.wks')('toStringTag'),
     toString = {}.toString;
 function cof(it) {
   return toString.call(it).slice(8, -1);

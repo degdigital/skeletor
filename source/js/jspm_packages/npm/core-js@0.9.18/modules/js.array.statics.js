@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     $Array = $.core.Array || Array,
     statics = {};
 function setStatics(keys, length) {
@@ -8,7 +8,7 @@ function setStatics(keys, length) {
     if (length == undefined && key in $Array)
       statics[key] = $Array[key];
     else if (key in [])
-      statics[key] = require("./$.ctx")(Function.call, [][key], length);
+      statics[key] = require('./$.ctx')(Function.call, [][key], length);
   });
 }
 setStatics('pop,reverse,shift,keys,values,entries', 1);

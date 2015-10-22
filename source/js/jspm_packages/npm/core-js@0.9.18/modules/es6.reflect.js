@@ -1,12 +1,12 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
-    setProto = require("./$.set-proto"),
-    $iter = require("./$.iter"),
-    ITERATOR = require("./$.wks")('iterator'),
-    ITER = require("./$.uid").safe('iter'),
+var $ = require('./$'),
+    $def = require('./$.def'),
+    setProto = require('./$.set-proto'),
+    $iter = require('./$.iter'),
+    ITERATOR = require('./$.wks')('iterator'),
+    ITER = require('./$.uid').safe('iter'),
     step = $iter.step,
-    assert = require("./$.assert"),
+    assert = require('./$.assert'),
     isObject = $.isObject,
     getProto = $.getProto,
     $Reflect = $.g.Reflect,
@@ -80,7 +80,7 @@ var reflect = {
   isExtensible: function isExtensible(target) {
     return _isExtensible(assertObject(target));
   },
-  ownKeys: require("./$.own-keys"),
+  ownKeys: require('./$.own-keys'),
   preventExtensions: function preventExtensions(target) {
     assertObject(target);
     try {

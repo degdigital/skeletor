@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     isObject = $.isObject,
     toObject = $.toObject;
 $.each.call(('freeze,seal,preventExtensions,isFrozen,isSealed,isExtensible,' + 'getOwnPropertyDescriptor,getPrototypeOf,keys,getOwnPropertyNames').split(','), function(KEY, ID) {
@@ -25,7 +25,7 @@ $.each.call(('freeze,seal,preventExtensions,isFrozen,isSealed,isExtensible,' + '
     return fn(Object($.assertDefined(it)));
   } : ID == 8 ? function keys(it) {
     return fn(toObject(it));
-  } : require("./$.get-names").get;
+  } : require('./$.get-names').get;
   try {
     fn('z');
   } catch (e) {

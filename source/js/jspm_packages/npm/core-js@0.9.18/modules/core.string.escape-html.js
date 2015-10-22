@@ -1,6 +1,6 @@
 /* */ 
-var $def = require("./$.def"),
-    replacer = require("./$.replacer");
+var $def = require('./$.def'),
+    replacer = require('./$.replacer');
 var escapeHTMLDict = {
   '&': '&amp;',
   '<': '&lt;',

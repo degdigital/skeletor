@@ -1,2 +1,2 @@
 /* */ 
-module.exports = require("../../modules/$.wks")('replace');
+module.exports = require('../../modules/$.wks')('replace');

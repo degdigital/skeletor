@@ -1,6 +1,6 @@
 /* */ 
 'use strict';
-var $ = require("./$");
+var $ = require('./$');
 module.exports = function repeat(count) {
   var str = String($.assertDefined(this)),
       res = '',

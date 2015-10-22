@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/es6.reflect");
-module.exports = require("../../modules/$").core.Reflect.enumerate;
+require('../../modules/es6.reflect');
+module.exports = require('../../modules/$').core.Reflect.enumerate;

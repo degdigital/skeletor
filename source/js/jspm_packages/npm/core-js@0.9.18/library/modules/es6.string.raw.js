@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def");
+var $ = require('./$'),
+    $def = require('./$.def');
 $def($def.S, 'String', {raw: function raw(callSite) {
     var tpl = $.toObject(callSite.raw),
         len = $.toLength(tpl.length),

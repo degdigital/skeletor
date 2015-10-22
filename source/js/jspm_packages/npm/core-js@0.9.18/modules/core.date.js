@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     core = $.core,
     formatRegExp = /\b\w\w?\b/g,
     flexioRegExp = /:(.*)\|(.*)$/,

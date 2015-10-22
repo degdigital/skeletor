@@ -1,5 +1,5 @@
 /* */ 
-var $ = require("./$");
+var $ = require('./$');
 function assert(condition, msg1, msg2) {
   if (!condition)
     throw TypeError(msg2 ? msg1 + msg2 : msg1);

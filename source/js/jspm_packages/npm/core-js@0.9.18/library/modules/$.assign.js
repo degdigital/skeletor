@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    enumKeys = require("./$.enum-keys");
+var $ = require('./$'),
+    enumKeys = require('./$.enum-keys');
 module.exports = Object.assign || function assign(target, source) {
   var T = Object($.assertDefined(target)),
       l = arguments.length,

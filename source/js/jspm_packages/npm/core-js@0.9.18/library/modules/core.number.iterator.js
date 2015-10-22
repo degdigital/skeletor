@@ -1,8 +1,8 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    ITER = require("./$.uid").safe('iter');
-require("./$.iter-define")(Number, 'Number', function(iterated) {
+var $ = require('./$'),
+    ITER = require('./$.uid').safe('iter');
+require('./$.iter-define')(Number, 'Number', function(iterated) {
   $.set(this, ITER, {
     l: $.toLength(iterated),
     i: 0

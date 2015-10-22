@@ -1,3 +1,3 @@
 /* */ 
-require("../modules/es5");
-module.exports = require("../modules/$").core;
+require('../modules/es5');
+module.exports = require('../modules/$').core;

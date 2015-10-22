@@ -1,8 +1,8 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    cof = require("./$.cof"),
-    $def = require("./$.def");
+var $ = require('./$'),
+    cof = require('./$.cof'),
+    $def = require('./$.def');
 $def($def.P, 'String', {includes: function includes(searchString) {
     if (cof(searchString) == 'RegExp')
       throw TypeError();

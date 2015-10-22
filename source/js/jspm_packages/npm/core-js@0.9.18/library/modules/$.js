@@ -47,7 +47,7 @@ function assertDefined(it) {
     throw TypeError("Can't call method on  " + it);
   return it;
 }
-var $ = module.exports = require("./$.fw")({
+var $ = module.exports = require('./$.fw')({
   g: global,
   core: core,
   html: global.document && document.documentElement,

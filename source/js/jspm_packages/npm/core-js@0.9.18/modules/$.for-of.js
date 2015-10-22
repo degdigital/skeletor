@@ -1,7 +1,7 @@
 /* */ 
-var ctx = require("./$.ctx"),
-    get = require("./$.iter").get,
-    call = require("./$.iter-call");
+var ctx = require('./$.ctx'),
+    get = require('./$.iter').get,
+    call = require('./$.iter-call');
 module.exports = function(iterable, entries, fn, that) {
   var iterator = get(iterable),
       f = ctx(fn, that, entries ? 2 : 1),

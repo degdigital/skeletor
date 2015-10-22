@@ -9,9 +9,9 @@
 		<script>
 			document.createElement('picture');
 		</script>
-		<script src="../../js/picturefill.js" async></script>
+		<script src="../../js/polyfills/picturefill.js" async></script>
 
-		<link rel="stylesheet" href="../../css/global.css?1440192484">
+		<link rel="stylesheet" href="../../css/global.css?1445550167">
 
 		<!-- Begin Pattern Lab -->
 				<!-- never cache patterns -->
@@ -21,8 +21,8 @@
 		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 		<meta http-equiv="pragma" content="no-cache" />
 		
-		<link rel="stylesheet" href="../../styleguide/css/styleguide.css?1440192484" media="all">
-		<link rel="stylesheet" href="../../styleguide/css/styleguide-specific.css?1440192484" media="all" />
+		<link rel="stylesheet" href="../../styleguide/css/styleguide.css?1445550167" media="all">
+		<link rel="stylesheet" href="../../styleguide/css/styleguide-specific.css?1445550167" media="all" />
 		
 
 		<!-- End Pattern Lab -->
@@ -878,25 +878,10 @@ p q r s t u v w x y z { | } ~
 			var lineage = "";
 		</script>
 		
-	<script src="../../js/system.js"></script>
+	<script src="../../js/jspm_packages/system.js"></script>
+	<script src="../../js/config.js"></script>
 	<script>
-		var commonBundleName = 'commonBundle',
-			polyfills = [];
-
-		if(polyfills.length) {
-			commonBundleName += '-' + polyfills.join('-');
-		}
-
-		commonBundleName += '.js';
-		var bundles = {};
-		bundles[commonBundleName] = [
-			'app'
-		];
-		System.config({
-			baseURL: '../../js/',
-			bundles: bundles
-		});
-		System.import('app');
+	System.import('main');
 	</script>
 	
 	<!-- Begin Pattern Lab JS -->
@@ -932,10 +917,10 @@ p q r s t u v w x y z { | } ~
 			
 		}
 	</script>
-	<script id="pl-js-polyfill-insert-1440192484">
+	<script id="pl-js-polyfill-insert-1445550167">
 		(function() {
 			if (self != top) {
-				var cb = '1440192484';
+				var cb = '1445550167';
 				var js = [];
 				if (typeof document !== "undefined" && !("classList" in document.documentElement)) {
 					js.push("styleguide/js/vendor/classlist-polyfill.js");
@@ -944,10 +929,10 @@ p q r s t u v w x y z { | } ~
 			}
 		})();
 	</script>
-	<script id="pl-js-insert-1440192484">
+	<script id="pl-js-insert-1445550167">
 		(function() {
 			if (self != top) {
-				var cb = '1440192484';
+				var cb = '1445550167';
 				var js = [ { "src": "styleguide/js/vendor/jwerty.js", "dep": [ "styleguide/js/postmessage.js", { "src": "data/annotations.js", "dep": [ "styleguide/js/annotations-pattern.js" ] }, "styleguide/js/code-pattern.js" ] } ];
 				scriptLoader.run(js,cb,'pl-js-insert');
 			}

@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    repeat = require("./$.string-repeat");
+var $ = require('./$'),
+    repeat = require('./$.string-repeat');
 module.exports = function(that, minLength, fillChar, left) {
   var S = String($.assertDefined(that));
   if (minLength === undefined)

@@ -1,2 +1,2 @@
 /* */ 
-module.exports = require("../../modules/$.wks")('match');
+module.exports = require('../../modules/$.wks')('match');

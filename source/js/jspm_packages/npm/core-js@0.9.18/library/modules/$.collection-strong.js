@@ -1,11 +1,11 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    ctx = require("./$.ctx"),
-    safe = require("./$.uid").safe,
-    assert = require("./$.assert"),
-    forOf = require("./$.for-of"),
-    step = require("./$.iter").step,
+var $ = require('./$'),
+    ctx = require('./$.ctx'),
+    safe = require('./$.uid').safe,
+    assert = require('./$.assert'),
+    forOf = require('./$.for-of'),
+    step = require('./$.iter').step,
     $has = $.has,
     set = $.set,
     isObject = $.isObject,
@@ -51,7 +51,7 @@ module.exports = {
       if (iterable != undefined)
         forOf(iterable, IS_MAP, that[ADDER], that);
     });
-    require("./$.mix")(C.prototype, {
+    require('./$.mix')(C.prototype, {
       clear: function clear() {
         for (var that = this,
             data = that[O1],
@@ -130,7 +130,7 @@ module.exports = {
   },
   getEntry: getEntry,
   setIter: function(C, NAME, IS_MAP) {
-    require("./$.iter-define")(C, NAME, function(iterated, kind) {
+    require('./$.iter-define')(C, NAME, function(iterated, kind) {
       set(this, ITER, {
         o: iterated,
         k: kind

@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     abs = Math.abs,
     floor = Math.floor,
     _isFinite = $.g.isFinite,

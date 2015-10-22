@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/core.object");
-module.exports = require("../../modules/$").core.Object.make;
+require('../../modules/core.object');
+module.exports = require('../../modules/$').core.Object.make;

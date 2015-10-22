@@ -1,7 +1,7 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
-    ownKeys = require("./$.own-keys");
+var $ = require('./$'),
+    $def = require('./$.def'),
+    ownKeys = require('./$.own-keys');
 function define(target, mixin) {
   var keys = ownKeys($.toObject(mixin)),
       length = keys.length,
@@ -13,7 +13,7 @@ function define(target, mixin) {
 }
 $def($def.S + $def.F, 'Object', {
   isObject: $.isObject,
-  classof: require("./$.cof").classof,
+  classof: require('./$.cof').classof,
   define: define,
   make: function(proto, mixin) {
     return define($.create(proto), mixin);

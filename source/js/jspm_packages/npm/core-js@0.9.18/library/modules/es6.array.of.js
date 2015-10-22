@@ -1,5 +1,5 @@
 /* */ 
-var $def = require("./$.def");
+var $def = require('./$.def');
 $def($def.S, 'Array', {of: function of() {
     var index = 0,
         length = arguments.length,

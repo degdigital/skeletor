@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    assert = require("./$.assert");
+var $ = require('./$'),
+    assert = require('./$.assert');
 function check(O, proto) {
   assert.obj(O);
   assert(proto === null || $.isObject(proto), proto, ": can't set as prototype!");
@@ -8,7 +8,7 @@ function check(O, proto) {
 module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? function(buggy, set) {
     try {
-      set = require("./$.ctx")(Function.call, $.getDesc(Object.prototype, '__proto__').set, 2);
+      set = require('./$.ctx')(Function.call, $.getDesc(Object.prototype, '__proto__').set, 2);
       set({}, []);
     } catch (e) {
       buggy = true;

@@ -1,12 +1,12 @@
 /* */ 
-var $ = require("./$"),
-    cel = require("./$.dom-create"),
-    cof = require("./$.cof"),
-    $def = require("./$.def"),
-    invoke = require("./$.invoke"),
-    arrayMethod = require("./$.array-methods"),
-    IE_PROTO = require("./$.uid").safe('__proto__'),
-    assert = require("./$.assert"),
+var $ = require('./$'),
+    cel = require('./$.dom-create'),
+    cof = require('./$.cof'),
+    $def = require('./$.def'),
+    invoke = require('./$.invoke'),
+    arrayMethod = require('./$.array-methods'),
+    IE_PROTO = require('./$.uid').safe('__proto__'),
+    assert = require('./$.assert'),
     assertObject = assert.obj,
     ObjectProto = Object.prototype,
     html = $.html,
@@ -24,7 +24,7 @@ var $ = require("./$"),
     toLength = $.toLength,
     toIndex = $.toIndex,
     IE8_DOM_DEFINE = false,
-    $indexOf = require("./$.array-includes")(false),
+    $indexOf = require('./$.array-includes')(false),
     $forEach = arrayMethod(0),
     $map = arrayMethod(1),
     $filter = arrayMethod(2),
@@ -256,7 +256,7 @@ $def($def.P, 'Array', {
     return -1;
   }
 });
-$def($def.P, 'String', {trim: require("./$.replacer")(/^\s*([\s\S]*\S)?\s*$/, '$1')});
+$def($def.P, 'String', {trim: require('./$.replacer')(/^\s*([\s\S]*\S)?\s*$/, '$1')});
 $def($def.S, 'Date', {now: function() {
     return +new Date;
   }});
@@ -264,7 +264,7 @@ function lz(num) {
   return num > 9 ? num : '0' + num;
 }
 var date = new Date(-5e13 - 1),
-    brokenDate = !(date.toISOString && date.toISOString() == '0385-07-25T07:06:39.999Z' && require("./$.throws")(function() {
+    brokenDate = !(date.toISOString && date.toISOString() == '0385-07-25T07:06:39.999Z' && require('./$.throws')(function() {
       new Date(NaN).toISOString();
     }));
 $def($def.P + $def.F * brokenDate, 'Date', {toISOString: function() {

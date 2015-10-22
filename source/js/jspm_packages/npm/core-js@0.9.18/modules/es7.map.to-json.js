@@ -1,2 +1,2 @@
 /* */ 
-require("./$.collection-to-json")('Map');
+require('./$.collection-to-json')('Map');

@@ -1,7 +1,7 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     toIndex = $.toIndex;
 $def($def.P, 'Array', {copyWithin: function copyWithin(target, start) {
     var O = Object($.assertDefined(this)),
@@ -27,4 +27,4 @@ $def($def.P, 'Array', {copyWithin: function copyWithin(target, start) {
     }
     return O;
   }});
-require("./$.unscope")('copyWithin');
+require('./$.unscope')('copyWithin');

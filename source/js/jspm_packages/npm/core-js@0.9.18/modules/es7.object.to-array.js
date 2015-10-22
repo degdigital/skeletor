@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def");
+var $ = require('./$'),
+    $def = require('./$.def');
 function createObjectToArray(isEntries) {
   return function(object) {
     var O = $.toObject(object),

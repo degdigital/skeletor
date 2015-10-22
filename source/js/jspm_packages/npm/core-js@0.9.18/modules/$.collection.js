@@ -1,11 +1,11 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
-    BUGGY = require("./$.iter").BUGGY,
-    forOf = require("./$.for-of"),
-    species = require("./$.species"),
-    assertInstance = require("./$.assert").inst;
+var $ = require('./$'),
+    $def = require('./$.def'),
+    BUGGY = require('./$.iter').BUGGY,
+    forOf = require('./$.for-of'),
+    species = require('./$.species'),
+    assertInstance = require('./$.assert').inst;
 module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = $.g[NAME],
       C = Base,
@@ -14,7 +14,7 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
       O = {};
   function fixMethod(KEY) {
     var fn = proto[KEY];
-    require("./$.redef")(proto, KEY, KEY == 'delete' ? function(a) {
+    require('./$.redef')(proto, KEY, KEY == 'delete' ? function(a) {
       return fn.call(this, a === 0 ? 0 : a);
     } : KEY == 'has' ? function has(a) {
       return fn.call(this, a === 0 ? 0 : a);
@@ -30,12 +30,12 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   }
   if (!$.isFunction(C) || !(IS_WEAK || !BUGGY && proto.forEach && proto.entries)) {
     C = common.getConstructor(wrapper, NAME, IS_MAP, ADDER);
-    require("./$.mix")(C.prototype, methods);
+    require('./$.mix')(C.prototype, methods);
   } else {
     var inst = new C,
         chain = inst[ADDER](IS_WEAK ? {} : -0, 1),
         buggyZero;
-    if (!require("./$.iter-detect")(function(iter) {
+    if (!require('./$.iter-detect')(function(iter) {
       new C(iter);
     })) {
       C = wrapper(function(target, iterable) {
@@ -59,7 +59,7 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
     if (buggyZero || chain !== inst)
       fixMethod(ADDER);
   }
-  require("./$.cof").set(C, NAME);
+  require('./$.cof').set(C, NAME);
   O[NAME] = C;
   $def($def.G + $def.W + $def.F * (C != Base), O);
   species(C);

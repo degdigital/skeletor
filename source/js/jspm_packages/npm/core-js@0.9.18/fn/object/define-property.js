@@ -1,5 +1,5 @@
 /* */ 
 var $ = require('../../modules/$');
-module.exports = function defineProperty(it, key, desc){
+module.exports = function defineProperty(it, key, desc) {
   return $.setDesc(it, key, desc);
 };

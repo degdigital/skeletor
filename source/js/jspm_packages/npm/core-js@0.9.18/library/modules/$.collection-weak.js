@@ -1,9 +1,9 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    safe = require("./$.uid").safe,
-    assert = require("./$.assert"),
-    forOf = require("./$.for-of"),
+var $ = require('./$'),
+    safe = require('./$.uid').safe,
+    assert = require('./$.assert'),
+    forOf = require('./$.for-of'),
     $has = $.has,
     isObject = $.isObject,
     hide = $.hide,
@@ -12,7 +12,7 @@ var $ = require("./$"),
     ID = safe('id'),
     WEAK = safe('weak'),
     LEAK = safe('leak'),
-    method = require("./$.array-methods"),
+    method = require('./$.array-methods'),
     find = method(5),
     findIndex = method(6);
 function findFrozen(store, key) {
@@ -55,7 +55,7 @@ module.exports = {
       if (iterable != undefined)
         forOf(iterable, IS_MAP, that[ADDER], that);
     });
-    require("./$.mix")(C.prototype, {
+    require('./$.mix')(C.prototype, {
       'delete': function(key) {
         if (!isObject(key))
           return false;

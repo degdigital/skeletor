@@ -1,2 +1,2 @@
 /* */ 
-require("./$.collection-to-json")('Set');
+require('./$.collection-to-json')('Set');

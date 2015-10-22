@@ -1,9 +1,9 @@
 /* */ 
-var $ = require("./$"),
+var $ = require('./$'),
     global = $.g,
     core = $.core,
     isFunction = $.isFunction,
-    $redef = require("./$.redef");
+    $redef = require('./$.redef');
 function ctx(fn, that) {
   return function() {
     return fn.apply(that, arguments);

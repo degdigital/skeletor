@@ -1,9 +1,9 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    cof = require("./$.cof"),
-    $def = require("./$.def");
-$def($def.P + $def.F * !require("./$.throws")(function() {
+var $ = require('./$'),
+    cof = require('./$.cof'),
+    $def = require('./$.def');
+$def($def.P + $def.F * !require('./$.throws')(function() {
   'q'.startsWith(/./);
 }), 'String', {startsWith: function startsWith(searchString) {
     if (cof(searchString) == 'RegExp')

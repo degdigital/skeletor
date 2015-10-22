@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/es6.reflect");
-module.exports = require("../../modules/$").core.Reflect.defineProperty;
+require('../../modules/es6.reflect');
+module.exports = require('../../modules/$').core.Reflect.defineProperty;

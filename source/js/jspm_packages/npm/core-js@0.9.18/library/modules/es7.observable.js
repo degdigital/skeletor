@@ -1,11 +1,11 @@
 /* */ 
-var $ = require("./$"),
-    $def = require("./$.def"),
-    $redef = require("./$.redef"),
-    $mix = require("./$.mix"),
-    asap = require("./$.task").set,
-    assert = require("./$.assert"),
-    OBSERVER = require("./$.wks")('observer'),
+var $ = require('./$'),
+    $def = require('./$.def'),
+    $redef = require('./$.redef'),
+    $mix = require('./$.mix'),
+    asap = require('./$.task').set,
+    assert = require('./$.assert'),
+    OBSERVER = require('./$.wks')('observer'),
     isFunction = $.isFunction,
     assertObject = assert.obj,
     assertFunction = assert.fn;

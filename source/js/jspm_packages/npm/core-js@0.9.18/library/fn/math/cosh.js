@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/es6.math");
-module.exports = require("../../modules/$").core.Math.cosh;
+require('../../modules/es6.math');
+module.exports = require('../../modules/$').core.Math.cosh;

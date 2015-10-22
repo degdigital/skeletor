@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    ctx = require("./$.ctx");
+var $ = require('./$'),
+    ctx = require('./$.ctx');
 module.exports = function(TYPE) {
   var IS_MAP = TYPE == 1,
       IS_FILTER = TYPE == 2,

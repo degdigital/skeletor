@@ -1,11 +1,11 @@
 /* */ 
 (function(process) {
   'use strict';
-  var $ = require("./$"),
-      ctx = require("./$.ctx"),
-      cof = require("./$.cof"),
-      invoke = require("./$.invoke"),
-      cel = require("./$.dom-create"),
+  var $ = require('./$'),
+      ctx = require('./$.ctx'),
+      cof = require('./$.cof'),
+      invoke = require('./$.invoke'),
+      cel = require('./$.dom-create'),
       global = $.g,
       isFunction = $.isFunction,
       html = $.html,
@@ -76,4 +76,4 @@
     set: setTask,
     clear: clearTask
   };
-})(require("process"));
+})(require('process'));

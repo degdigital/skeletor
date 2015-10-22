@@ -1,5 +1,5 @@
 /* */ 
-var assertFunction = require("./$.assert").fn;
+var assertFunction = require('./$.assert').fn;
 module.exports = function(fn, that, length) {
   assertFunction(fn);
   if (~length && that === undefined)

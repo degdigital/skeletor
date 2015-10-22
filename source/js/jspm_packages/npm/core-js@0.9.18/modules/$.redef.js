@@ -1,7 +1,7 @@
 /* */ 
-var $ = require("./$"),
+var $ = require('./$'),
     tpl = String({}.hasOwnProperty),
-    SRC = require("./$.uid").safe('src'),
+    SRC = require('./$.uid').safe('src'),
     _toString = Function.toString;
 function $redef(O, key, val, safe) {
   if ($.isFunction(val)) {

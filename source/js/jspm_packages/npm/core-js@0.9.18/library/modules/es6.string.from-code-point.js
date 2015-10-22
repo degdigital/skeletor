@@ -1,6 +1,6 @@
 /* */ 
-var $def = require("./$.def"),
-    toIndex = require("./$").toIndex,
+var $def = require('./$.def'),
+    toIndex = require('./$').toIndex,
     fromCharCode = String.fromCharCode,
     $fromCodePoint = String.fromCodePoint;
 $def($def.S + $def.F * (!!$fromCodePoint && $fromCodePoint.length != 1), 'String', {fromCodePoint: function fromCodePoint(x) {

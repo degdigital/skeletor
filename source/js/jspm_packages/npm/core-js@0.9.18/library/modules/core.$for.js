@@ -1,15 +1,15 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    ctx = require("./$.ctx"),
-    safe = require("./$.uid").safe,
-    $def = require("./$.def"),
-    $iter = require("./$.iter"),
-    forOf = require("./$.for-of"),
+var $ = require('./$'),
+    ctx = require('./$.ctx'),
+    safe = require('./$.uid').safe,
+    $def = require('./$.def'),
+    $iter = require('./$.iter'),
+    forOf = require('./$.for-of'),
     ENTRIES = safe('entries'),
     FN = safe('fn'),
     ITER = safe('iter'),
-    call = require("./$.iter-call"),
+    call = require('./$.iter-call'),
     getIterator = $iter.get,
     setIterator = $iter.set,
     createIterator = $iter.create;
@@ -47,7 +47,7 @@ var FilterIter = createChainIterator(function() {
       return step;
   }
 });
-require("./$.mix")($forProto, {
+require('./$.mix')($forProto, {
   of: function(fn, that) {
     forOf(this, this[ENTRIES], fn, that);
   },

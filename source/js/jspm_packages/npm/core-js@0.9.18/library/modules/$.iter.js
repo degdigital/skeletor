@@ -1,13 +1,13 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    cof = require("./$.cof"),
+var $ = require('./$'),
+    cof = require('./$.cof'),
     classof = cof.classof,
-    assert = require("./$.assert"),
+    assert = require('./$.assert'),
     assertObject = assert.obj,
-    SYMBOL_ITERATOR = require("./$.wks")('iterator'),
+    SYMBOL_ITERATOR = require('./$.wks')('iterator'),
     FF_ITERATOR = '@@iterator',
-    Iterators = require("./$.shared")('iterators'),
+    Iterators = require('./$.shared')('iterators'),
     IteratorPrototype = {};
 setIterator(IteratorPrototype, $.that);
 function setIterator(O, value) {

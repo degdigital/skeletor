@@ -1,10 +1,10 @@
 /* */ 
-var set = require("./$").set,
-    $at = require("./$.string-at")(true),
-    ITER = require("./$.uid").safe('iter'),
-    $iter = require("./$.iter"),
+var set = require('./$').set,
+    $at = require('./$.string-at')(true),
+    ITER = require('./$.uid').safe('iter'),
+    $iter = require('./$.iter'),
     step = $iter.step;
-require("./$.iter-define")(String, 'String', function(iterated) {
+require('./$.iter-define')(String, 'String', function(iterated) {
   set(this, ITER, {
     o: String(iterated),
     i: 0

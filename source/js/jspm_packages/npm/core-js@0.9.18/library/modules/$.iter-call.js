@@ -1,5 +1,5 @@
 /* */ 
-var assertObject = require("./$.assert").obj;
+var assertObject = require('./$.assert').obj;
 function close(iterator) {
   var ret = iterator['return'];
   if (ret !== undefined)

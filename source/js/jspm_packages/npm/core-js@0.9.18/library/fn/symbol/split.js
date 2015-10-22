@@ -1,2 +1,2 @@
 /* */ 
-module.exports = require("../../modules/$.wks")('split');
+module.exports = require('../../modules/$.wks')('split');

@@ -1,8 +1,8 @@
 /* */ 
-require("./es6.array.iterator");
-var $ = require("./$"),
-    Iterators = require("./$.iter").Iterators,
-    ITERATOR = require("./$.wks")('iterator'),
+require('./es6.array.iterator');
+var $ = require('./$'),
+    Iterators = require('./$.iter').Iterators,
+    ITERATOR = require('./$.wks')('iterator'),
     ArrayValues = Iterators.Array,
     NL = $.g.NodeList,
     HTC = $.g.HTMLCollection,

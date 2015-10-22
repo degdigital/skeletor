@@ -1,14 +1,14 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    setTag = require("./$.cof").set,
-    uid = require("./$.uid"),
-    shared = require("./$.shared"),
-    $def = require("./$.def"),
-    $redef = require("./$.redef"),
-    keyOf = require("./$.keyof"),
-    enumKeys = require("./$.enum-keys"),
-    assertObject = require("./$.assert").obj,
+var $ = require('./$'),
+    setTag = require('./$.cof').set,
+    uid = require('./$.uid'),
+    shared = require('./$.shared'),
+    $def = require('./$.def'),
+    $redef = require('./$.redef'),
+    keyOf = require('./$.keyof'),
+    enumKeys = require('./$.enum-keys'),
+    assertObject = require('./$.assert').obj,
     ObjectProto = Object.prototype,
     DESC = $.DESC,
     has = $.has,
@@ -16,7 +16,7 @@ var $ = require("./$"),
     getDesc = $.getDesc,
     setDesc = $.setDesc,
     desc = $.desc,
-    $names = require("./$.get-names"),
+    $names = require('./$.get-names'),
     getNames = $names.get,
     toObject = $.toObject,
     $Symbol = $.g.Symbol,
@@ -146,7 +146,7 @@ var symbolStatics = {
   }
 };
 $.each.call(('hasInstance,isConcatSpreadable,iterator,match,replace,search,' + 'species,split,toPrimitive,toStringTag,unscopables').split(','), function(it) {
-  var sym = require("./$.wks")(it);
+  var sym = require('./$.wks')(it);
   symbolStatics[it] = useNative ? sym : wrap(sym);
 });
 setter = true;

@@ -1,6 +1,6 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def");
+var $ = require('./$'),
+    $def = require('./$.def');
 $.core._ = $.path._ = $.path._ || {};
-$def($def.P + $def.F, 'Function', {part: require("./$.partial")});
+$def($def.P + $def.F, 'Function', {part: require('./$.partial')});

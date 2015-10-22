@@ -2,7 +2,6 @@ default:
     - sass_globbing
     - postcss    
     - 'shell:patternlab'
-    - prettify
 
 'prettycopy':
     - copy
@@ -18,3 +17,5 @@ default:
 'deploy':
     - 'shell:jspm-bundle'
     - copy
+    - prettify
+    - 'shell:jspm-unbundle'

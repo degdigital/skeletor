@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/es6.reflect");
-module.exports = require("../../modules/$").core.Reflect.getPrototypeOf;
+require('../../modules/es6.reflect');
+module.exports = require('../../modules/$').core.Reflect.getPrototypeOf;

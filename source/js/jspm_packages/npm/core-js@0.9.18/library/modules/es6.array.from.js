@@ -1,10 +1,10 @@
 /* */ 
-var $ = require("./$"),
-    ctx = require("./$.ctx"),
-    $def = require("./$.def"),
-    $iter = require("./$.iter"),
-    call = require("./$.iter-call");
-$def($def.S + $def.F * !require("./$.iter-detect")(function(iter) {
+var $ = require('./$'),
+    ctx = require('./$.ctx'),
+    $def = require('./$.def'),
+    $iter = require('./$.iter'),
+    call = require('./$.iter-call');
+$def($def.S + $def.F * !require('./$.iter-detect')(function(iter) {
   Array.from(iter);
 }), 'Array', {from: function from(arrayLike) {
     var O = Object($.assertDefined(arrayLike)),

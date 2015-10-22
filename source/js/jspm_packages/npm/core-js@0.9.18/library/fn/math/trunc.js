@@ -1,3 +1,3 @@
 /* */ 
-require("../../modules/es6.math");
-module.exports = require("../../modules/$").core.Math.trunc;
+require('../../modules/es6.math');
+module.exports = require('../../modules/$').core.Math.trunc;

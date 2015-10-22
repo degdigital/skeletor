@@ -1,12 +1,12 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
-    $iter = require("./$.iter"),
+var $ = require('./$'),
+    $def = require('./$.def'),
+    $iter = require('./$.iter'),
     BUGGY = $iter.BUGGY,
-    forOf = require("./$.for-of"),
-    assertInstance = require("./$.assert").inst,
-    INTERNAL = require("./$.uid").safe('internal');
+    forOf = require('./$.for-of'),
+    assertInstance = require('./$.assert').inst,
+    INTERNAL = require('./$.uid').safe('internal');
 module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = $.g[NAME],
       C = Base,
@@ -15,7 +15,7 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
       O = {};
   if (!$.DESC || !$.isFunction(C) || !(IS_WEAK || !BUGGY && proto.forEach && proto.entries)) {
     C = common.getConstructor(wrapper, NAME, IS_MAP, ADDER);
-    require("./$.mix")(C.prototype, methods);
+    require('./$.mix')(C.prototype, methods);
   } else {
     C = wrapper(function(target, iterable) {
       assertInstance(target, C, NAME);
@@ -36,10 +36,10 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
           return this[INTERNAL].size;
         }});
   }
-  require("./$.cof").set(C, NAME);
+  require('./$.cof').set(C, NAME);
   O[NAME] = C;
   $def($def.G + $def.W + $def.F, O);
-  require("./$.species")(C);
+  require('./$.species')(C);
   if (!IS_WEAK)
     common.setIter(C, NAME, IS_MAP);
   return C;

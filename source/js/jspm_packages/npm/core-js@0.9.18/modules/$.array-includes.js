@@ -1,5 +1,5 @@
 /* */ 
-var $ = require("./$");
+var $ = require('./$');
 module.exports = function(IS_INCLUDES) {
   return function($this, el, fromIndex) {
     var O = $.toObject($this),

@@ -1,22 +1,22 @@
 /* */ 
 (function(process) {
   'use strict';
-  var $ = require("./$"),
-      ctx = require("./$.ctx"),
-      cof = require("./$.cof"),
-      $def = require("./$.def"),
-      assert = require("./$.assert"),
-      forOf = require("./$.for-of"),
-      setProto = require("./$.set-proto").set,
-      same = require("./$.same"),
-      species = require("./$.species"),
-      SPECIES = require("./$.wks")('species'),
-      RECORD = require("./$.uid").safe('record'),
+  var $ = require('./$'),
+      ctx = require('./$.ctx'),
+      cof = require('./$.cof'),
+      $def = require('./$.def'),
+      assert = require('./$.assert'),
+      forOf = require('./$.for-of'),
+      setProto = require('./$.set-proto').set,
+      same = require('./$.same'),
+      species = require('./$.species'),
+      SPECIES = require('./$.wks')('species'),
+      RECORD = require('./$.uid').safe('record'),
       PROMISE = 'Promise',
       global = $.g,
       process = global.process,
       isNode = cof(process) == 'process',
-      asap = process && process.nextTick || require("./$.task").set,
+      asap = process && process.nextTick || require('./$.task').set,
       P = global[PROMISE],
       isFunction = $.isFunction,
       isObject = $.isObject,
@@ -195,7 +195,7 @@
         $reject.call(record, err);
       }
     };
-    require("./$.mix")(P.prototype, {
+    require('./$.mix')(P.prototype, {
       then: function then(onFulfilled, onRejected) {
         var S = assertObject(assertObject(this).constructor)[SPECIES];
         var react = {
@@ -233,7 +233,7 @@
         res(x);
       });
     }});
-  $def($def.S + $def.F * !(useNative && require("./$.iter-detect")(function(iter) {
+  $def($def.S + $def.F * !(useNative && require('./$.iter-detect')(function(iter) {
     P.all(iter)['catch'](function() {});
   })), PROMISE, {
     all: function all(iterable) {
@@ -263,4 +263,4 @@
       });
     }
   });
-})(require("process"));
+})(require('process'));

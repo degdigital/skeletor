@@ -1,6 +1,6 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
+var $ = require('./$'),
     isObject = $.isObject,
     isFunction = $.isFunction,
     NUMBER = 'Number',
@@ -43,5 +43,5 @@ if ($.FW && !($Number('0o1') && $Number('0b1'))) {
   });
   $Number.prototype = proto;
   proto.constructor = $Number;
-  require("./$.redef")($.g, NUMBER, $Number);
+  require('./$.redef')($.g, NUMBER, $Number);
 }

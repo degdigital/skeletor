@@ -1,6 +1,6 @@
 /* */ 
-var $ = require("./$"),
-    assertObject = require("./$.assert").obj;
+var $ = require('./$'),
+    assertObject = require('./$.assert').obj;
 module.exports = function ownKeys(it) {
   assertObject(it);
   var keys = $.getNames(it),

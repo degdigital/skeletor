@@ -1,5 +1,5 @@
 /* */ 
-var $ = require("./$");
+var $ = require('./$');
 module.exports = function(TO_STRING) {
   return function(that, pos) {
     var s = String($.assertDefined(that)),

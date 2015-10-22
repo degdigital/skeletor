@@ -9,7 +9,7 @@ module.exports = {
                 require("postcss-calc")(),
                 require("postcss-color-function")(),
                 require("postcss-nested")(),
-                require("autoprefixer-core")({
+                require("autoprefixer")({
                     browsers: 'last 2 versions'
                 }),
                 require('csswring')

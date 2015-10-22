@@ -1,7 +1,7 @@
 /* */ 
 'use strict';
-var $ = require("./$"),
-    $def = require("./$.def"),
+var $ = require('./$'),
+    $def = require('./$.def'),
     toIndex = $.toIndex;
 $def($def.P, 'Array', {fill: function fill(value) {
     var O = Object($.assertDefined(this)),
@@ -13,4 +13,4 @@ $def($def.P, 'Array', {fill: function fill(value) {
       O[index++] = value;
     return O;
   }});
-require("./$.unscope")('fill');
+require('./$.unscope')('fill');
