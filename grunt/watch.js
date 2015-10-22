@@ -3,21 +3,8 @@ module.exports = {
         files: ["<%= paths.src.css %>/**/*.css"],
         tasks: ["sass_globbing","postcss"],
         options: {
-            "spawn": true
-        }
-    },
-    js: {
-        files: [
-            "grunt/uglify.js",
-            "grunt/babel.js",
-            "<%= paths.src.js %>/**/*.js"
-        ],
-        tasks: [
-            "babel",
-            "uglify"
-        ],
-        options: {
-            "spawn": true
+            "spawn": true,
+            event: ['changed', 'added', 'deleted']
         }
     },
     html: {
@@ -26,11 +13,12 @@ module.exports = {
             '<%= paths.src.patterns %>/**/*.json',
             '<%= paths.src.css %>/**/*.css',
             '<%= paths.src.js %>/**/*.js',
-            'src/api/*.json'
+            'source/_data/*.json'
         ],
         tasks: ['shell:patternlab','copy','prettify'],
         options: {
-            "spawn": false
+            "spawn": false,
+            event: ['changed', 'added', 'deleted']
         }
     },
     apphtml: {

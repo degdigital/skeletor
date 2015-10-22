@@ -4,11 +4,11 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.css %>",
             "src": [
-                "**/*.css",
-                "!atoms/**/*",
-                "!molecules/**/*",
-                "!organisms/**/*",
-                "!templates/**/*",
+                "**/*.css", 
+                "!atoms/**/*", 
+                "!molecules/**/*", 
+                "!organisms/**/*", 
+                "!templates/**/*", 
                 "!utilities/**/*"
             ],
             "dest": "<%= paths.app.css %>"
@@ -19,7 +19,7 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.fonts %>",
             "src": [
-                "**/*",
+                "**/*", 
                 "!selection.json"
             ],
             "dest": "<%= paths.app.fonts %>"
@@ -38,12 +38,22 @@ module.exports = {
             "expand": true,
             "cwd": "<%= paths.dist.js %>",
             "src": [
-                "**/*.js",
-                "!src/**/*",
-                "!trans/**/*"
+                "config.js",
+                "*-bundle.js",
+                "polyfills/*.js",
+                "jspm_packages/system.js",
+                "jspm_packages/system-polyfills.js"
             ],
             "dest": "<%= paths.app.js %>"
-        }]
+        }],
+        "options": {
+            "process": function (content, srcpath) {
+                if(srcpath.endsWith('/config.js')) {
+                    return content.replace('baseURL: "../../js/"', 'baseURL: "js/"');
+                }
+                return content;
+            }
+        }
     },
     "patterns": {
         "files": [{
