@@ -6,7 +6,7 @@ module.exports = function(grunt) {
             css: 'source/css',
             fonts: 'source/fonts',
             images: 'source/images',
-            js: 'source/js/src',
+            js: 'source/js',
             patterns: 'source/_patterns'
         },
         dist: {
