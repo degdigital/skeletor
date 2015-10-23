@@ -10,3 +10,12 @@ The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS an
 3. Type `npm install` to install all Node dependencies.
 4. Type `grunt` to create your first Pattern Lab build.
 5. *Optional:* type `grunt watch` to watch for changes to your new project.
+
+## Installing [DEGJS](http://github.com/DEGJS) Modules
+1. In your terminal, navigate to your newly created UI folder.
+2. Type `jspm install github:DEGJS/modulename`, with "modulename" corresponding to the name of the repo (i.e. `jspm install github:DEGJS/breakpoints` for the [breakpoints](http://github.com/DEGJS/breakpoints) module). The module and all of its dependencies will be automatically downloaded and configured in your project.
+3. You can now use the newly installed module by adding `import modulename from "DEGJS/modulename` at the top of any of your JavaScript files.
+
+## Deploying JavaScript Bundles
+1. System.js/JSPM includes a runtime Babel transpiler. There's no need to compile your bundles during development, and no JS bundling/minification/concatenation takes place during a `grunt` or `grunt watch` task.
+2. When you're ready to bundle and deploy your code for production, type `grunt deploy`.
