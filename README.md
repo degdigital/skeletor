@@ -19,4 +19,4 @@ The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS an
 
 ## Deploying JavaScript Bundles
 1. System.js/JSPM includes a runtime Babel transpiler. There's no need to compile your bundles during development, and no JS bundling/minification/concatenation takes place during a `grunt` or `grunt watch` task.
-2. When you're ready to bundle and deploy your code for production, type `grunt deploy`.
+2. When you're ready to bundle and deploy your code for production, type `grunt deploy`, which creates your minified JS bundles and copies them to the Export directory.
