@@ -13,8 +13,8 @@ The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS an
 
 ## Installing [DEGJS](http://github.com/DEGJS) Modules
 1. In your terminal, navigate to your newly created UI folder.
-2. Type `jspm install github:DEGJS/modulename`, with "modulename" corresponding to the name of the repo (i.e. `jspm install github:DEGJS/breakpoints` for the [breakpoints](http://github.com/DEGJS/breakpoints) module). The module and all of its dependencies will be automatically downloaded and configured in your project.
-3. You can now use the newly installed module by adding `import modulename from "DEGJS/modulename` at the top of any of your JavaScript files.
+2. Type `jspm install github:DEGJS/modulename`, with "modulename" corresponding to the name of the repo (i.e., `jspm install github:DEGJS/breakpoints` for the [breakpoints](http://github.com/DEGJS/breakpoints) module). The module and all of its dependencies will be automatically downloaded and configured in your project.
+3. You can now use the newly installed module by adding `import modulename from "DEGJS/modulename";` at the top of any of your JavaScript files.
 4. This technique will also work for other JSPM-formatted modules, including the ones hosted in the main [JSPM Registry](http://kasperlewau.github.io/registry/#/).
 
 ## Deploying JavaScript Bundles
