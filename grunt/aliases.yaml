@@ -3,17 +3,6 @@ default:
     - postcss    
     - 'shell:patternlab'
 
-'prettycopy':
-    - copy
-    - prettify
-
-'install-patternlab':
-    - 'gitclone:patternlab'
-    - 'shell:patternlab'
-
-'build-patternlab':
-	- 'shell:patternlab'
-
 'deploy':
     - 'shell:jspm-bundle'
     - copy
