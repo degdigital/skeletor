@@ -15,7 +15,7 @@
     "grunt-sass-globbing": "^1.2.0",
     "grunt-shell": "^1.1.1",
     "load-grunt-config": "^0.17.2",
-    "postcss": "^5.0.0",
+    "postcss": "^5.0.11",
     "postcss-calc": "^5.0.0",
     "postcss-color-function": "^2.0.0",
     "postcss-custom-properties": "^5.0.0",
