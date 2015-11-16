@@ -17,9 +17,12 @@ The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS an
 3. You can now use the newly installed module by adding `import modulename from "DEGJS/modulename";` at the top of any of your JavaScript files.
 4. This technique will also work for other JSPM-formatted modules, including the ones hosted in the main [JSPM Registry](http://kasperlewau.github.io/registry/#/).
 
-## Deploying JavaScript Bundles
-1. System.js/JSPM includes a runtime Babel transpiler. There's no need to compile your bundles during development, and no JS bundling/minification/concatenation takes place during a `grunt` or `grunt watch` task.
-2. Define your bundles in `Gruntfile.js`. There you will find a `bundles` object, which has an `items` property that is an array of bundle configurations. Each bundle configuration takes the following form:
+## JavaScript Bundles
+### Development
+System.js/JSPM includes a runtime Babel transpiler. There's no need to compile your bundles during development, and no JS bundling/minification/concatenation takes place during a `grunt` or `grunt watch` task.
+
+### Configuring
+Define your bundles in `Gruntfile.js`. There you will find a `bundles` object, which has an `items` property that is an array of bundle configurations. Each bundle configuration takes the following form:
 ```
 {
   entry: 'home', //Main entry point of bundle
@@ -28,4 +31,6 @@ The DEG UI team's project boilerplate, preconfigured for Pattern Lab, PostCSS an
 }
 ```
 The `bundles` object also can contain a `defaultExclude` property, which is a bundle name or an array of bundle names to exclude from each bundle configuration.
-3. When you're ready to bundle and deploy your code for production, type `grunt deploy`, which creates your minified JS bundles and copies them to the Export directory.
+
+### Deploying
+When you're ready to bundle and deploy your code for production, type `grunt deploy`, which creates your minified JS bundles and copies them to the Export directory.
