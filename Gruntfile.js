@@ -29,10 +29,20 @@ module.exports = function(grunt) {
         }
     };
 
+    var bundles = {
+        defaultExclude: 'main-bundle',
+        items: [
+            {
+              entry: 'main'
+            }
+        ]
+    };
+
 
     require('load-grunt-config')(grunt, {
         config: {
-            paths: paths
+            paths: paths,
+            bundles: bundles
         }
     });
     

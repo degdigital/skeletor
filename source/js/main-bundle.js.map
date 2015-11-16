@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA;AACA;AACE;AACA;AACF;AAJA","file":"main-bundle.js"}
+{"version":3,"file":"main-bundle.js","sources":["main.js"],"names":["System","registerDynamic","__require","__exports","__module","_retrieveGlobal","get","prepareGlobal","id"],"mappings":"AAAA,AAAAA,OAAAC,gBAAA,cAAA,EAAA,SAAAC,EAAAC,EAAAC,GACA,GAAAC,GAAAL,OAAAM,IAAA,oBAAAC,cAAAH,EAAAI,GAAA,KAAA,KAEE,OAAAH;AAFF;AACE;AACA;AACF;AAJA"}
