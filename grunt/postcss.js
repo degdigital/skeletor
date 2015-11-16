@@ -6,6 +6,7 @@ module.exports = {
                 require("postcss-import")(),
                 require("postcss-mixins")(),
                 require("postcss-custom-properties")(),
+                require("postcss-custom-media")(),
                 require("postcss-calc")(),
                 require("postcss-color-function")(),
                 require("postcss-nested")(),

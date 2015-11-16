@@ -15,7 +15,8 @@ module.exports = {
             '<%= paths.src.js %>/**/*.js',
             'source/_data/*.json'
         ],
-        tasks: ['shell:patternlab','copy','prettify'],
+        tasks: ['shell:patternlab'],
+        // tasks: ['shell:patternlab','copy','prettify'],
         options: {
             "spawn": false,
             event: ['changed', 'added', 'deleted']

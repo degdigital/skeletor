@@ -3,7 +3,7 @@ body:before {
 	display: none;
 }
 
-@media (min-width: 48em) {
+@media (--medium) {
 
 	body:before {
 		content: "medium";
@@ -11,7 +11,7 @@ body:before {
 
 }
 
-@media (min-width: 64.0625em) {
+@media (--large) {
 
 	body:before {
 		content: "large";

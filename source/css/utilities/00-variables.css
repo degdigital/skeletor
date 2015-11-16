@@ -17,3 +17,7 @@
 	--timing: 0.5s;
 
 }
+
+@custom-media --small (min-width: 30em);
+@custom-media --medium (min-width: 48em);
+@custom-media --large (min-width: 64.0625em);
