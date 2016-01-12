@@ -1,8 +1,7 @@
 tmp/
 node_modules
-public/*
+public
 !public/styleguide
-js/trans
 
 *.suo
 *.user
