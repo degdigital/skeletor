@@ -47,7 +47,9 @@ module.exports = function(grunt, options){
 	        files: [
 	        	"<%= paths.source.js %>/**/*.js", 
 	        	"!<%= paths.source.js %>/**/*-bundle.js",
-	        	"!<%= paths.source.js %>/**/*-bundle-*.js"
+	        	"!<%= paths.source.js %>/**/*-bundle-*.js",
+	        	"!<%= paths.source.js %>/config.js",
+				"!<%= paths.source.js %>/map-polyfills.js"
 	        ],
 	        tasks: ["build-js"],
 	        options: {
