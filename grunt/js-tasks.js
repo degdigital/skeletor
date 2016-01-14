@@ -1,48 +1,22 @@
 module.exports = function(grunt, options){
-	
-	function buildConcatConfig() {
-		var config = {};
+  	if(grunt.config('production')) {
+  		options.bundles.devMode = false;
+    	grunt.option('skip-js-polyfills', false);
+  	} else {
+  		if(grunt.option('bundle-js')) {
+	      options.bundles.devMode = false;
+	    }
+  	}
 
-		var bundleConcat = require('./lib/bundleConcat')(grunt, options);
-		bundleConcat.buildConfigForBundles(config);	
+	grunt.task.registerTask('build-js', 'Build JS assets', function() {
+        if(grunt.config('bundles').devMode) {
+            grunt.task.run('build-js-raw');
+        } else {
+            grunt.task.run('build-js-bundled');
+        }
+    });
 
-		var systemJSConcat = require('./lib/systemJSConcat')(grunt, options);
-		systemJSConcat.buildConfigForSystemJS(config);	
-
-		return config;
-	}
-
-	return {
-		shell: {
-	    	options: {
-	        stdout: true
-	      },
-	      command: function() {
-	      	var shellHelper = require('./lib/bundleShell')(grunt, options);
-	      	return shellHelper.buildAllBundleCommands();
-	      }      
-	    },
-	    clean:  [
-	    		'<%= paths.source.js %>/**/*-bundle.js',
-	    		'<%= paths.source.js %>/**/*-bundle-*.js'
-	    	],
-	    sync: {
-	    	files: [{
-			  cwd: '<%= paths.source.js %>',
-			  src: [
-			    '**/*-bundle.js',			    
-			    "config.js",
-			    "jspm_packages/system.js",
-                "jspm_packages/system-polyfills.js",
-                "polyfills/picturefill.js"
-			  ],
-			  dest: '<%= paths.dest.js %>'
-			}],
-			ignoreInDest: '**/*-bundle-*.js',
-			updateAndDelete:true,
-			verbose: true
-	    },
-	    concat: buildConcatConfig(),
+	return {		
 	    watch: {
 	        files: [
 	        	"<%= paths.source.js %>/**/*.js", 

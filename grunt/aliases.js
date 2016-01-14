@@ -1,15 +1,4 @@
 module.exports = function(grunt, options){
-  var task = grunt.cli.tasks.length ? grunt.cli.tasks[0] : null;
-  if(task && task.indexOf('deploy') == 0) {
-    options.production = true;
-    options.paths.dest = options.paths.export;
-    options.urls.dest = options.urls.export;
-    grunt.option('polyfills', true);
-  } else {
-    options.paths.dest = options.paths.public;
-    options.urls.dest = options.urls.public;
-  }
-
   return {
     "default": [
       "build-patterns",
@@ -24,11 +13,15 @@ module.exports = function(grunt, options){
       "sass_globbing",
       "postcss"
     ],
-    "build-js": [
-      "shell:js",
-      "concat:js",
-      "sync:js",
-      "clean:js"
+    "build-js-bundled": [
+      "shell:js-bundled",
+      "concat:js-bundled",
+      "sync:js-bundled",
+      "clean:js-bundled"
+    ],
+    "build-js-raw": [
+      "shell:js-raw",
+      "sync:js-raw"
     ],
     "build-assets": [
       "sync:assets_images",

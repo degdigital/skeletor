@@ -39,6 +39,7 @@ module.exports = function(grunt) {
     }
 
     var bundles = {
+        devMode: false,
         defaultExclude: 'main-bundle',
         items: [
             {
@@ -47,6 +48,16 @@ module.exports = function(grunt) {
         ]
     };
 
+    var task = grunt.cli.tasks.length ? grunt.cli.tasks[0] : null;
+    if(task && task.indexOf('deploy') == 0) {
+        console.log('setting production to true');
+        grunt.config('production', true);
+        paths.dest = paths.export;
+        urls.dest = urls.export;    
+    } else {
+        paths.dest = paths.public;
+        urls.dest = urls.public;
+    }
 
     require('load-grunt-config')(grunt, {
         config: {
@@ -57,5 +68,4 @@ module.exports = function(grunt) {
     });
     
     require('time-grunt')(grunt);
-
 };

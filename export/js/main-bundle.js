@@ -1,1 +1,5 @@
-System.registerDynamic("main.js",[],!1,function(a,b,c){var d=System.get("@@global-helpers").prepareGlobal(c.id,null,null);return d()});
+System.registerDynamic("main.js", [], false, function(__require, __exports, __module) {
+  var _retrieveGlobal = System.get("@@global-helpers").prepareGlobal(__module.id, null, null);
+  (function() {})();
+  return _retrieveGlobal();
+});
