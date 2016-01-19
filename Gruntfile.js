@@ -38,32 +38,28 @@ module.exports = function(grunt) {
         }
     }
 
-    var bundles = {
-        devMode: false,
-        defaultExclude: 'main-bundle',
-        items: [
-            {
-              entry: 'main'
-            }
-        ]
+    var watchTask = 'build';
+
+    var js = {
+        processor: 'jspm',
+        minify: 'deployOnly',
+        enableBundling: false,
+        bundles: {
+            defaultExclude: 'main-bundle',
+            items: [
+                {
+                  entry: 'main'
+                }
+            ]
+        }
     };
-
-    var task = grunt.cli.tasks.length ? grunt.cli.tasks[0] : null;
-    if(task && task.indexOf('deploy') == 0) {
-        console.log('setting production to true');
-        grunt.config('production', true);
-        paths.dest = paths.export;
-        urls.dest = urls.export;    
-    } else {
-        paths.dest = paths.public;
-        urls.dest = urls.public;
-    }
-
+   
     require('load-grunt-config')(grunt, {
         config: {
             paths: paths,
             urls: urls,
-            bundles: bundles
+            js: js,
+            watchTask: watchTask
         }
     });
     

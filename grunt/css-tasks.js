@@ -2,7 +2,7 @@ module.exports = function(grunt, options) {
 	return {
 		'sass_globbing': {
 			"files": {
-		        "<%= paths.dest.css %>/global.css": [
+		        "<%= paths.public.css %>/global.css": [
 	    			"<%= paths.source.css %>/utilities/**/*.css",
 	    			"<%= paths.source.css %>/atoms/**/*.css",	    			
 	    			"<%= paths.source.css %>/molecules/**/*.css",
@@ -31,16 +31,25 @@ module.exports = function(grunt, options) {
 	        files: [
 	            {
 	                expand: true,
-	                cwd: options.paths.dest.css,
+	                cwd: options.paths.public.css,
 	                src: ['*.css'],
-	                dest: options.paths.dest.css,
+	                dest: options.paths.public.css,
 	                ext: '.css'
 	            }
 	        ]
 		},
+		sync: {
+			files: [{
+			  cwd: '<%= paths.public.css %>',
+			  src: '*.css',
+			  dest: '<%= paths.export.css %>'
+			}],
+			updateAndDelete:true,
+			verbose: true
+		},
 		watch: {
 			files: ["<%= paths.source.css %>/**/*.css"],
-	        tasks: ["sass_globbing","postcss"],
+	        tasks: ['<%= watchTask %>-css'],
 	        options: {
 	            "spawn": true,
 	            event: ['changed', 'added', 'deleted']

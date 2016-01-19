@@ -1,7 +1,7 @@
 module.exports = function(grunt, options) {
 
 	var path = require('path');
-	var bundleUtils = require("./bundleUtils");
+	var bundleUtils = require('./bundle-utils');
 
 	function getArrayCombinations(arr) {
 		var result = [];
@@ -21,7 +21,7 @@ module.exports = function(grunt, options) {
 		var polyfillCombos = getArrayCombinations(bundle.polyfills);
 
 		polyfillCombos.reduce(function(config, polyfillCombo){
-			var bundleFilepath = bundleUtils.getBundleFilepath(bundle, options.paths.dest.js, polyfillCombo);  
+			var bundleFilepath = bundleUtils.getBundleFilepath(bundle, options.paths.public.js, polyfillCombo);  
 			config.files[bundleFilepath] = getSourceFiles(bundle, polyfillCombo);
 			return config;
 		}, config);
@@ -44,20 +44,20 @@ module.exports = function(grunt, options) {
 		return bundle.polyfills && bundle.polyfills.length > 0;
 	}
 
-	function buildConfigForBundles(config) {
+	function buildConfigForPolyfilledBundles(config) {
 		if(config.hasOwnProperty("files") == false) {
 			config.files = {};
 		}
 
 		if(grunt.option('polyfills')) {
-			return options.bundles.items
+			return options.js.bundles.items
 				.filter(doesBundleHavePolyfills)
 				.reduce(buildConcatDefsForBundle, config);
 		}
 	}
 
 	return {
-		buildConfigForBundles: buildConfigForBundles
+		buildConfigForPolyfilledBundles: buildConfigForPolyfilledBundles
 	};	
 
 }

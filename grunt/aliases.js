@@ -1,10 +1,15 @@
 module.exports = function(grunt, options){
   return {
-    "default": [
+    "default": "build",
+
+    /* Build aliases */
+    "build": [
       "build-patterns",
       "build-css",
       "build-js",
-      "build-assets"
+      "build-images",
+      "build-fonts",
+      "build-api"
     ],
     "build-patterns": [
       "shell:patterns"
@@ -13,28 +18,63 @@ module.exports = function(grunt, options){
       "sass_globbing",
       "postcss"
     ],
-    "build-js-bundled": [
-      "shell:js-bundled",
-      "concat:js-bundled",
-      "sync:js-bundled",
-      "clean:js-bundled"
-    ],
     "build-js-raw": [
-      "shell:js-raw",
-      "sync:js-raw"
+      "sync:js-raw_dev"
     ],
-    "build-assets": [
-      "sync:assets_images",
-      "sync:assets_fonts",
-      "sync:assets_api"
+    "build-js-jspm-bundled": [
+      "shell:js-jspm_bundle",
+      "concat:js-jspm_bundle",
+      "sync:js-jspm_bundle-dev",
+      "clean:js-jspm_bundle"
     ],
+    "build-js-jspm-raw": [
+      "shell:js-jspm_unbundle",
+      "sync:js-jspm_raw-dev"
+    ],
+    "build-images": [
+      "sync:assets_images-dev"
+    ],
+    "build-fonts": [
+      "sync:assets_fonts-dev"
+    ],
+    "build-api": [
+      "sync:assets_api-dev"
+    ],
+
+    /* Deploy aliases */
     "deploy": [
+      "deploy-patterns",      
+      "deploy-css",
+      "deploy-js",      
+      "deploy-images",
+      "deploy-fonts",
+      "deploy-api"
+    ],
+    "deploy-patterns": [
       "build-patterns",
       "copy:patterns",
       "prettify:patterns",
+    ],
+    "deploy-css": [
       "build-css",
-      "build-js",      
-      "build-assets"
-    ]
+      "sync:css"
+    ],
+    "deploy-js-jspm": [
+      "build-js",
+      "sync:js-jspm_bundle-deploy"
+    ],
+    "deploy-js-raw": [
+      "build-js",
+      "sync:js-raw_deploy"
+    ],
+    "deploy-images": [
+      "sync:assets_images-deploy"
+    ],
+    "deploy-fonts": [
+      "sync:assets_fonts-deploy"
+    ],
+    "deploy-api": [
+      "sync:assets_api-deploy"
+    ]   
   };
 };

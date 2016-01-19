@@ -1,7 +1,7 @@
 module.exports = function(grunt, options) {
 
 	var path = require("path");
-	var bundleUtils = require("./bundleUtils");
+	var bundleUtils = require('./bundle-utils');
 	var configFilename = "config.js";
 	var mapPolyfillsFilename = 'map-polyfills.js';
 
@@ -23,7 +23,7 @@ module.exports = function(grunt, options) {
 		return bundleContent;
 	}
 
-	function addBundles(content, filepath) {
+	function processFile(content, filepath) {
 		var filename = path.basename(filepath);
 		if(filename == mapPolyfillsFilename) {
 			return addBundlesToFileContents(content);
@@ -36,13 +36,13 @@ module.exports = function(grunt, options) {
 	}
 
 	function updateBaseUrlInFileContents(content) {
-		return content.replace(/baseURL:.[^,]*/, 'baseURL: "' + options.urls.dest.js + '"');
+		return content.replace(/baseURL:.[^,]*/, 'baseURL: "' + options.urls.public.js + '"');
 	}
 
 	function addBundlesToFileContents(content) {
 		var bundleContent = 'var bundles = [';
 
-		bundleContent = options.bundles.items
+		bundleContent = options.js.bundles.items
 			.filter(doesBundleHavePolyfills)
 			.reduce(createBundleDef, bundleContent);
 
@@ -51,7 +51,7 @@ module.exports = function(grunt, options) {
 		return content.replace('var bundles = []', bundleContent);
 	}
 
-	function buildConfigForSystemJS(config) {
+	function buildConfigForPolyfillsMap(config) {
 		if(config.hasOwnProperty("files") == false) {
 			config.files = {};
 		}
@@ -60,9 +60,9 @@ module.exports = function(grunt, options) {
 			config.options = {};
 		}
 
-		config.options.process = addBundles;
+		config.options.process = processFile;
 
-		var destConfigFilepath = path.join(options.paths.dest.js, configFilename);
+		var destConfigFilepath = path.join(options.paths.public.js, configFilename);
 		config.files[destConfigFilepath] = [
 			path.join(options.paths.source.js, configFilename),
 			path.join(options.paths.source.js, mapPolyfillsFilename)
@@ -70,6 +70,6 @@ module.exports = function(grunt, options) {
 	}
 
 	return {
-		buildConfigForSystemJS: buildConfigForSystemJS
+		buildConfigForPolyfillsMap: buildConfigForPolyfillsMap
 	};	
 };

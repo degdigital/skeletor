@@ -45,7 +45,7 @@ module.exports = {
             '<%= paths.source.patterns %>/**/*.json',
             'source/_data/*.json'
         ],
-        tasks: ['shell:patterns'],
+        tasks: ['<%= watchTask %>-patterns'],
         options: {
             "spawn": false,
             event: ['changed', 'added', 'deleted']

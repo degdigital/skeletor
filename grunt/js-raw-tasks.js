@@ -1,23 +1,22 @@
 module.exports = function(grunt, options){
 	return {
-		shell: {
-	    	options: {
-	        stdout: true
-	      },
-	      command: 'jspm unbundle'     
-	    },	    
-	    sync: {
+		'sync__dev': {
 	    	files: [{
 			  cwd: '<%= paths.source.js %>',
-			  src: [
-			  	'**/*.js',
-			  	'!map-polyfills.js'
-			  ],
-			  dest: '<%= paths.dest.js %>'
+			  src: '**/*.js',
+			  dest: '<%= paths.public.js %>'
 			}],
-			ignoreInDest: '**/*-bundle-*.js',
 			updateAndDelete:true,
 			verbose: true
-	    }
+	    },	
+	    'sync__deploy': {
+	    	files: [{
+			  cwd: '<%= paths.public.js %>',
+			  src: '**/*.js',
+			  dest: '<%= paths.export.js %>'
+			}],
+			updateAndDelete:true,
+			verbose: true
+	    }	
 	};
 };

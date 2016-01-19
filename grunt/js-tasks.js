@@ -1,22 +1,19 @@
 module.exports = function(grunt, options){
-  	if(grunt.config('production')) {
-  		options.bundles.devMode = false;
-    	grunt.option('skip-js-polyfills', false);
-  	} else {
-  		if(grunt.option('bundle-js')) {
-	      options.bundles.devMode = false;
-	    }
-  	}
+	var configurator = require('./lib/js/configurator')(grunt, options);
+	configurator.configure();
 
-	grunt.task.registerTask('build-js', 'Build JS assets', function() {
-        if(grunt.config('bundles').devMode) {
-            grunt.task.run('build-js-raw');
-        } else {
-            grunt.task.run('build-js-bundled');
-        }
+	grunt.task.registerTask('build-js', 'Build JS assets', function() {		
+		var taskName = 'build-js-' + options.js.processor;
+    	grunt.task.run(taskName);		
     });
 
-	return {		
+    grunt.task.registerTask('deploy-js', 'Deploy JS assets', function() {	
+    	var taskName = 'deploy-js-' + options.js.processor;
+    	grunt.task.run(taskName);		
+    });
+
+	return {
+		
 	    watch: {
 	        files: [
 	        	"<%= paths.source.js %>/**/*.js", 
@@ -25,7 +22,7 @@ module.exports = function(grunt, options){
 	        	"!<%= paths.source.js %>/config.js",
 				"!<%= paths.source.js %>/map-polyfills.js"
 	        ],
-	        tasks: ["build-js"],
+	        tasks: ["<%= watchTask %>-js"],
 	        options: {
 	            "spawn": true,
 	            event: ['changed', 'added', 'deleted']

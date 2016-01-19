@@ -1,13 +1,13 @@
 module.exports = function(grunt, options) {
 
-	var bundleUtils = require('./bundleUtils');
+	var bundleUtils = require('./bundle-utils');
 
 	function getExcludesForBundle(bundle) {
 		var excludes = [];
 	    if(bundle.exclude) {
 	        excludes = bundle.exclude; 
-	    } else if(options.bundles.defaultExclude && options.bundles.defaultExclude != bundleUtils.getBundleName(bundle)) {
-	        excludes = options.bundles.defaultExclude;
+	    } else if(options.js.bundles.defaultExclude && options.js.bundles.defaultExclude != bundleUtils.getBundleName(bundle)) {
+	        excludes = options.js.bundles.defaultExclude;
 	    }
 	    return excludes;
 	}
@@ -36,7 +36,7 @@ module.exports = function(grunt, options) {
         }
 
         bundleCommandStr += ' ' + bundleFilepath + ' --inject --skip-source-maps';
-        if(options.production) {
+        if(grunt.option('minifyJS')) {
         	bundleCommandStr += ' --minify';
         }
         return bundleCommandStr;    
@@ -45,7 +45,7 @@ module.exports = function(grunt, options) {
 	function buildCommandsForBundle(bundle) {
         var bundleFilepath = bundleUtils.getBundleFilepath(bundle, options.paths.source.js);    
         
-        var bundleType = options.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
+        var bundleType = options.js.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
      	var bundleCommandStr = '';
 
         var bundleExcludes = getExcludesForBundle(bundle); 
@@ -57,7 +57,7 @@ module.exports = function(grunt, options) {
     }
 
 	function buildAllBundleCommands() {		
-        var commands = grunt.config('bundles').items.map(buildCommandsForBundle);       
+        var commands = options.js.bundles.items.map(buildCommandsForBundle);       
         return commands.join(' && ');
 	}
 
