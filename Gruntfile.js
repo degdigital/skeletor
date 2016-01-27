@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 
+    /* Paths to assets in the source, public, and export directories */
     var paths = {
         'source': {
             api: 'source/api',
@@ -29,6 +30,7 @@ module.exports = function(grunt) {
         }
     };
 
+    /* URLs to assets in the public and export directories */
     var urls = {
         'public': {
             js: '../../js'
@@ -38,17 +40,38 @@ module.exports = function(grunt) {
         }
     }
 
+    /* Task that runs when a watched file even occurs */
     var watchTask = 'build';
 
+    /* Config settings for Javascript processing */
     var js = {
-        processor: 'jspm',
-        minify: 'deployOnly',
+
+        /* Processor for Javascript [jspm, raw] */
+        processor: 'jspm',  
+
+        /* When to minify Javascript [always, deployOnly] */
+        minify: 'deployOnly', 
+
+        /* Enable module bundling for use with JSPM [true, false] */
         enableBundling: false,
+
+        /* Module bundle config for JSPM */
         bundles: {
+
+            /* Name of bundle to exclude from all other bundles */
             defaultExclude: 'main-bundle',
+
+            /* Build self-executing bundles [true, false] */
+            selfExecuting: false,
+
+            /* Array of module bundles config objects */
             items: [
                 {
-                  entry: 'main'
+                    /* Name of entry module for this bundle */
+                    entry: 'main',
+
+                    /* Array of bundles to exclude from this bundle */
+                    exclude: []
                 }
             ]
         }
