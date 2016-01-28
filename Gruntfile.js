@@ -40,8 +40,15 @@ module.exports = function(grunt) {
         }
     }
 
-    /* Task that runs when a watched file even occurs [build, deploy] */
+    /* Task that runs when a watched file even occurs [build, export] */
     var watchTask = 'build';
+
+    /* Config settings for CSS processing */
+    var css = {
+
+        /* Export CSS source files along with compiled files */
+        exportSourceFiles: false
+    };
 
     /* Config settings for Javascript processing */
     var js = {
@@ -84,6 +91,7 @@ module.exports = function(grunt) {
         config: {
             paths: paths,
             urls: urls,
+            css: css,
             js: js,
             watchTask: watchTask
         }

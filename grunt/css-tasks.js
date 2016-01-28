@@ -1,4 +1,26 @@
 module.exports = function(grunt, options) {
+	function buildSyncConfig() {
+		var config = {
+			files: [{
+			  cwd: '<%= paths.public.css %>',
+			  src: '*.css',
+			  dest: '<%= paths.export.css %>'
+			}],
+			updateAndDelete:true,
+			verbose: true
+		};
+
+		if(options.css.exportSourceFiles) {
+			config.files.push({
+				cwd: '<%= paths.source.css %>',
+			  	src: '**/*.css',
+			  	dest: '<%= paths.export.css %>'
+			});
+		} 
+
+		return config;
+	}
+
 	return {
 		'sass_globbing': {
 			"files": {
@@ -38,15 +60,7 @@ module.exports = function(grunt, options) {
 	            }
 	        ]
 		},
-		sync: {
-			files: [{
-			  cwd: '<%= paths.public.css %>',
-			  src: '*.css',
-			  dest: '<%= paths.export.css %>'
-			}],
-			updateAndDelete:true,
-			verbose: true
-		},
+		sync: buildSyncConfig(),
 		watch: {
 			files: ["<%= paths.source.css %>/**/*.css"],
 	        tasks: ['<%= watchTask %>-css'],
