@@ -56,8 +56,8 @@ module.exports = function(grunt) {
         /* Processor for Javascript [jspm, raw] */
         processor: 'jspm',  
 
-        /* When to minify Javascript [always, deployOnly] */
-        minify: 'deployOnly', 
+        /* When to minify Javascript [always, never, exportOnly] */
+        minify: 'exportOnly', 
 
         /* Enable module bundling for use with JSPM [true, false] */
         enableBundling: true,

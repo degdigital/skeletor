@@ -1,12 +1,12 @@
 module.exports = function(grunt, options) {
 
-	function isDeployment() {
+	function isExport() {
     	var task = grunt.cli.tasks.length ? grunt.cli.tasks[0] : '';
-		return task.indexOf('deploy') == 0;
+		return task.indexOf('export') == 0;
     }
 
 	function verifyEnableBundlingSetting() {
-		if(isDeployment() || grunt.option('bundle-js')) {
+		if(isExport() || grunt.option('bundle-js')) {
 	        options.js.enableBundling = true;
 	    }
 	}
@@ -17,8 +17,8 @@ module.exports = function(grunt, options) {
 			case "always":
 				minifyJS = true;
 				break;
-			case "deployOnly": 
-				minifyJS = isDeployment();
+			case "exportOnly": 
+				minifyJS = isExport();
 				break;
 		}
 	    grunt.option('minifyJS', minifyJS);

@@ -32,5 +32,5 @@ Define your bundles in `Gruntfile.js`. There you will find a `bundles` object, w
 ```
 The `bundles` object also can contain a `defaultExclude` property, which is a bundle name or an array of bundle names to exclude from each bundle configuration.
 
-### Deploying
-When you're ready to bundle and deploy your code for production, type `grunt deploy`, which creates your minified JS bundles and copies them to the Export directory.
+### Exporting
+When you're ready to bundle and export your code for production, type `grunt export`, which creates your minified JS bundles and copies them to the Export directory.

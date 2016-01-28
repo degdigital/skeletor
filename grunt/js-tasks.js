@@ -7,8 +7,8 @@ module.exports = function(grunt, options){
     	grunt.task.run(taskName);		
     });
 
-    grunt.task.registerTask('deploy-js', 'Deploy JS assets', function() {	
-    	var taskName = 'deploy-js-' + options.js.processor;
+    grunt.task.registerTask('export-js', 'Export JS assets', function() {	
+    	var taskName = 'export-js-' + options.js.processor;
     	grunt.task.run(taskName);		
     });
 

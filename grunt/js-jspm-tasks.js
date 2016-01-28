@@ -23,11 +23,11 @@ module.exports = function(grunt, options){
 		return config;
 	}
 
-	function buildStringReplaceConfig(isDeploy) {
+	function buildStringReplaceConfig(isExport) {
 		var config = {};
 
 		var bundleHelperStringReplaceConfigurator = require('./lib/jspm/bundle-helper-string-replace-configurator')(grunt, options);
-		bundleHelperStringReplaceConfigurator.buildConfig(config, isDeploy);
+		bundleHelperStringReplaceConfigurator.buildConfig(config, isExport);
 
 		return config;
 	}
@@ -82,7 +82,7 @@ module.exports = function(grunt, options){
     		'<%= paths.source.js %>/**/*-bundle-*.js'
     	],
 	    'sync__bundle-dev': buildSyncBundleDevConfig(),
-	    'sync__bundle-deploy': {
+	    'sync__bundle-export': {
 	    	files: [{
 			  cwd: '<%= paths.public.js %>',
 			  src: '**/*',
@@ -106,6 +106,6 @@ module.exports = function(grunt, options){
 	    },
 	    concat__bundle: buildConcatConfig(),
 	    'string-replace__bundle-dev': buildStringReplaceConfig(false),
-	    'string-replace__bundle-deploy': buildStringReplaceConfig(true)
+	    'string-replace__bundle-export': buildStringReplaceConfig(true)
 	};
 };

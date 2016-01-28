@@ -40,8 +40,8 @@ module.exports = function(grunt, options) {
 		};
 	}
 
-	function createBaseUrlReplacement(isDeploy) {
-		var jsUrl = isDeploy ? options.urls.export.js : options.urls.public.js;
+	function createBaseUrlReplacement(isExport) {
+		var jsUrl = isExport ? options.urls.export.js : options.urls.public.js;
 
 		return {
 			pattern: /<%=\s*jsUrl\s*%>/,
@@ -49,7 +49,7 @@ module.exports = function(grunt, options) {
 		};
 	}
 
-	function buildConfig(config, isDeploy) {
+	function buildConfig(config, isExport) {
 		if(config.hasOwnProperty("files") == false) {
 			config.files = {};
 		}
@@ -60,8 +60,8 @@ module.exports = function(grunt, options) {
 
 		config.options.replacements = [];
 
-		if(isDeploy) {
-			config.options.replacements.push(createBaseUrlReplacement(isDeploy));
+		if(isExport) {
+			config.options.replacements.push(createBaseUrlReplacement(isExport));
 
 			if(options.js.bundles.selfExecuting) {
 				var bundleHelperFilepath = path.join(options.paths.export.js, bundleHelperFilename);
@@ -72,7 +72,7 @@ module.exports = function(grunt, options) {
 			}
 		} else {
 			config.options.replacements.push(createBundleHelperBundlesReplacement());
-			config.options.replacements.push(createBaseUrlReplacement(isDeploy));
+			config.options.replacements.push(createBaseUrlReplacement(isExport));
 
 			if(options.js.bundles.selfExecuting) {
 				var bundleHelperFilepath = path.join(options.paths.public.js, bundleHelperFilename);

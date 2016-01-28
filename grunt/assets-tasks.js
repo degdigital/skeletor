@@ -9,7 +9,7 @@ module.exports = function(grunt, options) {
 			updateAndDelete:true,
 			verbose: true
 		},
-		'sync__images-deploy': {
+		'sync__images-export': {
 			files: [{
 			  cwd: '<%= paths.source.images %>',
 			  src: '**/*',
@@ -27,7 +27,7 @@ module.exports = function(grunt, options) {
 			updateAndDelete:true,
 			verbose: true
 		},
-		'sync__fonts-deploy': {
+		'sync__fonts-export': {
 			files: [{
 			  cwd: '<%= paths.source.fonts %>',
 			  src: '**/*',
@@ -45,7 +45,7 @@ module.exports = function(grunt, options) {
 			updateAndDelete:true,
 			verbose: true
 		},
-		'sync__api-deploy': {
+		'sync__api-export': {
 			files: [{
 			  cwd: '<%= paths.source.api %>',
 			  src: '**/*.json',

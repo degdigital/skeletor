@@ -42,41 +42,41 @@ module.exports = function(grunt, options){
       "sync:assets_api-dev"
     ],
 
-    /* Deploy aliases */
-    "deploy": [
-      "deploy-patterns",      
-      "deploy-css",
-      "deploy-js",      
-      "deploy-images",
-      "deploy-fonts",
-      "deploy-api"
+    /* export aliases */
+    "export": [
+      "export-patterns",      
+      "export-css",
+      "export-js",      
+      "export-images",
+      "export-fonts",
+      "export-api"
     ],
-    "deploy-patterns": [
+    "export-patterns": [
       "build-patterns",
       "copy:patterns",
       "prettify:patterns",
     ],
-    "deploy-css": [
+    "export-css": [
       "build-css",
       "sync:css"
     ],
-    "deploy-js-jspm": [
+    "export-js-jspm": [
       "build-js",
-      "sync:js-jspm_bundle-deploy",
-      "string-replace:js-jspm_bundle-deploy"
+      "sync:js-jspm_bundle-export",
+      "string-replace:js-jspm_bundle-export"
     ],
-    "deploy-js-raw": [
+    "export-js-raw": [
       "build-js",
-      "sync:js-raw_deploy"
+      "sync:js-raw_export"
     ],
-    "deploy-images": [
-      "sync:assets_images-deploy"
+    "export-images": [
+      "sync:assets_images-export"
     ],
-    "deploy-fonts": [
-      "sync:assets_fonts-deploy"
+    "export-fonts": [
+      "sync:assets_fonts-export"
     ],
-    "deploy-api": [
-      "sync:assets_api-deploy"
+    "export-api": [
+      "sync:assets_api-export"
     ]   
   };
 };

@@ -9,7 +9,7 @@ module.exports = function(grunt, options){
 			updateAndDelete:true,
 			verbose: true
 	    },	
-	    'sync__deploy': {
+	    'sync__export': {
 	    	files: [{
 			  cwd: '<%= paths.public.js %>',
 			  src: '**/*.js',
