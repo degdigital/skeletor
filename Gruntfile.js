@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         }
     }
 
-    /* Task that runs when a watched file even occurs */
+    /* Task that runs when a watched file even occurs [build, deploy] */
     var watchTask = 'build';
 
     /* Config settings for Javascript processing */
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         minify: 'deployOnly', 
 
         /* Enable module bundling for use with JSPM [true, false] */
-        enableBundling: false,
+        enableBundling: true,
 
         /* Module bundle config for JSPM */
         bundles: {
@@ -71,7 +71,10 @@ module.exports = function(grunt) {
                     entry: 'main',
 
                     /* Array of bundles to exclude from this bundle */
-                    exclude: []
+                    exclude: [],
+
+                    /* Array of polyfills for this bundle */
+                    polyfills: []
                 }
             ]
         }

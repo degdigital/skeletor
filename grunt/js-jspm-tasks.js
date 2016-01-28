@@ -14,11 +14,52 @@ module.exports = function(grunt, options){
 		var bundleConcatConfigurator = require('./lib/jspm/bundle-concat-configurator')(grunt, options);
 		bundleConcatConfigurator.buildConfigForPolyfilledBundles(config);	
 
-		var polyfillsMapConcatConfigurator = require('./lib/jspm/polyfills-map-concat-configurator')(grunt, options);
-		polyfillsMapConcatConfigurator.buildConfigForPolyfillsMap(config);	
+		if(options.js.bundles.selfExecuting == false) {
+			config.files['<%= paths.public.js %>/config.js'] = [
+				'<%= paths.source.js %>/config.js',
+				'<%= paths.source.js %>/bundleHelper.js'
+			];
+		}
+		return config;
+	}
+
+	function buildStringReplaceConfig(isDeploy) {
+		var config = {};
+
+		var bundleHelperStringReplaceConfigurator = require('./lib/jspm/bundle-helper-string-replace-configurator')(grunt, options);
+		bundleHelperStringReplaceConfigurator.buildConfig(config, isDeploy);
 
 		return config;
 	}
+
+	function buildSyncBundleDevConfig() {
+		filesSrc = [
+        	"polyfills/picturefill.js",
+			'**/*-bundle.js'
+		];	
+
+		if(options.js.bundles.selfExecuting) {
+			filesSrc.push('bundleHelper.js');
+		} else {
+			filesSrc = filesSrc.concat([
+					"jspm_packages/system.js",
+		            "jspm_packages/system-polyfills.js"
+				]);
+		}	
+
+		return {
+	    	files: [{
+			  cwd: '<%= paths.source.js %>',
+			  src: filesSrc,
+			  dest: '<%= paths.public.js %>'
+			}],
+			ignoreInDest: '**/*-bundle-*.js',
+			updateAndDelete:true,
+			verbose: true
+	    };
+	}
+
+	
 
 	return {
 		shell__bundle: {
@@ -40,22 +81,7 @@ module.exports = function(grunt, options){
     		'<%= paths.source.js %>/**/*-bundle.js',
     		'<%= paths.source.js %>/**/*-bundle-*.js'
     	],
-	    'sync__bundle-dev': {
-	    	files: [{
-			  cwd: '<%= paths.source.js %>',
-			  src: [
-			    '**/*-bundle.js',			    
-			    "config.js",
-			    "jspm_packages/system.js",
-                "jspm_packages/system-polyfills.js",
-                "polyfills/picturefill.js"
-				],
-			  dest: '<%= paths.public.js %>'
-			}],
-			ignoreInDest: '**/*-bundle-*.js',
-			updateAndDelete:true,
-			verbose: true
-	    },
+	    'sync__bundle-dev': buildSyncBundleDevConfig(),
 	    'sync__bundle-deploy': {
 	    	files: [{
 			  cwd: '<%= paths.public.js %>',
@@ -78,6 +104,8 @@ module.exports = function(grunt, options){
 			updateAndDelete:true,
 			verbose: true
 	    },
-	    concat__bundle: buildConcatConfig()
+	    concat__bundle: buildConcatConfig(),
+	    'string-replace__bundle-dev': buildStringReplaceConfig(false),
+	    'string-replace__bundle-deploy': buildStringReplaceConfig(true)
 	};
 };

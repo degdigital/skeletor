@@ -3,7 +3,7 @@
   "description": "DEG UI Project",
   "license": "MIT",
   "repository": "Assembla",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "devDependencies": {
     "autoprefixer": "^6.0.0",
     "csswring": "^4.0.0",
@@ -13,6 +13,7 @@
     "grunt-sync": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-concat": "^0.5.1",
+    "grunt-string-replace": "^1.2.1",
     "grunt-postcss": "^0.6.0",
     "grunt-prettify": "^0.4.0",
     "grunt-sass-globbing": "^1.2.0",

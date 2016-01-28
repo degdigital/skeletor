@@ -22,9 +22,10 @@ module.exports = function(grunt, options){
       "sync:js-raw_dev"
     ],
     "build-js-jspm-bundled": [
-      "shell:js-jspm_bundle",
-      "concat:js-jspm_bundle",
+      "shell:js-jspm_bundle",     
       "sync:js-jspm_bundle-dev",
+      "concat:js-jspm_bundle",
+      "string-replace:js-jspm_bundle-dev",
       "clean:js-jspm_bundle"
     ],
     "build-js-jspm-raw": [
@@ -61,7 +62,8 @@ module.exports = function(grunt, options){
     ],
     "deploy-js-jspm": [
       "build-js",
-      "sync:js-jspm_bundle-deploy"
+      "sync:js-jspm_bundle-deploy",
+      "string-replace:js-jspm_bundle-deploy"
     ],
     "deploy-js-raw": [
       "build-js",

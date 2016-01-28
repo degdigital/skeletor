@@ -49,11 +49,10 @@ module.exports = function(grunt, options) {
 			config.files = {};
 		}
 
-		if(grunt.option('polyfills')) {
-			return options.js.bundles.items
-				.filter(doesBundleHavePolyfills)
-				.reduce(buildConcatDefsForBundle, config);
-		}
+		return options.js.bundles.items
+			.filter(doesBundleHavePolyfills)
+			.reduce(buildConcatDefsForBundle, config);
+		
 	}
 
 	return {
