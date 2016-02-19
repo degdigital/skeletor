@@ -1,9 +1,9 @@
-# Skeletor: The Bones of a Front-end Web Project
+# Skeletor: Bones & Build Tools
 Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternlab.io)-centric, highly-customizable web project boilerplate and build tool created by the [DEG](http://www.degdigital.com) UI team. Skeletor uses [PostCSS](http://postcss.org) for CSS processing and [JSPM](http://jspm.io)/[SystemJS](https://github.com/systemjs/systemjs) for Javascript package management, module bundling/loading, and transpilation. 
 
 * [Requirements](#requirements)
 * [Installation Instructions](#installation-instructions)
-* [Atomic Design & Pattern Lab](#atomic-design-&-pattern-lab)
+* [Atomic Design & Pattern Lab](#atomic-design--pattern-lab)
 * [Themes](#themes)
 * [Directory Structure](#directory-structure)
 * [Workflows](#workflows)
