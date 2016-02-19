@@ -1,4 +1,5 @@
 var bundleHelper = function() {
+	/* Add your polyfill test definitions here */
 	var testDefs = {
 		assign: Object.assign,
 		fetch: self.fetch,

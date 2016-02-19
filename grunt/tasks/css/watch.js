@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				files: [
 		            path.normalize('<%= activeTheme.source.assetPaths.css %>/**/*.css')
 		        ],
-		        tasks: ['<%= watchTask %>-css:<%= watchTarget %>'],
+		        tasks: ['<%= listenTask %>-css:<%= watchTarget %>'],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']

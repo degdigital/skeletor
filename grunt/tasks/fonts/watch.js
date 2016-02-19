@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				files: [
 		            path.normalize('<%= activeTheme.source.assetPaths.fonts %>/**/*')
 		        ],
-		        tasks: ['<%= watchTask %>-fonts:<%= watchTarget %>'],
+		        tasks: ['<%= listenTask %>-fonts:<%= watchTarget %>'],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']

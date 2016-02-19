@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 		            path.normalize('<%= activeTheme.source.assetPaths.patterns %>/**/*.json'),
 		            path.normalize('<%= activeTheme.source.assetPaths.patternData %>/*.json')
 		        ],
-		        tasks: ['<%= watchTask %>-patterns:<%= watchTarget %>'],
+		        tasks: ['<%= listenTask %>-patterns:<%= watchTarget %>'],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']

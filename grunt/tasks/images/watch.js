@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				files: [
 		            path.normalize('<%= activeTheme.source.assetPaths.images %>/**/*')
 		        ],
-		        tasks: ['<%= watchTask %>-images:<%= watchTarget %>'],
+		        tasks: ['<%= listenTask %>-images:<%= watchTarget %>'],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']
