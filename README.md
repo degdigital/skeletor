@@ -246,15 +246,15 @@ theme1: {
     ...
 }
 ```
-##### [assetDirectory].basePath
+##### {assetDirectory}.basePath
 Type: `String` Default: [assetDirectory]  
 The base file path of the asset directory relative to the theme's directory.
 
-##### [assetDirectory].assetPaths
+##### {assetDirectory}.assetPaths
 Type: `Object`  
 The file paths of asset types (CSS, Javascript, images, etc) relative to the asset directory.
 
-##### [assetDirectory].assetUrls 
+##### {assetDirectory}.assetUrls 
 Type: `Object`  
 The URLs of asset types relative to the web root. These settings currently only apply to the Javascript assets in the `public` and `source` asset directories.
 
@@ -392,9 +392,9 @@ A list of polyfills to apply to this bundle. Each item in this setting is a file
 ### Listen Task Configuration
 By default, the `listen` task will watch for asset file changes and run a `build` task when changes occur. This behavior is configurable:
 
-##### listenTask
-Type: `String` Default: 'build'
-The task that the `listen` task will run when file changes occur. Possible values include `build` and `export`.
+##### listenTasks
+Type: `Array` Default: '[build]'
+The task(s) that the `listen` task will run when file changes occur. Possible values include `build` and `export`.
 
 ## Javascript Module Bundling
 Skeletor will generate module bundles for you based on the `bundles` configuration setting in your Gruntfile. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the `bundles.selfExecuting` setting).
