@@ -111,7 +111,7 @@ module.exports = function(grunt) {
     };
 
     /* Task that runs when a watched file event occurs [build, export] */
-    var listenTask = 'build';
+    var listenTasks = ['build'];
 
 
     /* EDIT BELOW THIS LINE AT YOUR OWN RISK */
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
     
     grunt.initConfig({
         themes: themes,
-        listenTask: listenTask
+        listenTasks: listenTasks
     });
 
     var multitaskConfigurer = require('./grunt/lib/multitaskConfigurer')(grunt);

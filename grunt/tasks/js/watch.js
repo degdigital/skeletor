@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		watch: {
 			js: {
 				files: [],
-		        tasks: ['<%= listenTask %>-js:<%= watchTarget %>'],
+		        tasks: [],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']

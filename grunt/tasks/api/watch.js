@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				files: [
 		            path.normalize('<%= activeTheme.source.assetPaths.api %>/**/*')
 		        ],
-		        tasks: ['<%= listenTask %>-api:<%= watchTarget %>'],
+		        tasks: [],
 		        options: {
 		            "spawn": false,
 		            event: ['changed', 'added', 'deleted']

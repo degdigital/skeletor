@@ -4,9 +4,22 @@ module.exports = function(grunt) {
 		grunt.config('activeTheme', this.data);
 		grunt.config('watchTarget', this.target);
 
+		configureWatchTasks(this.target);
 		configureJSWatchTaskFiles();
+
 		grunt.task.run('watch');
 	});
+
+	function configureWatchTasks(themeTarget) {
+		var watchConfig = grunt.config('watch');
+		var listenTasks = grunt.config('listenTasks');
+		for(var watchTarget in watchConfig) {			
+			watchConfig[watchTarget].tasks = listenTasks.map(function(listenTask){
+				return listenTask + '-' + watchTarget + ':' +  themeTarget; 
+			});
+		}
+		grunt.config('watch', watchConfig);
+	}
 
 	function configureJSWatchTaskFiles() {
 		var path = require('path');
