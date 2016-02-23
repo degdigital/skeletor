@@ -393,7 +393,7 @@ A list of polyfills to apply to this bundle. Each item in this setting is a file
 By default, the `listen` task will watch for asset file changes and run a `build` task when changes occur. This behavior is configurable:
 
 ##### listenTasks
-Type: `Array` Default: '[build]'
+Type: `Array` Default: '[build]'  
 The task(s) that the `listen` task will run when file changes occur. Possible values include `build` and `export`.
 
 ## Javascript Module Bundling
