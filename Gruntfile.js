@@ -110,7 +110,13 @@ module.exports = function(grunt) {
         }
     };
 
-    /* Task that runs when a watched file event occurs [build, export] */
+    /* Tasks that run on a build */
+    var buildTasks = ['patterns', 'css', 'js', 'images', 'fonts', 'api'];
+
+    /* Tasks that run on an export */
+    var exportTasks = ['patterns', 'css', 'js', 'images', 'fonts', 'api'];
+
+    /* Tasks that runs when a watched file event occurs [build, export] */
     var listenTasks = ['build'];
 
 
