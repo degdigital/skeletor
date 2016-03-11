@@ -126,7 +126,9 @@ module.exports = function(grunt) {
     
     grunt.initConfig({
         themes: themes,
-        listenTasks: listenTasks
+        listenTasks: listenTasks,
+        buildTasks: buildTasks,
+        exportTasks: exportTasks
     });
 
     var multitaskConfigurer = require('./grunt/lib/multitaskConfigurer')(grunt);
