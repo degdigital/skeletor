@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 				  src: [
 				  	path.normalize("polyfills/picturefill.js"),
 					path.normalize('**/*-bundle.js'),
-					'!bundleHelper.js'
+					'bundleHelper.js'
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
