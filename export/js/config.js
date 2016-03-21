@@ -62,6 +62,7 @@ System.config({
 });
 
 var bundleHelper = function() {
+	/* Add your polyfill test definitions here */
 	var testDefs = {
 		assign: Object.assign,
 		fetch: self.fetch,
@@ -128,7 +129,7 @@ var bundleHelper = function() {
 	}
 
 	function loadBundle(filename) {
-		if(!filename.endsWith('.js')) {
+		if(filename.lastIndexOf('.js', filename.length - 3) === filename.length - 3) {
 			filename += '.js';
 		}
 		var bundle = getBundle(filename);
