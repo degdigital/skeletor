@@ -129,7 +129,7 @@ var bundleHelper = function() {
 	}
 
 	function loadBundle(filename) {
-		if(filename.lastIndexOf('.js', filename.length - 3) === filename.length - 3) {
+		if(filename.lastIndexOf('.js', filename.length - 3) === -1) {
 			filename += '.js';
 		}
 		var bundle = getBundle(filename);
