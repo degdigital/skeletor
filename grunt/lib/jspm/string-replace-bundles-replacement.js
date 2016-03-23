@@ -7,7 +7,7 @@ module.exports = function(activeTheme) {
 		return bundle.polyfills && bundle.polyfills.length > 0;
 	}
 
-	function createBundleDef(bundleContent, bundle) {
+	function createBundleDef(bundleContent, bundle, currentIndex, array) {
 		var bundleFilename = bundleUtils.getBundleFilepath(bundle, '');
 		bundleContent += "{filename: '" + bundleFilename + "',tests:[";
 	
@@ -18,6 +18,10 @@ module.exports = function(activeTheme) {
 		bundleContent += polyfillNames.join(",");
 		bundleContent += "]}";
 
+		if(currentIndex < (array.length - 1)) {
+			bundleContent += ',';
+		}
+
 		return bundleContent;
 	}
 
@@ -25,7 +29,6 @@ module.exports = function(activeTheme) {
 		var bundleContent = 'var bundles = [';
 
 		bundleContent = activeTheme.js.bundles.items
-			//.filter(doesBundleHavePolyfills)
 			.reduce(createBundleDef, bundleContent);
 
 		bundleContent += ']';

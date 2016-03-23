@@ -51,9 +51,9 @@ module.exports = function(grunt) {
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
-				//ignoreInDest: path.normalize('**/*-bundle-*.js'),*/
 				updateAndDelete:true,
-				verbose: true
+				verbose: true,
+				compareUsing: "md5"
 			},
 			js_build_jspm_unbundled: {
 				files: [{
