@@ -13,11 +13,18 @@ module.exports = function(grunt) {
 	function configureWatchTasks(themeTarget) {
 		var watchConfig = grunt.config('watch');
 		var listenTasks = grunt.config('listenTasks');
-		for(var watchTarget in watchConfig) {			
-			watchConfig[watchTarget].tasks = listenTasks.map(function(listenTask){
-				return listenTask + '-' + watchTarget + ':' +  themeTarget; 
-			});
-		}
+
+		listenTasks.forEach(function(listenTask) {
+			var listenTaskConfig = grunt.config(listenTask + 'Tasks');
+
+			for(var watchTarget in watchConfig) {
+				if(listenTaskConfig.indexOf(watchTarget) >= 0) {
+					var watchTargetTask = listenTask + '-' + watchTarget + ':' +  themeTarget;
+					watchConfig[watchTarget].tasks.push(watchTargetTask);
+				}
+			}
+		});
+
 		grunt.config('watch', watchConfig);
 	}
 
