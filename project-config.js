@@ -99,7 +99,10 @@ module.exports = {
                         entry: 'main',
 
                         /* Array of bundles to exclude from this bundle */
-                        exclude: []
+                        exclude: [],
+
+                        /* Array of polyfills for this bundle */
+                        polyfills: []
                     }
                 ]
             }
