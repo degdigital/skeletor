@@ -68,7 +68,11 @@ module.exports = {
             exportSourceFiles: false,
 
             /* Enable CSS globbing */
-            enableGlobbing: true
+            enableGlobbing: true,
+
+            postcss: {
+                map: false
+            }
         },
 
         /* Javascript processing configuration */
