@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 	function configureWatchTasks(themeTarget) {
 		var watchConfig = grunt.config('watch');
 		var listenTasks = grunt.config('listenTasks');
+		var activeTheme = grunt.config('activeTheme');
 
 		listenTasks.forEach(function(listenTask) {
 			var listenTaskConfig = grunt.config(listenTask + 'Tasks');
@@ -22,6 +23,8 @@ module.exports = function(grunt) {
 					var watchTargetTask = listenTask + '-' + watchTarget + ':' +  themeTarget;
 					watchConfig[watchTarget].tasks.push(watchTargetTask);
 				}
+
+				watchConfig[watchTarget].options.livereload = activeTheme.listen.livereload;
 			}
 		});
 

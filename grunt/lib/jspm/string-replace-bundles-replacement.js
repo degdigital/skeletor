@@ -40,8 +40,6 @@ module.exports = function(activeTheme) {
 			replacement: bundleContent
 
 		};
-
-		return config;
 	}
 
 	return {

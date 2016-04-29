@@ -130,6 +130,13 @@ module.exports = {
                     }
                 ]
             }
+        },
+
+        /* File watching options */
+        listen: {
+
+            /* live reloading options */
+            livereload: false
         }
     },
 
