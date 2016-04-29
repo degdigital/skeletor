@@ -3,8 +3,7 @@ module.exports = function(grunt, activeTheme, parentTask) {
 	function runTasks() {
 		setProcessors();
 
-		if(activeTheme.css.enableGlobbing) {
-			grunt.task.run('sass_globbing:' + parentTask);
+		if(activeTheme.css.globbing && activeTheme.css.globbing.enableGlobbing) {
 			grunt.task.run('postcss:' + parentTask + '_globbing');
 		} else {
 			grunt.task.run('postcss:' + parentTask);
@@ -17,8 +16,7 @@ module.exports = function(grunt, activeTheme, parentTask) {
 		processorInstances = processorBuilder.buildProcessors();
 
 		grunt.config('postcss.options.processors', processorInstances);
-	}
-	
+	}	
 
 	return {
 		runTasks: runTasks

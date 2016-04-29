@@ -5,6 +5,9 @@ module.exports = function(grunt) {
 
 		var activeTheme = grunt.config('activeTheme');
 
+		var globbingTasksRunner = require('./globbing-tasks-runner')(grunt, activeTheme, 'export');
+		globbingTasksRunner.runTasks();
+
 		var postCssTasksRunner = require('./postcss-tasks-runner')(grunt, activeTheme, 'export');
 		postCssTasksRunner.runTasks();
 

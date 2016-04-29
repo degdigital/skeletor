@@ -67,10 +67,30 @@ module.exports = {
             /* Export CSS source files along with compiled files */
             exportSourceFiles: false,
 
-            /* Enable CSS globbing */
-            enableGlobbing: true,
+                     
+            /* Globbing configuration */  
+            globbing: {
 
+                /* Enable CSS globbing */  
+                enableGlobbing: true,
+
+                /* Globbing output files */
+                files: {
+                    "global.css": [
+                        'utilities/**/*.css',
+                        'atoms/**/*.css',                  
+                        'molecules/**/*.css',
+                        'organisms/**/*.css',
+                        'templates/**/*.css'
+                    ]
+                }
+                
+            },
+
+            /* PostCSS configuration */
             postcss: {
+
+                /* Enable source maps */
                 map: false
             }
         },
