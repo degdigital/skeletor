@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Skeletor by degdigital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Skeletor</h1>
+      <h2 class="project-tagline">A Pattern Lab-friendly front-end web project boilerplate and build tool</h2>
+      <a href="https://github.com/degdigital/skeletor" class="btn">View on GitHub</a>
+      <a href="https://github.com/degdigital/skeletor/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/degdigital/skeletor/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="skeletor-bones--build-tools" class="anchor" href="#skeletor-bones--build-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Skeletor: Bones &amp; Build Tools</h1>
+
+<p>Skeletor is a <a href="http://gruntjs.com">Grunt</a>-powered, <a href="http://patternlab.io">Pattern Lab</a>-centric, highly-customizable web project boilerplate and build tool created by the <a href="http://www.degdigital.com">DEG</a> UI team. Skeletor uses <a href="http://postcss.org">PostCSS</a> for CSS processing and <a href="http://jspm.io">JSPM</a>/<a href="https://github.com/systemjs/systemjs">SystemJS</a> for Javascript package management, module bundling/loading, and transpilation. </p>
+
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation-instructions">Installation Instructions</a></li>
+<li><a href="#atomic-design--pattern-lab">Atomic Design &amp; Pattern Lab</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#workflows">Workflows</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#javascript-module-bundling">Javascript Module Bundling</a></li>
+</ul>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>
+<a href="https://nodejs.org">NodeJS</a> version 4.2+</li>
+<li>
+<a href="http://php.net">PHP</a> version 5.3+ (for Pattern Lab)</li>
+</ul>
+
+<h2>
+<a id="installation-instructions" class="anchor" href="#installation-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation Instructions</h2>
+
+<ol>
+<li>Clone the Skeletor git repository into your project's root directory or a subdirectory</li>
+<li>From the command line, type <code>npm install</code> to install all Node dependencies</li>
+<li>From the command line, type <code>grunt</code> to generate your first Pattern Lab build</li>
+</ol>
+
+<h2>
+<a id="atomic-design--pattern-lab" class="anchor" href="#atomic-design--pattern-lab" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Atomic Design &amp; Pattern Lab</h2>
+
+<p>Skeletor encourages the use of the <a href="http://bradfrost.com/blog/post/atomic-web-design">Atomic Design</a> methodology and comes preconfigured with Pattern Lab to help you create atomic design systems. Learn more about Atomic Design and Pattern Lab <a href="http://patternlab.io">here</a>.</p>
+
+<p>In Skeletor, all primary front-end development occurs in Pattern Lab. You can then export your code as a standalone site or into a CMS. Read more about this in the <a href="#workflows">workflows</a> section.   </p>
+
+<h2>
+<a id="themes" class="anchor" href="#themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Themes</h2>
+
+<p>Skeletor is a multi-theme build tool. A theme is considered a variation of a base website or set of assets. In a multi-theme environment, you would have a base theme (website) and one or more child themes that vary from the base theme in some way. Skeletor is configured for one theme by default but can easily be configured for multiple themes.</p>
+
+<p>One benefit of using themes is the ability to have child themes inherit CSS from its base theme. This avoids repetition of code while still allowing for the overriding of CSS in a child theme when necessary.</p>
+
+<h2>
+<a id="directory-structure" class="anchor" href="#directory-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directory Structure</h2>
+
+<p>Skeletor can be the entirety of your web project or live side-by-side with your CMS source directory, depending on your needs. The default directory structure is as follows:</p>
+
+<pre><code>skeletor       
+|-- config/  
+|-- core/
+|-- export/
+|   |-- css/
+|   |-- images/
+|   |-- js/
+|   |-- patterns/
+|-- grunt/
+|-- public/
+|   |-- css/
+|   |-- images/
+|   |-- js/
+|   |-- patterns/
+|-- source/
+|   |-- css/
+|   |-- images/
+|   |-- js/
+|   |-- _patterns/
+|-- Gruntfile.js
+</code></pre>
+
+<h3>
+<a id="pattern-lab-directories" class="anchor" href="#pattern-lab-directories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pattern Lab Directories</h3>
+
+<p>By default, Pattern Lab lives in the root of Skeletor. The <code>core/</code> and <code>config/</code> directories contain the Pattern Lab source code and configuration settings, respectively. The <code>source/</code> directory contains your project's source code, including pattern templates, CSS, JS, and images. The <code>public/</code> directory contains the generated Pattern Lab site. Assets are compiled and copied from the <code>source/</code> directory to the <code>public/</code> directory during the build process.</p>
+
+<h3>
+<a id="export-directory" class="anchor" href="#export-directory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Export Directory</h3>
+
+<p>The <code>export/</code> directory contains production-ready assets that have been exported from Pattern Lab. Depending on the configuration of your project, many assets may bypass this directory and instead be exported into CMS directories. </p>
+
+<h3>
+<a id="grunt-directory" class="anchor" href="#grunt-directory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grunt Directory</h3>
+
+<p>Skeletor is powered by the Grunt task runner. Task configuration files can be found in the <code>grunt</code> directory. However, the majority of your configuration changes should be confined to the Gruntfile.</p>
+
+<h3>
+<a id="multi-theme-directory-structure" class="anchor" href="#multi-theme-directory-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multi-Theme Directory Structure</h3>
+
+<p>To use multiple themes with Skeletor, the directory structure changes slightly. A directory for each theme is added to the root directory of Skeletor. The assets for a theme live within the theme's directory. In addition, each theme has its own instance of Pattern Lab. This is due to the current limitations of representing multiple websites in a single instance of Pattern Lab.</p>
+
+<p>An example of a multi-theme directory structure is below:</p>
+
+<pre><code>skeletor   
+|-- baseTheme/
+|   |-- config/  
+|   |-- core/
+|   |-- export/
+|   |-- public/
+|   |-- source/
+|-- grunt/
+|-- theme1/
+|   |-- config/  
+|   |-- core/
+|   |-- export/
+|   |-- public/
+|   |-- source/
+|-- theme2/
+|   |-- config/  
+|   |-- core/
+|   |-- export/
+|   |-- public/
+|   |-- source/
+|-- Gruntfile.js
+</code></pre>
+
+<h2>
+<a id="workflows" class="anchor" href="#workflows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflows</h2>
+
+<p>Skeletor supports two primary workflows: project development and exporting/CMS integration. Both workflows are controlled via the command line by invoking Grunt tasks.</p>
+
+<h3>
+<a id="project-development-workflow" class="anchor" href="#project-development-workflow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Development Workflow</h3>
+
+<p>Primary development occurs within Pattern Lab, specifically the source directory. UI assets such as patterns, CSS, Javascript, and images are processed, compiled, and copied to the public directory by invoking the build task <code>grunt build</code>. You can run the build task automatically when source files are created/modified by invoking the listen task: <code>grunt listen</code>.</p>
+
+<h3>
+<a id="exportingcms-integration-workflow" class="anchor" href="#exportingcms-integration-workflow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exporting/CMS Integration Workflow</h3>
+
+<p>Pattern Lab outputs a static website. Depending on the nature of your project, this deliverable may be sufficient. In other cases, you may need to integrate your UI assets (HTML, CSS, JS, images, fonts, etc) into a production CMS. Either way, your UI assets are exported to directories of your choosing by invoking the export task <code>grunt export</code>.</p>
+
+<h3>
+<a id="multi-theme-targeting" class="anchor" href="#multi-theme-targeting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multi-Theme Targeting</h3>
+
+<p>The <code>build</code>, <code>listen</code>, and <code>export</code> tasks are created as <a href="http://gruntjs.com/creating-tasks#multi-tasks">multi tasks</a> in Grunt. When Skeletor is configured for multiple themes, it automatically creates targets for each of these multi tasks, one target per theme. This allows you to constrain the tasks to one theme by appending <code>:[themeName]</code> when running a task from the command line. </p>
+
+<p>For example, to run the <code>build</code> task on theme1, you would type <code>grunt build:theme1</code> into the command line. To run the build task for all themes, simply omit the theme name postfix and type <code>grunt build</code>.</p>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Skeletor is built to be highly-configurable. The majority, if not all, of the configuration settings exist in the Gruntfile. </p>
+
+<h3>
+<a id="theme-configuration" class="anchor" href="#theme-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theme Configuration</h3>
+
+<p>The majority of Skeletor's configuration settings are contained within theme configuration objects. These objects live within the <code>themes</code> object in the Gruntfile. By default, Skeletor is configured for one theme:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/* Themes configuration */</span>
+<span class="pl-k">var</span> themes <span class="pl-k">=</span> {
+    <span class="pl-c">/* Theme configuration */</span>
+    <span class="pl-k">default</span><span class="pl-k">:</span> {
+        basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+        <span class="pl-k">...</span>
+    }
+};</pre></div>
+
+<p>For multiple themes, additional theme configuration objects can be included in the <code>themes</code> setting :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/* An example of two themes that inherit from a base theme */</span>
+<span class="pl-c">/* Themes configuration */</span>
+<span class="pl-k">var</span> themes <span class="pl-k">=</span> {
+
+  <span class="pl-c">/* Base theme configuration */</span>
+  baseTheme<span class="pl-k">:</span> {
+    <span class="pl-k">...</span>
+  },
+
+  <span class="pl-c">/* Theme 1 configuration */</span>
+  theme1<span class="pl-k">:</span> {
+    parentTheme<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>baseTheme<span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>
+  },
+
+  <span class="pl-c">/* Theme 2 configuration */</span>
+  theme2<span class="pl-k">:</span> {
+    parentTheme<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>baseTheme<span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>
+  }
+};</pre></div>
+
+<h3>
+<a id="theme-defaults" class="anchor" href="#theme-defaults" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theme Defaults</h3>
+
+<p>Skeletor has a single theme configuration object that contains default theme settings. This object, called <code>themeDefaults</code> in the Gruntfile, gets merged with each theme configuration object in <code>themes</code>. This allows you to centralize common theme settings into one object while still retaining the ability to override certain settings in specific themes.</p>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-k">var</span> themeDefaults <span class="pl-k">=</span> {
+    css<span class="pl-k">:</span> {
+      exportSourceFiles<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+      enableGlobbing<span class="pl-k">:</span> <span class="pl-c1">true</span>
+    }
+  };
+
+  <span class="pl-k">var</span> themes <span class="pl-k">=</span> {
+    theme1<span class="pl-k">:</span> {
+      css<span class="pl-k">:</span> {
+        <span class="pl-c">/* Overrides the exportSourceFiles setting inherited from themeDefaults */</span>
+        exportSourceFiles<span class="pl-k">:</span> <span class="pl-c1">true</span>
+      }
+    }
+  }</pre></div>
+
+<h3>
+<a id="theme-configuration-1" class="anchor" href="#theme-configuration-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theme Configuration</h3>
+
+<p>A theme configuration object contains settings for a particular theme.</p>
+
+<h4>
+<a id="general" class="anchor" href="#general" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>General</h4>
+
+<div class="highlight highlight-source-js"><pre>theme1<span class="pl-k">:</span> {
+    basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>theme1<span class="pl-pds">'</span></span>,
+    parentTheme<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>baseTheme<span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>
+}</pre></div>
+
+<h5>
+<a id="basepath" class="anchor" href="#basepath" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>basePath</h5>
+
+<p>Type: <code>String</code><br>
+The base filepath of the theme, relative to Skeletor's root directory. If this property is omitted, the base filepath defaults to the name of the theme itself.</p>
+
+<h5>
+<a id="parenttheme" class="anchor" href="#parenttheme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>parentTheme</h5>
+
+<p>Type: <code>String</code><br>
+The name of the theme's parent theme. Setting a parent theme allows for CSS inheritance.</p>
+
+<h4>
+<a id="asset-directories" class="anchor" href="#asset-directories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Asset Directories</h4>
+
+<p>There are three primary directories that your assets live in: <code>source/</code>, <code>public/</code>, and <code>export/</code> (see the <a href="#directory-structure">Directory Structure</a> section for more information). The file paths and urls for these asset directories are pre-configured for you:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/* Source directory configuration */</span>
+theme1<span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>source<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+      basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>source<span class="pl-pds">'</span></span>,
+      assetPaths<span class="pl-k">:</span> {
+        api<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>api<span class="pl-pds">'</span></span>,
+        css<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>css<span class="pl-pds">'</span></span>,
+        fonts<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fonts<span class="pl-pds">'</span></span>,
+        images<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>images<span class="pl-pds">'</span></span>,
+        js<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>js<span class="pl-pds">'</span></span>,
+        patterns<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>_patterns<span class="pl-pds">'</span></span>,
+        patternData<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>_data<span class="pl-pds">'</span></span>
+      }
+    },
+
+    <span class="pl-c">/* Public directory configuration */</span>
+    <span class="pl-s"><span class="pl-pds">'</span>public<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+      basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>public<span class="pl-pds">'</span></span>,
+      assetPaths<span class="pl-k">:</span> {
+        api<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>api<span class="pl-pds">'</span></span>,
+        css<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>css<span class="pl-pds">'</span></span>,
+        fonts<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fonts<span class="pl-pds">'</span></span>,
+        images<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>images<span class="pl-pds">'</span></span>,
+        js<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>js<span class="pl-pds">'</span></span>,
+        patterns<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>patterns<span class="pl-pds">'</span></span>
+      },
+      assetUrls<span class="pl-k">:</span> {
+        js<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>../../js<span class="pl-pds">'</span></span>
+      }
+    },
+
+    <span class="pl-c">/* Export directory configuration */</span>
+    <span class="pl-s"><span class="pl-pds">'</span>export<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+      basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>export<span class="pl-pds">'</span></span>,
+      assetPaths<span class="pl-k">:</span> {
+        api<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>api<span class="pl-pds">'</span></span>,
+        css<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>css<span class="pl-pds">'</span></span>,
+        fonts<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fonts<span class="pl-pds">'</span></span>,
+        images<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>images<span class="pl-pds">'</span></span>,
+        js<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>js<span class="pl-pds">'</span></span>,
+        patterns<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+      },
+      assetUrls<span class="pl-k">:</span> {
+        js<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>js<span class="pl-pds">'</span></span>
+      }
+    },
+    <span class="pl-k">...</span>
+}</pre></div>
+
+<h5>
+<a id="assetdirectorybasepath" class="anchor" href="#assetdirectorybasepath" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>{assetDirectory}.basePath</h5>
+
+<p>Type: <code>String</code> Default: [assetDirectory]<br>
+The base file path of the asset directory relative to the theme's directory.</p>
+
+<h5>
+<a id="assetdirectoryassetpaths" class="anchor" href="#assetdirectoryassetpaths" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>{assetDirectory}.assetPaths</h5>
+
+<p>Type: <code>Object</code><br>
+The file paths of asset types (CSS, Javascript, images, etc) relative to the asset directory.</p>
+
+<h5>
+<a id="assetdirectoryasseturls" class="anchor" href="#assetdirectoryasseturls" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>{assetDirectory}.assetUrls</h5>
+
+<p>Type: <code>Object</code><br>
+The URLs of asset types relative to the web root. These settings currently only apply to the Javascript assets in the <code>public</code> and <code>source</code> asset directories.</p>
+
+<h4>
+<a id="css" class="anchor" href="#css" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CSS</h4>
+
+<p>Skeletor employs <a href="http://postcss.org">PostCSS</a> to process your CSS files. There are several CSS configuration options available to you:</p>
+
+<div class="highlight highlight-source-js"><pre>theme1<span class="pl-k">:</span> {
+    <span class="pl-c">/* CSS processing configuration */</span>
+    css<span class="pl-k">:</span> {
+
+      <span class="pl-c">/* Export CSS source files along with compiled files */</span>
+      exportSourceFiles<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+
+      <span class="pl-c">/* Enable CSS globbing */</span>
+      enableGlobbing<span class="pl-k">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-k">...</span>
+}</pre></div>
+
+<h5>
+<a id="cssexportsourcefiles" class="anchor" href="#cssexportsourcefiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>css.exportSourceFiles</h5>
+
+<p>Type: <code>Boolean</code> Default: <code>false</code><br>
+In addition to the processed CSS files, source CSS files are copied to the export directory during an export.</p>
+
+<h5>
+<a id="cssenableglobbing" class="anchor" href="#cssenableglobbing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>css.enableGlobbing</h5>
+
+<p>Type: <code>Boolean</code> Default: <code>true</code><br>
+CSS <a href="https://github.com/import" class="user-mention">@import</a> statements are generated automatically using globbing.</p>
+
+<h4>
+<a id="javascript" class="anchor" href="#javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javascript</h4>
+
+<p>By default, Skeletor uses <a href="http://jspm.io">JSPM</a> as a Javascript package manager, module bundler, module loader, and transpiler. There are several Javascript configuration options available to you in the Gruntfile: </p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/* Javascript processing configuration */</span>
+theme1<span class="pl-k">:</span> {
+    js<span class="pl-k">:</span> {
+
+      <span class="pl-c">/* Processor for Javascript [jspm, none] */</span>
+      processor<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>jspm<span class="pl-pds">'</span></span>,  
+
+      <span class="pl-c">/* When to minify Javascript [always, never, exportOnly] */</span>
+      minify<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>exportOnly<span class="pl-pds">'</span></span>, 
+
+      <span class="pl-c">/* Enable module bundling for use with JSPM [true, false] */</span>
+      enableBundling<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+
+      <span class="pl-c">/* Module bundle config for JSPM */</span>
+      bundles<span class="pl-k">:</span> {
+
+        <span class="pl-c">/* Name of bundle to exclude from all other bundles */</span>
+        defaultExclude<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>main-bundle<span class="pl-pds">'</span></span>,
+
+        <span class="pl-c">/* Build self-executing bundles [true, false] */</span>
+        selfExecuting<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+
+        <span class="pl-c">/* Array of module bundles config objects */</span>
+        items<span class="pl-k">:</span> [
+          {
+            <span class="pl-c">/* Name of this bundle (optional) */</span>
+            name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>,
+
+            <span class="pl-c">/* Name of entry module for this bundle */</span>
+            entry<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>,
+
+            <span class="pl-c">/* Array of bundles to exclude from this bundle */</span>
+            exclude<span class="pl-k">:</span> [],
+
+            <span class="pl-c">/* Array of polyfills for this bundle */</span>
+            polyfills<span class="pl-k">:</span> []
+          },
+          {
+            <span class="pl-c">/* Name of this bundle (optional) */</span>
+            name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>,
+
+           <span class="pl-c">/* Name of entry module for this bundle */</span>
+            entry<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>,
+
+            <span class="pl-c">/* Array of bundles to exclude from this bundle */</span>
+            exclude<span class="pl-k">:</span> [],
+
+            <span class="pl-c">/* Array of polyfills for this bundle */</span>
+            polyfills<span class="pl-k">:</span> []
+          }
+        ]
+      }
+    },
+    <span class="pl-k">...</span>
+}</pre></div>
+
+<h5>
+<a id="jsprocessor" class="anchor" href="#jsprocessor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.processor</h5>
+
+<p>Type: <code>String</code> Default: <code>jspm</code><br>
+Specifies the Javascript processor to be used. Possible values include <code>jspm</code> and <code>none</code>. A value of <code>none</code> will result in straight copy of the source Javascript files to the public and export directories. <em>Note: no other Javascript configuration settings will apply if <code>none</code> is specified.</em></p>
+
+<h5>
+<a id="jsminify" class="anchor" href="#jsminify" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.minify</h5>
+
+<p>Type: <code>String</code> Default: <code>exportOnly</code><br>
+Specifies when Javascript files should be minified. Possible values include <code>always</code>, <code>never</code>, and <code>exportOnly</code>.</p>
+
+<h5>
+<a id="jsenablebundling" class="anchor" href="#jsenablebundling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.enableBundling</h5>
+
+<p>Type: <code>Boolean</code> Default: <code>true</code><br>
+Specifies whether Javascript modules should be bundled during the development workflow. If set to false, Javascript modules will be copied directly to the public directory and loaded individually by the SystemJS module loader. This can facilitate quicker Javascript processing (as bundling can take several seconds) and easier debugging. This setting does not apply to the export workflow, during which bundling is always enabled. </p>
+
+<h5>
+<a id="jsbundles" class="anchor" href="#jsbundles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.bundles</h5>
+
+<p>Type: <code>Object</code><br>
+Configuration settings for JSPM module bundling. See the <a href="#javascript-module-bundling">Javascript Module Bundling</a> section for more information.</p>
+
+<h5>
+<a id="jsbundlesdefaultexclude" class="anchor" href="#jsbundlesdefaultexclude" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.bundles.defaultExclude</h5>
+
+<p>Type: <code>string</code><br>
+The name of the bundle to exclude from all other bundles. This setting can be useful when you have a common bundle that loads on every page.</p>
+
+<h5>
+<a id="jsbundlesselfexecuting" class="anchor" href="#jsbundlesselfexecuting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.bundles.selfExecuting</h5>
+
+<p>Type: <code>Boolean</code> Default: <code>false</code><br>
+Specifies whether or not to create self-executing bundles that are independent of the SystemJS module loader.</p>
+
+<h5>
+<a id="jsbundlesitems" class="anchor" href="#jsbundlesitems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>js.bundles.items</h5>
+
+<p>Type: <code>Array</code><br>
+A list of module bundle configuration objects.</p>
+
+<h5>
+<a id="bundleentry" class="anchor" href="#bundleentry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bundle.entry</h5>
+
+<p>Type: <code>String</code><br>
+The name of the module that serves as the entry point for the bundle. The bundle will include this module and all of its dependencies.</p>
+
+<h5>
+<a id="bundlename" class="anchor" href="#bundlename" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bundle.name</h5>
+
+<p>Type: <code>String</code> Default: ``<br>
+The name of this bundle. This setting is optional and, if omitted, the bundle name will default to the name of the entry module.</p>
+
+<h5>
+<a id="bundleexclude" class="anchor" href="#bundleexclude" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bundle.exclude</h5>
+
+<p>Type: <code>Array</code><br>
+A list of bundle names to exclude from this bundle. These should be "full" bundle names, meaning they should include the postfix <code>-bundle</code> </p>
+
+<h5>
+<a id="bundlepolyfills" class="anchor" href="#bundlepolyfills" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bundle.polyfills</h5>
+
+<p>Type: <code>Array</code><br>
+A list of polyfills to apply to this bundle. Each item in this setting is a file path to a polyfill script relative to the Javascript directory. See the <a href="#polyfilled-bundles">Polyfilled Bundles</a> section for more information.</p>
+
+<h3>
+<a id="listen-task-configuration" class="anchor" href="#listen-task-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Listen Task Configuration</h3>
+
+<p>By default, the <code>listen</code> task will watch for asset file changes and run a <code>build</code> task when changes occur. This behavior is configurable:</p>
+
+<h5>
+<a id="listentasks" class="anchor" href="#listentasks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>listenTasks</h5>
+
+<p>Type: <code>Array</code> Default: '[build]'<br>
+The task(s) that the <code>listen</code> task will run when file changes occur. Possible values include <code>build</code> and <code>export</code>.</p>
+
+<h2>
+<a id="javascript-module-bundling" class="anchor" href="#javascript-module-bundling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javascript Module Bundling</h2>
+
+<p>Skeletor will generate module bundles for you based on the <code>bundles</code> configuration setting in your Gruntfile. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the <code>bundles.selfExecuting</code> setting).</p>
+
+<p>Skeletor is configured to create SystemJS bundles by default. SystemJS bundles are not referenced in a web page directly, but rather by a modules within it:</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-c">&lt;!-- Load the SystemJS script and its configuration file --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../../js/jspm_packages/system.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../../js/config.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-c">&lt;!--</span> Tell SystemJS to <span class="pl-k">import</span> the <span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span> module, which will cause the <span class="pl-s"><span class="pl-pds">'</span>main-bundle<span class="pl-pds">'</span></span> bundle to be loaded --&gt;</span>
+<span class="pl-s1">  <span class="pl-smi">System</span>.<span class="pl-en">import</span>(<span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p>If you instead choose to use self-executing bundles independent of the SystemJS module loader, the method for loading a bundle is slightly different:</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-c">&lt;!-- Load the bundleHelper file --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../../js/bundleHelper.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-c">&lt;!--</span> Use bundleHelper to load the <span class="pl-s"><span class="pl-pds">'</span>main-bundle<span class="pl-pds">'</span></span> bundle <span class="pl-c">--&gt;</span></span>
+<span class="pl-s1">  <span class="pl-smi">bundleHelper</span>.<span class="pl-en">loadBundle</span>(<span class="pl-s"><span class="pl-pds">'</span>main-bundle<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p>Skeletor generates polyfill/bundle combinations and loads the correct combination based on client-side feature testing (see the <a href="#polyfilled-bundles">Polyfilled Bundles</a> section below). In order for Skeletor to accomplish this, self-executing bundles need to be loaded via <code>bundleHelper</code>, which is included in Skeletor.</p>
+
+<h3>
+<a id="polyfilled-bundles" class="anchor" href="#polyfilled-bundles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Polyfilled Bundles</h3>
+
+<h4>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h4>
+
+<p>In many cases, your Javascript code will require certain feature polyfills in order to run correctly on legacy (or even modern) browsers. For delivering these polyfills to the client, Skeletor takes the conditional-build approach recommended by the <a href="https://github.com/SlexAxton/yepnope.js#deprecation-notice">yepnope.js</a> team and others. At runtime, this approach includes the following steps:
+1. Run a series of feature tests on the client's browser
+2. Generate a bundle filename based on the results of the feature tests (i.e., append the names of the failed tests to the bundle's filename)
+3. Load the bundle from the server using this generated filename, which will include the appropriate feature polyfills</p>
+
+<h4>
+<a id="generating-conditional-builds" class="anchor" href="#generating-conditional-builds" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generating Conditional Builds</h4>
+
+<p>At build time, Skeletor uses the <code>bundle.polyfills</code> setting in each bundle configuration to generate conditional builds of those bundles. Each conditional build is a combination of polyfills concatenated to the beginning of a bundle. For example, say you have a bundle called <code>main-bundle</code> that has two polyfills specified:</p>
+
+<div class="highlight highlight-source-js"><pre>bundles<span class="pl-k">:</span> {
+    <span class="pl-k">...</span>,
+    items<span class="pl-k">:</span> [
+        {
+            entry<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>,
+            polyfills<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>polyfills/classList<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>polyfills/assign<span class="pl-pds">'</span></span>]
+        }   
+    ]
+}</pre></div>
+
+<p>Skeletor will generate four versions of the <code>main-bundle</code> bundle, one for each potential combination of polyfills needed by a client browser: </p>
+
+<ul>
+<li>
+<code>main-bundle.js</code> (bundle without any polyfills)</li>
+<li>
+<code>main-bundle-classList.js</code> (bundle with the <code>classList</code> polyfill)</li>
+<li>
+<code>main-bundle-assign.js</code> (bundle with the <code>assign</code> polyfills)</li>
+<li>
+<code>main-bundle-classList-assign.js</code> (bundle with the <code>classList</code> and <code>assign</code> polyfills)</li>
+</ul>
+
+<h4>
+<a id="loading-a-conditional-build" class="anchor" href="#loading-a-conditional-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Loading a Conditional Build</h4>
+
+<p>Skeletor contains a <code>bundleHelper.js</code> script that is responsible for performing feature tests on the client browser and then loading the correct polyfill/bundle combination based on the results of those tests. Inside <code>bundleHelper.js</code>, there are a handful of common feature test definitions already present:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">bundleHelper</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+  <span class="pl-c">/* Add your polyfill test definitions here */</span>
+  <span class="pl-k">var</span> testDefs <span class="pl-k">=</span> {
+    assign<span class="pl-k">:</span> <span class="pl-c1">Object</span>.<span class="pl-smi">assign</span>,
+    fetch<span class="pl-k">:</span> <span class="pl-smi">self</span>.<span class="pl-smi">fetch</span>,
+    find<span class="pl-k">:</span> <span class="pl-c1">Array</span>.<span class="pl-c1">prototype</span>.<span class="pl-smi">find</span>
+  }
+  <span class="pl-k">...</span>
+}</pre></div>
+
+<p>A feature test definition is usually a concise one-liner. The name of the test should match the filename of the associated polyfill script, which lives in the <code>js/polyfills/</code> directory. </p>
+
+<p>The bundleHelper script also contains an empty array variable called <code>bundles</code>:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">bundleHelper</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+  <span class="pl-k">...</span>
+  <span class="pl-k">var</span> bundles <span class="pl-k">=</span> [],
+  <span class="pl-k">...</span>
+}</pre></div>
+
+<p>At build time, this <code>bundles</code> array gets populated with bundle objects, one for each bundle defined in the <code>js.bundles.items</code> configuration setting in the Gruntfile. These bundle objects contain information about the feature tests needed for each bundle. These feature tests are references to the <code>testDefs</code> object.</p>
+
+<p>At runtime, the bundleHelper script will iterate through each bundle object and run the specified feature tests on the client's browser. The script will then generate a bundle filename based on the failed feature tests. The final step is to intercept the loading of the bundle by the client browser and instead load the conditional build of the bundle.</p>
+
+<ul>
+<li>If you are using SystemJS bundles, the <a href="https://github.com/systemjs/systemjs/blob/master/docs/config-api.md#map">SystemJS map configuration option</a> is used to tell the module loader to load the conditional build of the bundle rather than the default build</li>
+<li>If you are using self-executing bundles, SystemJS's map option isn't available. Instead, the bundleHelper script provides a <code>loadBundle</code> method that accepts a bundle name and loads the conditional build of the bundle.</li>
+</ul>
+
+<p>The bundleHelper script is automatically concatenated to the SystemJS <code>config.js</code> script. If you are using self-executing bundles, you will instead need to load the <code>bundleHelper.js</code> script directly and then load bundles using the <code>bundleHelper.loadBundle</code> method.</p>
+
+<h4>
+<a id="adding-polyfills" class="anchor" href="#adding-polyfills" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding Polyfills</h4>
+
+<p>Adding a new polyfill to your project is a three-step process:
+1. Add the polyfill script to the <code>js/polyfills/</code> directory
+2. Add the polyfill test to the <code>testDefs</code> object in the <code>bundleHelper.js</code> script. Make sure the test name matches the filename (minus the <code>.js</code> extension) of your polyfill script
+3. Add a reference to the polyfill in the appropriate <code>bundle.polyfills</code> setting in the Gruntfile</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/degdigital/skeletor">Skeletor</a> is maintained by <a href="https://github.com/degdigital">degdigital</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
