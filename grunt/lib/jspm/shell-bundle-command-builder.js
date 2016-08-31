@@ -1,4 +1,4 @@
-module.exports = function(activeTheme, minifyJS) {
+module.exports = function(activeTheme) {
 
 	var bundleUtils = require('./bundle-utils');
     var path = require('path');
@@ -39,9 +39,6 @@ module.exports = function(activeTheme, minifyJS) {
 
         bundleCommandStr += ' ' + bundleFilepath + ' --inject --skip-source-maps';
         
-        if(minifyJS) {
-        	bundleCommandStr += ' --minify';
-        }
         return bundleCommandStr;    
     }
 

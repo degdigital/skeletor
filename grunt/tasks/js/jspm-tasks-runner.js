@@ -39,11 +39,15 @@ module.exports = function(grunt, activeTheme, parentTask) {
 			runStringReplaceTask('js_' + parentTask + '_jspm_config');	
 		}
 
+		if(grunt.option('minifyJS')) {
+			grunt.task.run('uglify:js_' + parentTask + '_jspm_bundled');
+		}
+
 		grunt.task.run('clean:js_jspm_bundles');
 	}
 
 	function runShellBundleTask() {
-		var shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme, grunt.option('minifyJS'));
+		var shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme);
 		grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', shellBundleCommandBuilder.buildAllBundleCommands());
 		grunt.task.run('shell:js_' + parentTask + '_jspm_bundle');
 	}

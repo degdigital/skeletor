@@ -36,6 +36,7 @@
     "grunt-prettify": "^0.4.0",
     "grunt-sass-globbing": "^1.2.0",
     "grunt-shell": "^1.1.1",
+    "grunt-contrib-uglify": "^2.0.0",
     "postcss": "^5.0.11",
     "postcss-calc": "^5.0.0",
     "postcss-color-function": "^2.0.0",

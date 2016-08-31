@@ -136,8 +136,8 @@ module.exports = {
             /* Processor for Javascript [jspm, none] */
             processor: 'jspm',  
 
-            /* When to minify Javascript [always, never, exportOnly] */
-            minify: 'exportOnly', 
+            /* When to minify Javascript [all, build, export] */
+            minify: 'export', 
 
             /* Enable module bundling for use with JSPM [true, false] */
             enableBundling: true,

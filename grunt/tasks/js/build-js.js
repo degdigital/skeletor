@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		var activeTheme = grunt.config('activeTheme');
 
 
-		if(typeof grunt.option('minifyJS') === 'undefined' && activeTheme.js.minify == 'always') {
+		if(typeof grunt.option('minifyJS') === 'undefined' && (activeTheme.js.minify == 'all' || activeTheme.js.minify == 'build')) {
 			grunt.option('minifyJS', true);
 		}
 		
@@ -22,5 +22,8 @@ module.exports = function(grunt) {
 
 	function runRawTasks() {
 		grunt.task.run('sync:js_build_raw');
+		if(grunt.option('minifyJS')) {
+			grunt.task.run('uglify:js_build_raw');
+		}
 	}
 }
