@@ -1,19 +1,13 @@
+"use strict";
+
 module.exports = function(activeTheme, themes) {
 
-	var defaultProcessors = [
-		{ name: 'postcss-import'},		
-   		{ name: 'postcss-mixins' },
-   		{ name: 'postcss-custom-properties'},
-   		{ name: 'postcss-custom-media'},
-   		{ name: 'postcss-calc'},
-   		{ name: 'postcss-color-function'},
-   		{ name: 'postcss-nested'},
-   		{ name: 'autoprefixer', options: {browsers: 'last 2 versions'} },
-   		{ name: 'csswring'}	
-	];
+	function buildProcessors() {	
+		let processors = activeTheme.css.postcss.processors;
 
-	function buildProcessors() {		
-		return defaultProcessors.map(createProcessorInstance);
+		if(Array.isArray(processors)) {
+			return processors.map(createProcessorInstance);
+		}
 	}
 
 	function createProcessorInstance(processor) {
@@ -23,31 +17,7 @@ module.exports = function(activeTheme, themes) {
 			setImportProcessorPathOption(processor);
 		}
 
-		mergeProcessorOptions(processor);
-
 		return require(processor.name)(processor.options);
-	}
-
-	function mergeProcessorOptions(processor) {
-		var optionsFromTheme = getProcessorOptionsForTheme(processor.name);
-
-		if(optionsFromTheme) {
-			processor.options = Object.assign({}, processor.options, optionsFromTheme);
-		}
-	}
-
-	function getProcessorOptionsForTheme(processorName) {
-		if(activeTheme.css.postcss.processors) {
-			var processorForTheme = activeTheme.css.postcss.processors.find(function(processor){
-				return processor.name == processorName;
-			});
-
-			if(processorForTheme) {
-				return processorForTheme.options;
-			}
-		}
-
-		return null;
 	}
 
 	function setImportProcessorPathOption(processor) {

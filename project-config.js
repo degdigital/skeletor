@@ -67,16 +67,20 @@ module.exports = {
             /* Export CSS source files along with compiled files */
             exportSourceFiles: false,
 
-                     
-            /* Globbing configuration */  
-            globbing: {
+            /* Enable globbing of CSS files */
+            enableGlobbing: true,
 
-                /* Enable CSS globbing */  
-                enableGlobbing: true,
+            /* CSS files to be processed */
+            files: [
+                {
+                    /* Destination file name */
+                    dest: "global.css",
 
-                /* Globbing output files */
-                files: {
-                    "global.css": [
+                    /* When to process file [all, build, export] */
+                    process: 'all',
+
+                    /* Files and directories to be included in globbing */
+                    globbingFiles: [
                         'utilities/**/*.css',
                         'atoms/**/*.css',                  
                         'molecules/**/*.css',
@@ -84,14 +88,26 @@ module.exports = {
                         'templates/**/*.css'
                     ]
                 }
-                
-            },
+            ],
 
             /* PostCSS configuration */
             postcss: {
 
                 /* Enable source maps */
-                map: false
+                map: false,
+
+                /* PostCSS processor configuration */
+                processors: [
+                    { name: 'postcss-import'},      
+                    { name: 'postcss-mixins' },
+                    { name: 'postcss-custom-properties'},
+                    { name: 'postcss-custom-media'},
+                    { name: 'postcss-calc'},
+                    { name: 'postcss-color-function'},
+                    { name: 'postcss-nested'},
+                    { name: 'autoprefixer', options: {browsers: 'last 2 versions'} },
+                    { name: 'csswring'} 
+                ]
             }
         },
 

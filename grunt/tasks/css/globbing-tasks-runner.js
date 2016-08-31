@@ -2,26 +2,27 @@ module.exports = function(grunt, activeTheme, parentTask) {
 
 	function runTasks() {
 
-		if(activeTheme.css.globbing && activeTheme.css.globbing.enableGlobbing) {
-			configureFiles();
+		if(activeTheme.css.enableGlobbing) {
+			var filesToProcess = activeTheme.css.files.filter(function(file){
+				return file.process == 'all' || file.process == parentTask;
+			});
 
+			filesToProcess.forEach(configureFile);
 			grunt.task.run('sass_globbing:' + parentTask);
 		} 
 	}
 
-	function configureFiles() {
+	function configureFile(cssFile) {
 
-		var files = {};
-		var filesFromTheme = activeTheme.css.globbing.files;		
+		var destFilepath = getDestinationFilepath(cssFile.dest);	
 
-		for(var dest in filesFromTheme) {
-			
-			var destFilepath = getDestinationFilepath(dest);
+		var filesToGlob = cssFile.globbingFiles.map(function(sourceFile) {
+			return getSourceFilepath(sourceFile);
+		});
 
-			files[destFilepath] = filesFromTheme[dest].map(function(sourceFile) {
-				return getSourceFilepath(sourceFile);
-			});
-		}
+		var files = grunt.config('sass_globbing.' + parentTask + '.files');
+		files = files ? files : {};
+		files[destFilepath] = filesToGlob;
 
 		grunt.config('sass_globbing.' + parentTask + '.files', files);
 	}	
