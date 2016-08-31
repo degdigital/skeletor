@@ -12,6 +12,7 @@ var bundleHelper = function() {
 
 	function init() {
 		if(typeof System != 'undefined' && System.config) {
+			baseURL = System.baseURL;
 			mapPolyfilledBundles();
 		}
 	}
