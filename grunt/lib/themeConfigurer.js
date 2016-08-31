@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 		});
 
 		theme.css = Object.assign({}, themeDefaults.css, theme.css);
+		theme.images = Object.assign({}, themeDefaults.images, theme.images);
 		theme.js = Object.assign({}, themeDefaults.js, theme.js);
 		theme.listen = Object.assign({}, themeDefaults.listen, theme.listen);
 	}

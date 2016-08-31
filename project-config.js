@@ -111,6 +111,25 @@ module.exports = {
             }
         },
 
+        /* Image processing configuration */
+        images: {
+
+            /* Image files to be processed */
+            files: [
+                {
+                    /* When to process file [all, build, export] */
+                    process: 'all',
+
+                    /* Files and directories to be processed */
+                    src: '**/*'
+                },
+                {
+                    process: 'export',
+                    src: ['!**/samples/**']
+                }
+            ]
+        },
+
         /* Javascript processing configuration */
         js: {
 
