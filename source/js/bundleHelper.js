@@ -77,9 +77,14 @@ var bundleHelper = function() {
 		}
 	}
 
+	function setBaseURL(newBaseURL) {
+		baseURL = newBaseURL;
+	}
+
 	init();
 
 	return {
-		loadBundle: loadBundle
+		loadBundle: loadBundle,
+		setBaseURL: setBaseURL
 	}
 }();
