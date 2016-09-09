@@ -25,7 +25,8 @@ module.exports = function(grunt, activeTheme, parentTask) {
 		runShellBundleTask();
 
 		if(activeTheme.js.bundles.selfExecuting) {
-			grunt.task.run('sync:js_' + parentTask + '_jspm_bundled_sfx');					
+			grunt.task.run('sync:js_' + parentTask + '_jspm_bundled_sfx');
+			grunt.task.run('concat:js_' + parentTask + '_jspm_bundleHelper');					
 		} else {
 			grunt.task.run('sync:js_' + parentTask + '_jspm_bundled');
 			grunt.task.run('concat:js_' + parentTask + '_jspm_config');

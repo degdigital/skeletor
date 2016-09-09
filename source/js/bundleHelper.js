@@ -1,10 +1,4 @@
 var bundleHelper = function() {
-	/* Add your polyfill test definitions here */
-	var testDefs = {
-		assign: Object.assign,
-		fetch: self.fetch,
-		find: Array.prototype.find
-	}
 
 	var bundles = [],
 		map = {},
@@ -43,8 +37,8 @@ var bundleHelper = function() {
 
 		for(var i = 0; i < bundle.tests.length; i++) {
 			var testName = bundle.tests[i];
-			var testDef = testDefs[testName];
-			if(testDef)
+			var testDef = polyfillTests[testName];
+			if(testDef())
 				continue;
 			
 			filename += '-' + testName;
