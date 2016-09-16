@@ -601,7 +601,7 @@ At runtime, the bundleHelper script will iterate through each bundle object and 
 The `bundleHelper.js` and `polyfillTests.js` files are automatically concatenated to the SystemJS `config.js` file during builds and exports. If you are using self-executing bundles, you will instead need to load the `bundleHelper.js` script directly and then load bundles using the `bundleHelper.loadBundle` method.
 
 #### Adding Polyfills
-Adding a new polyfill to your project is a three-step process:
-1. Add the polyfill script to the `js/polyfills/` directory
-2. Add the polyfill test to the `polyfillTests` object in the `polyfillTests.js` script as a function. Make sure the test function name matches the filename (minus the `.js` extension) of your polyfill script
-3. Add a reference to the polyfill in the appropriate `bundle.polyfills` setting in `project-config.js`
+Adding a new polyfill to your project is a three-step process:    
+1. Add the polyfill script to the `js/polyfills/` directory  
+2. Add the polyfill test to the `polyfillTests` object in the `polyfillTests.js` script as a function. Make sure the test function name matches the filename (minus the `.js` extension) of your polyfill script      
+3. Add a reference to the polyfill in the appropriate `bundle.polyfills` setting in `project-config.js` 
