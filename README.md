@@ -11,7 +11,7 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 * [Javascript Module Bundling](#javascript-module-bundling)
 
 ## Requirements
-* [NodeJS](https://nodejs.org) version 4.2+
+* [NodeJS](https://nodejs.org) version 6.0+
 * [PHP](http://php.net) version 5.3+ (for Pattern Lab)
 
 
@@ -22,14 +22,14 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 
 
 ## Atomic Design & Pattern Lab
-Skeletor encourages the use of the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) methodology and comes preconfigured with Pattern Lab to help you create atomic design systems. Learn more about Atomic Design and Pattern Lab [here](http://patternlab.io).
+Skeletor encourages the use of the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) methodology and comes preconfigured with Pattern Lab to help you create atomic design systems. Learn more about Atomic Design and Pattern Lab [here](http://patternlab.io). **Note**: Skeletor currently ships with version 1 of Pattern Lab. A future release will support Pattern Lab v2.
 
 In Skeletor, all primary front-end development occurs in Pattern Lab. You can then export your code as a standalone site or into a CMS. Read more about this in the [workflows](#workflows) section.   
 
 ## Themes
-Skeletor is a multi-theme build tool. A theme is considered a variation of a base website or set of assets. In a multi-theme environment, you would have a base theme (website) and one or more child themes that vary from the base theme in some way. Skeletor is configured for one theme by default but can easily be configured for multiple themes.
+Skeletor is a multi-theme build tool. A theme is considered a variation of a base website or set of assets. In a multi-theme environment, you have a base theme (website) and one or more child themes that vary from the base theme in some way. Skeletor is configured for one theme by default but can easily be configured for multiple themes.
 
-One benefit of using themes is the ability to have child themes inherit CSS from its base theme. This avoids repetition of code while still allowing for the overriding of CSS in a child theme when necessary.
+One benefit of using themes is the ability to have child themes inherit CSS from the base theme. This avoids repetition of code while still allowing for the overriding of CSS in a child theme when necessary.
 
 ## Directory Structure
 Skeletor can be the entirety of your web project or live side-by-side with your CMS source directory, depending on your needs. The default directory structure is as follows:
@@ -55,16 +55,17 @@ skeletor
 |   |-- js/
 |   |-- _patterns/
 |-- Gruntfile.js
+|-- project.config.js
 ```
 
 ### Pattern Lab Directories
 By default, Pattern Lab lives in the root of Skeletor. The `core/` and `config/` directories contain the Pattern Lab source code and configuration settings, respectively. The `source/` directory contains your project's source code, including pattern templates, CSS, JS, and images. The `public/` directory contains the generated Pattern Lab site. Assets are compiled and copied from the `source/` directory to the `public/` directory during the build process.
 
 ### Export Directory
-The `export/` directory contains production-ready assets that have been exported from Pattern Lab. Depending on the configuration of your project, many assets may bypass this directory and instead be exported into CMS directories. 
+The `export/` directory contains production-ready assets that have been exported from Pattern Lab. Depending on the configuration of your project, assets may bypass this directory and instead be exported into CMS directories. 
 
 ### Grunt Directory
-Skeletor is powered by the Grunt task runner. Task configuration files can be found in the `grunt` directory. However, the majority of your configuration changes should be confined to the Gruntfile.
+Skeletor is powered by the Grunt task runner. Task configuration and code files can be found in the `grunt` directory. However, the majority of your configuration changes should be confined to the `project-config.json` file.
 
 ### Multi-Theme Directory Structure
 To use multiple themes with Skeletor, the directory structure changes slightly. A directory for each theme is added to the root directory of Skeletor. The assets for a theme live within the theme's directory. In addition, each theme has its own instance of Pattern Lab. This is due to the current limitations of representing multiple websites in a single instance of Pattern Lab.
@@ -92,6 +93,7 @@ skeletor
 |   |-- public/
 |   |-- source/
 |-- Gruntfile.js
+|-- project-config.js
 ```
 
 ## Workflows
@@ -109,10 +111,10 @@ The `build`, `listen`, and `export` tasks are created as [multi tasks](http://gr
 For example, to run the `build` task on theme1, you would type `grunt build:theme1` into the command line. To run the build task for all themes, simply omit the theme name postfix and type `grunt build`.
 
 ## Configuration
-Skeletor is built to be highly-configurable. The majority, if not all, of the configuration settings exist in the Gruntfile. 
+Skeletor is built to be highly-configurable. The majority, if not all, of the configuration settings exist in the `project-config.js` file. 
 
 ### Theme Configuration 
-The majority of Skeletor's configuration settings are contained within theme configuration objects. These objects live within the `themes` object in the Gruntfile. By default, Skeletor is configured for one theme:
+The majority of Skeletor's configuration settings are contained within theme configuration objects. These objects live within the `themes` object in `project-config.js`. By default, Skeletor is configured for one theme:
 
 ```js
 /* Themes configuration */
@@ -152,7 +154,7 @@ var themes = {
 ```
 
 ### Theme Defaults
-Skeletor has a single theme configuration object that contains default theme settings. This object, called `themeDefaults` in the Gruntfile, gets merged with each theme configuration object in `themes`. This allows you to centralize common theme settings into one object while still retaining the ability to override certain settings in specific themes.
+Skeletor has a single theme configuration object that contains default theme settings. This object, called `themeDefaults` in the `project-config.js` file, gets merged with each theme configuration object in `themes`. This allows you to centralize common theme settings into one object while still retaining the ability to override certain settings in specific themes.
 
 ```js
   var themeDefaults = {
@@ -256,7 +258,7 @@ The file paths of asset types (CSS, Javascript, images, etc) relative to the ass
 
 ##### {assetDirectory}.assetUrls 
 Type: `Object`  
-The URLs of asset types relative to the web root. These settings currently only apply to the Javascript assets in the `public` and `source` asset directories.
+The URLs of asset types relative to the web root. These settings currently only apply to the Javascript assets in the `public` and `export` asset directories.
 
 #### CSS
 Skeletor employs [PostCSS](http://postcss.org) to process your CSS files. There are several CSS configuration options available to you:
@@ -266,11 +268,51 @@ theme1: {
     /* CSS processing configuration */
     css: {
     
-      /* Export CSS source files along with compiled files */
-      exportSourceFiles: false,
-    
-      /* Enable CSS globbing */
-      enableGlobbing: true
+        /* Export CSS source files along with compiled files */
+        exportSourceFiles: false,
+
+        /* Enable globbing of CSS files */
+        enableGlobbing: true,
+
+        /* CSS files to be processed */
+        files: [
+            {
+                /* Destination file name */
+                dest: "global.css",
+
+                /* When to process file [all, build, export] */
+                process: 'all',
+
+                /* Files and directories to be included in globbing */
+                globbingFiles: [
+                    'utilities/**/*.css',
+                    'atoms/**/*.css',                  
+                    'molecules/**/*.css',
+                    'organisms/**/*.css',
+                    'templates/**/*.css'
+                ]
+            }
+        ],
+
+        /* PostCSS configuration */
+        postcss: {
+
+            /* Enable source maps */
+            map: false,
+
+            /* PostCSS processor configuration */
+            processors: [
+                { name: 'postcss-import'},      
+                { name: 'postcss-mixins' },
+                { name: 'postcss-custom-properties'},
+                { name: 'postcss-custom-media'},
+                { name: 'postcss-calc'},
+                { name: 'postcss-color-function'},
+                { name: 'postcss-nested'},
+                { name: 'autoprefixer', options: {browsers: 'last 2 versions'} },
+                { name: 'csswring'} 
+            ]
+        }
     },
     ...
 }
@@ -282,10 +324,83 @@ In addition to the processed CSS files, source CSS files are copied to the expor
 
 ##### css.enableGlobbing
 Type: `Boolean` Default: `true`  
-CSS @import statements are generated automatically using globbing.
+CSS @import statements are generated automatically using a globbing plugin and the files and directories specified in `globbingFiles`.
+
+##### css.files
+Type: `Array`   
+A list of processed CSS file configuration objects.
+
+##### file.dest
+Type: `String`  
+The destination filename of the processed CSS file.
+
+##### file.process
+Type: `String` Default: `all`   
+Specifies when the CSS file should be processed. Possible values include `all`, `build`, and `export`.
+
+#### file.globbingFiles
+Type: `Array`   
+A list of files and/or directories to be used for globbing.
+
+##### css.postcss
+Type: `Object`  
+Configuration settings for PostCSS.
+
+##### postcss.map
+Type: `Boolean` Default: `false`    
+Enable PostCSS source maps 
+
+##### postcss.processors
+Type: `Array`   
+A list of PostCSS processor configuration objects
+
+##### processor.name
+Type: `String`  
+The name of the PostCSS processor
+
+##### processor.options 
+Type: `Object`  
+The options for the PostCSS processor
+
+#### Images
+Skeletor will copy image files from the `source` directory to the `public` and `export` directories based on the following configuration settings defined in `project-config.js`.
+
+```js
+/* Image processing configuration */
+images: {
+
+    /* Image files to be processed */
+    files: [
+        {
+            /* When to process file [all, build, export] */
+            process: 'all',
+
+            /* Files and directories to be processed */
+            src: '**/*'
+        },
+        {
+            /* Exclude images in the samples directory during an export */
+            process: 'export',
+            src: ['!**/samples/**']
+        }
+    ]
+}
+```
+
+##### images.files
+Type: `Array`   
+A list of image file configuration objects.
+
+##### file.process
+Type: `String` Default: `all`   
+Specifies when the image files should be copied. Possible values include `all`, `build`, and `export`.
+
+##### file.src
+Type: `String`  
+Specifies the files/directories to be copied.
 
 #### Javascript
-By default, Skeletor uses [JSPM](http://jspm.io) as a Javascript package manager, module bundler, module loader, and transpiler. There are several Javascript configuration options available to you in the Gruntfile: 
+By default, Skeletor uses [JSPM](http://jspm.io) as a Javascript package manager, module bundler, module loader, and transpiler. There are several Javascript configuration options available to you in `project-config.js`: 
 
 ```js
 /* Javascript processing configuration */
@@ -295,8 +410,8 @@ theme1: {
       /* Processor for Javascript [jspm, none] */
       processor: 'jspm',  
     
-      /* When to minify Javascript [always, never, exportOnly] */
-      minify: 'exportOnly', 
+      /* When to minify Javascript [all, build, export] */
+      minify: 'export', 
     
       /* Enable module bundling for use with JSPM [true, false] */
       enableBundling: true,
@@ -347,11 +462,11 @@ theme1: {
 
 ##### js.processor
 Type: `String` Default: `jspm`  
-Specifies the Javascript processor to be used. Possible values include `jspm` and `none`. A value of `none` will result in straight copy of the source Javascript files to the public and export directories. *Note: no other Javascript configuration settings will apply if `none` is specified.*
+Specifies the Javascript processor to be used. Possible values include `jspm` and `none`. A value of `none` will result in straight copy of the source Javascript files to the public and export directories. 
 
 ##### js.minify
-Type: `String` Default: `exportOnly`  
-Specifies when Javascript files should be minified. Possible values include `always`, `never`, and `exportOnly`.
+Type: `String` Default: `export`  
+Specifies when Javascript files should be minified. Possible values include `all`, `build`, `export`, and `none`.
 
 ##### js.enableBundling
 Type: `Boolean` Default: `true`   
@@ -387,7 +502,7 @@ A list of bundle names to exclude from this bundle. These should be "full" bundl
 
 ##### bundle.polyfills
 Type: `Array`  
-A list of polyfills to apply to this bundle. Each item in this setting is a file path to a polyfill script relative to the Javascript directory. See the [Polyfilled Bundles](#polyfilled-bundles) section for more information.
+A list of polyfills to apply to this bundle. Each item in this setting is a file path to a polyfill script relative to the Javascript root directory. See the [Polyfilled Bundles](#polyfilled-bundles) section for more information.
 
 ### Listen Task Configuration
 By default, the `listen` task will watch for asset file changes and run a `build` task when changes occur. This behavior is configurable:
@@ -397,7 +512,7 @@ Type: `Array` Default: '[build]'
 The task(s) that the `listen` task will run when file changes occur. Possible values include `build` and `export`.
 
 ## Javascript Module Bundling
-Skeletor will generate module bundles for you based on the `bundles` configuration setting in your Gruntfile. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the `bundles.selfExecuting` setting).
+Skeletor will generate module bundles for you based on the `bundles` configuration setting in `project-config.js`. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands on each. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the `bundles.selfExecuting` setting).
 
 Skeletor is configured to create SystemJS bundles by default. SystemJS bundles are not referenced in a web page directly, but rather by a modules within it:
 
@@ -427,7 +542,7 @@ Skeletor generates polyfill/bundle combinations and loads the correct combinatio
 ### Polyfilled Bundles  
 
 #### Overview
-In many cases, your Javascript code will require certain feature polyfills in order to run correctly on legacy (or even modern) browsers. For delivering these polyfills to the client, Skeletor takes the conditional-build approach recommended by the [yepnope.js](https://github.com/SlexAxton/yepnope.js#deprecation-notice) team and others. At runtime, this approach includes the following steps:
+In many cases, your code will require certain Javascript API polyfills in order to run correctly on legacy (or even modern) browsers. For delivering these polyfills to the client, Skeletor takes the conditional-build approach recommended by the [yepnope.js](https://github.com/SlexAxton/yepnope.js#deprecation-notice) team and others. At runtime, this approach includes the following steps:
 1. Run a series of feature tests on the client's browser
 2. Generate a bundle filename based on the results of the feature tests (i.e., append the names of the failed tests to the bundle's filename)
 3. Load the bundle from the server using this generated filename, which will include the appropriate feature polyfills
@@ -452,21 +567,24 @@ Skeletor will generate four versions of the `main-bundle` bundle, one for each p
 * `main-bundle-classList-assign.js` (bundle with the `classList` and `assign` polyfills)
  
 #### Loading a Conditional Build
-Skeletor contains a `bundleHelper.js` script that is responsible for performing feature tests on the client browser and then loading the correct polyfill/bundle combination based on the results of those tests. Inside `bundleHelper.js`, there are a handful of common feature test definitions already present:
+Skeletor contains a `bundleHelper.js` script that is responsible for performing feature tests on the client browser and then loading the correct polyfill/bundle combination based on the results of those tests. A `polyfillTests.js` file contains the polyfill test definitions that bundleHelper will use.  You can see a sample `polyfillTests.js` file below:
 ```js
-var bundleHelper = function() {
-  /* Add your polyfill test definitions here */
-  var testDefs = {
-    assign: Object.assign,
-    fetch: self.fetch,
-    find: Array.prototype.find
+var polyfillTests = {
+
+  /* Test for Element.closest() method */
+  closest: function() {
+    return typeof Element.prototype.closest === 'function';
+  },
+  
+  /* Test for Object.assign() method
+  assign: function() {
+    return typeof Object.assign == 'function';
   }
-  ...
 }
 ```
-A feature test definition is usually a concise one-liner. The name of the test should match the filename of the associated polyfill script, which lives in the `js/polyfills/` directory. 
+A feature test definition is function that returns `true` if the test passes and `false` if the test fails. The name of the test function should match the filename of the associated polyfill script, which lives in the `js/polyfills/` directory. 
 
-The bundleHelper script also contains an empty array variable called `bundles`:
+The bundleHelper script contains an empty array variable called `bundles`:
 ```js
 var bundleHelper = function() {
   ...
@@ -474,16 +592,16 @@ var bundleHelper = function() {
   ...
 }
 ```
-At build time, this `bundles` array gets populated with bundle objects, one for each bundle defined in the `js.bundles.items` configuration setting in the Gruntfile. These bundle objects contain information about the feature tests needed for each bundle. These feature tests are references to the `testDefs` object.
+At build time, this `bundles` array gets populated with bundle objects, one for each bundle defined in the `js.bundles.items` configuration setting in `project-config.js`. These bundle objects contain information about the feature tests needed for each bundle. These feature tests are references to the `testDefs` object.
 
 At runtime, the bundleHelper script will iterate through each bundle object and run the specified feature tests on the client's browser. The script will then generate a bundle filename based on the failed feature tests. The final step is to intercept the loading of the bundle by the client browser and instead load the conditional build of the bundle.
 * If you are using SystemJS bundles, the [SystemJS map configuration option](https://github.com/systemjs/systemjs/blob/master/docs/config-api.md#map) is used to tell the module loader to load the conditional build of the bundle rather than the default build
 * If you are using self-executing bundles, SystemJS's map option isn't available. Instead, the bundleHelper script provides a `loadBundle` method that accepts a bundle name and loads the conditional build of the bundle.
 
-The bundleHelper script is automatically concatenated to the SystemJS `config.js` script. If you are using self-executing bundles, you will instead need to load the `bundleHelper.js` script directly and then load bundles using the `bundleHelper.loadBundle` method.
+The `bundleHelper.js` and `polyfillTests.js` files are automatically concatenated to the SystemJS `config.js` file during builds and exports. If you are using self-executing bundles, you will instead need to load the `bundleHelper.js` script directly and then load bundles using the `bundleHelper.loadBundle` method.
 
 #### Adding Polyfills
 Adding a new polyfill to your project is a three-step process:
 1. Add the polyfill script to the `js/polyfills/` directory
-2. Add the polyfill test to the `testDefs` object in the `bundleHelper.js` script. Make sure the test name matches the filename (minus the `.js` extension) of your polyfill script
-3. Add a reference to the polyfill in the appropriate `bundle.polyfills` setting in the Gruntfile
+2. Add the polyfill test to the `polyfillTests` object in the `polyfillTests.js` script as a function. Make sure the test function name matches the filename (minus the `.js` extension) of your polyfill script
+3. Add a reference to the polyfill in the appropriate `bundle.polyfills` setting in `project-config.js`
