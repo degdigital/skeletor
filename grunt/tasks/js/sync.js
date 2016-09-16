@@ -32,8 +32,7 @@ module.exports = function(grunt) {
 				  	path.normalize("polyfills/picturefill.js"),
 					path.normalize('**/*-bundle.js'),
 					path.normalize("jspm_packages/system.js"),
-		            path.normalize("jspm_packages/system-polyfills.js"),
-		            '!config.js'
+		            path.normalize("jspm_packages/system-polyfills.js")
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
@@ -46,8 +45,7 @@ module.exports = function(grunt) {
 				  cwd: '<%= activeTheme.source.assetPaths.js %>',
 				  src: [
 				  	path.normalize("polyfills/picturefill.js"),
-					path.normalize('**/*-bundle.js'),
-					'bundleHelper.js'
+					path.normalize('**/*-bundle.js')
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
@@ -60,7 +58,8 @@ module.exports = function(grunt) {
 				  cwd: '<%= activeTheme.source.assetPaths.js %>',
 				  src: [
 				  	path.normalize('**/*.js'),
-				  	'!bundleHelper.js'
+				  	'!bundleHelper.js',
+				  	'!polyfillTests.js'
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
@@ -76,8 +75,7 @@ module.exports = function(grunt) {
 					  	path.normalize("polyfills/picturefill.js"),
 						path.normalize('**/*-bundle.js'),
 						path.normalize("jspm_packages/system.js"),
-			            path.normalize("jspm_packages/system-polyfills.js"),
-			            '!config.js'
+			            path.normalize("jspm_packages/system-polyfills.js")
 					  ],
 					  dest: '<%= activeTheme.export.assetPaths.js %>'
 					}
@@ -92,8 +90,7 @@ module.exports = function(grunt) {
 					  cwd: '<%= activeTheme.source.assetPaths.js %>',
 					  src: [
 					  	path.normalize("polyfills/picturefill.js"),
-						path.normalize('**/*-bundle.js'),
-						'bundleHelper.js'
+						path.normalize('**/*-bundle.js')
 					  ],
 					  dest: '<%= activeTheme.export.assetPaths.js %>'
 					}

@@ -3,20 +3,8 @@ module.exports = function(grunt) {
 
 	grunt.config('postcss', {
 		options: {
-            map: false,
-            processors: [
-                require("postcss-import")(),
-                require("postcss-mixins")(),
-                require("postcss-custom-properties")(),
-                require("postcss-custom-media")(),
-                require("postcss-calc")(),
-                require("postcss-color-function")(),
-                require("postcss-nested")(),
-                require("autoprefixer")({
-                    browsers: 'last 2 versions'
-                }),
-                require('csswring')
-            ]
+            map: '<%= activeTheme.css.postcss.map %>',
+            processors: []
         },
         build_globbing: {
             expand: true,

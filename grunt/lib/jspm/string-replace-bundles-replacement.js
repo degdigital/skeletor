@@ -10,12 +10,14 @@ module.exports = function(activeTheme) {
 	function createBundleDef(bundleContent, bundle, currentIndex, array) {
 		var bundleFilename = bundleUtils.getBundleFilepath(bundle, '');
 		bundleContent += "{filename: '" + bundleFilename + "',tests:[";
-	
-		var polyfillNames = bundle.polyfills.map(function(polyfill) {
-			return "'" + bundleUtils.getPolyfillNameFromPath(polyfill) + "'";
-		});
-
-		bundleContent += polyfillNames.join(",");
+		
+		if(doesBundleHavePolyfills(bundle)) {
+			var polyfillNames = bundle.polyfills.map(function(polyfill) {
+				return "'" + bundleUtils.getPolyfillNameFromPath(polyfill) + "'";
+			});
+			bundleContent += polyfillNames.join(",");
+		}
+		
 		bundleContent += "]}";
 
 		if(currentIndex < (array.length - 1)) {
@@ -38,8 +40,6 @@ module.exports = function(activeTheme) {
 			replacement: bundleContent
 
 		};
-
-		return config;
 	}
 
 	return {

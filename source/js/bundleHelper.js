@@ -1,10 +1,4 @@
 var bundleHelper = function() {
-	/* Add your polyfill test definitions here */
-	var testDefs = {
-		assign: Object.assign,
-		fetch: self.fetch,
-		find: Array.prototype.find
-	}
 
 	var bundles = [],
 		map = {},
@@ -12,6 +6,7 @@ var bundleHelper = function() {
 
 	function init() {
 		if(typeof System != 'undefined' && System.config) {
+			baseURL = System.baseURL;
 			mapPolyfilledBundles();
 		}
 	}
@@ -42,8 +37,8 @@ var bundleHelper = function() {
 
 		for(var i = 0; i < bundle.tests.length; i++) {
 			var testName = bundle.tests[i];
-			var testDef = testDefs[testName];
-			if(testDef)
+			var testDef = polyfillTests[testName];
+			if(testDef())
 				continue;
 			
 			filename += '-' + testName;
@@ -77,9 +72,14 @@ var bundleHelper = function() {
 		}
 	}
 
+	function setBaseURL(newBaseURL) {
+		baseURL = newBaseURL;
+	}
+
 	init();
 
 	return {
-		loadBundle: loadBundle
+		loadBundle: loadBundle,
+		setBaseURL: setBaseURL
 	}
 }();

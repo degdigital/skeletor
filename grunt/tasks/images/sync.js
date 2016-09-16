@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= activeTheme.source.assetPaths.images %>',
-					src: '**/*',
+					src: [],
 					dest: '<%= activeTheme.public.assetPaths.images %>'
 				}],
 				updateAndDelete:true,
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= activeTheme.source.assetPaths.images %>',
-					src: '**/*',
+					src: [],
 					dest: '<%= activeTheme.export.assetPaths.images %>'
 				}],
 				updateAndDelete:true,
