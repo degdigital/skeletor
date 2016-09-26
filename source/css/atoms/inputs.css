@@ -1,0 +1,28 @@
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+
+}
+
+select {
+	
+}
+
+input[type="checkbox"], input[type="radio"] {
+	
+}
+
+textarea {
+	
+}
+
+.field__input {
+	
+}

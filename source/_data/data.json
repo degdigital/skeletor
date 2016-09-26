@@ -1,0 +1,34 @@
+{
+	"title" : "DEG UI Project",
+	"buttonClass": "",
+	"buttonText": "Learn more",
+	"field": {
+		"id": "field",
+		"label": "Field Label",
+		"type": "text",
+		"placeholder": "Placeholder text",
+		"isRequired": true,
+		"hasError": false,
+		"options": [
+			{
+				"label": "Option 1",
+				"value": "1"
+			},
+			{
+				"label": "Option 2",
+				"value": "2"
+			},
+			{
+				"label": "Option 2",
+				"value": "3"
+			}
+		]
+	},
+	"primaryNav": [
+		{}, {}, {}, {}
+	],	
+	"description" : "So, setting about it as methodically as men might smoke out a wasps' nest, the Martians spread this strange stifling vapour over the Londonward country. The horns of the crescent slowly moved apart, until at last they formed a line from Hanwell to Coombe and Malden. All night through their destructive tubes advanced.",
+	"label": "Label", 
+	"url" : "#"
+	
+}

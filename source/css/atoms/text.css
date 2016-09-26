@@ -1,6 +1,10 @@
 body {
-	color: var(--color-black);
+	color: var(--color-text);
 	font-family: var(--font-family-primary);
 	font-size: var(--base-font-size);
 	font-weight: 400;
+}
+
+p {
+	margin: 0 0 var(--spacing-vertical) 0;
 }

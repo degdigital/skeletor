@@ -167,6 +167,12 @@ module.exports = {
             }
         },
 
+        patterns: {
+            "ishControlsHide": {
+                "s": true
+            }
+        },
+
         /* File watching options */
         listen: {
 

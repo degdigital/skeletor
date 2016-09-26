@@ -2,7 +2,7 @@
   "name": "SKELETOR",
   "description": "Boilerplate and build tools for a front-end web project",
   "license": "MIT",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "bugs": "https://github.com/degdigital/skeletor/issues",
   "author": "Ryan Heap <heaper@gmail.com>",
   "contributors": [
@@ -48,7 +48,10 @@
     "postcss-mixins": "^5.0.1",
     "postcss-nested": "^1.0.0",
     "time-grunt": "^1.4.0",
-    "jspm": "^0.16.45"
+    "jspm": "^0.16.45",
+    "patternlab-node": "^2.5.1",
+    "styleguidekit-assets-default": "^3.0.0",
+    "styleguidekit-mustache-default": "^3.0.0"
   },
   "jspm": {
     "directories": {

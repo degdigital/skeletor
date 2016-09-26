@@ -3,21 +3,23 @@
 	--color-black: #000;
 	--color-white: #fff;
 
+	--color-text: var(--color-black);
+
 	--font-family-primary: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 	--base-font-size: 1em;
 
 	--page-width: 80rem;
 	--spacing-horizontal: 1rem;
-	--spacing-vertical: 1rem;
-	--spacing-both: 1rem;
+	--spacing-vertical: 1.5rem;
 	--gutter-width: 1rem;
 
 	--border-radius: 0.25rem;
 
-	--timing: 0.5s;
+	--anim-duration: 0.5s;
+	--anim-easing: ease-in-out;
 
 }
 
 @custom-media --small (min-width: 30em);
 @custom-media --medium (min-width: 48em);
-@custom-media --large (min-width: 64.0625em);
+@custom-media --large (min-width: 64em);

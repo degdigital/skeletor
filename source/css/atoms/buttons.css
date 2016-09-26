@@ -1,1 +1,21 @@
-/* Button Styles */
+.button {
+
+	&:hover {
+
+	}
+
+	&:active {
+
+	}
+}
+
+.button--alt {
+	
+	&:hover {
+		
+	}
+
+	&:active {
+
+	}
+}

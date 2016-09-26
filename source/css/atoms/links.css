@@ -1,1 +1,13 @@
-/* Link Styles */
+a {
+	&:hover {
+
+	}
+
+	&:active {
+
+	}
+
+	&:visited {
+
+	}
+}
