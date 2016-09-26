@@ -15,8 +15,8 @@ module.exports = function(grunt) {
 				options: {
 					replacements: [
 						{
-							pattern: /<%=\s*jsUrl\s*%>/g,
-							replacement: '<%= activeTheme.public.assetUrls.js %>'
+							pattern: /System\.config\({\s*/,
+							replacement: 'System.config({baseURL: "<%= activeTheme.public.assetUrls.js %>",'
 						}
 					]
 				}
@@ -48,8 +48,8 @@ module.exports = function(grunt) {
 				options: {
 					replacements: [
 						{
-							pattern: /<%=\s*jsUrl\s*%>/g,
-							replacement: '<%= activeTheme.export.assetUrls.js %>'
+							pattern: /System\.config\({\s*/,
+							replacement: 'System.config({baseURL: "<%= activeTheme.export.assetUrls.js %>",'
 						}
 					]
 				}
