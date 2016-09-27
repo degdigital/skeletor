@@ -82,9 +82,8 @@ module.exports = {
                     /* Files and directories to be included in globbing */
                     globbingFiles: [
                         'utilities/**/*.css',
-                        'atoms/**/*.css',                  
-                        'molecules/**/*.css',
-                        'organisms/**/*.css',
+                        'basics/**/*.css',                  
+                        'components/**/*.css',
                         'templates/**/*.css'
                     ]
                 }

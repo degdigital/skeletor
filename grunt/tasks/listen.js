@@ -23,8 +23,6 @@ module.exports = function(grunt) {
 					var watchTargetTask = listenTask + '-' + watchTarget + ':' +  themeTarget;
 					watchConfig[watchTarget].tasks.push(watchTargetTask);
 				}
-
-				watchConfig[watchTarget].options.livereload = activeTheme.listen.livereload;
 			}
 		});
 
