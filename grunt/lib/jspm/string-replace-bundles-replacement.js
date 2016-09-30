@@ -1,4 +1,4 @@
-module.exports = function(activeTheme) {
+module.exports = function(processorOptions) {
 
 	var path = require("path");
 	var bundleUtils = require('./bundle-utils');
@@ -30,7 +30,7 @@ module.exports = function(activeTheme) {
 	function buildReplacement() {		
 		var bundleContent = 'var bundles = [';
 
-		bundleContent = activeTheme.js.bundles.items
+		bundleContent = processorOptions.bundles.items
 			.reduce(createBundleDef, bundleContent);
 
 		bundleContent += ']';

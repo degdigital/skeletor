@@ -1,29 +1,36 @@
 module.exports = function(grunt) {
 
-	grunt.registerMultiTask('build-js', function() {
-		grunt.config('activeTheme', this.data);
-		var activeTheme = grunt.config('activeTheme');
+    grunt.registerMultiTask('build-js', function() {
+        grunt.config('activeTheme', this.data);
+        var activeTheme = grunt.config('activeTheme');
 
 
-		if(typeof grunt.option('minifyJS') === 'undefined' && (activeTheme.js.minify == 'all' || activeTheme.js.minify == 'build')) {
-			grunt.option('minifyJS', true);
-		}
-		
-		switch(activeTheme.js.processor) {
-			case "none":
-				runRawTasks();
-				break;
-			case "jspm":
-				var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, 'build');
-				jspmTaskRunner.runTasks();
-				break;
-		}
-	});
+        activeTheme.js.processors.forEach(function(processorOptions) {
+            if(typeof grunt.option('minifyJS') === 'undefined' && 
+                (processorOptions.minify == 'all' || processorOptions.minify == 'build')) {
+                grunt.option('minifyJS', true);
+            }
+            
+            switch(processorOptions.processor) {
+                case "none":
+               	    runRawTasks(processorOptions);
+                    break;
+                case "jspm":
+                    var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'build');
+                    jspmTaskRunner.runTasks();
+                    break;
+            }
+        });
 
-	function runRawTasks() {
-		grunt.task.run('sync:js_build_raw');
-		if(grunt.option('minifyJS')) {
-			grunt.task.run('uglify:js_build_raw');
-		}
-	}
+    });
+
+    function runRawTasks(processorOptions) {
+            if(processorOptions.files) {
+            	grunt.config('sync.js_build_raw.files.0.src', processorOptions.files);
+            }
+            grunt.task.run('sync:js_build_raw');
+            if(grunt.option('minifyJS')) {
+				grunt.task.run('uglify:js_build_raw');
+			}
+    }
 }

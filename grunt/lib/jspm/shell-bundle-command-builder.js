@@ -1,11 +1,11 @@
-module.exports = function(activeTheme) {
+module.exports = function(activeTheme, processorOptions) {
 
 	var bundleUtils = require('./bundle-utils');
     var path = require('path');
 
 	function getExcludesForBundle(bundle) {
 		var excludes = [],
-            defaultExclude = activeTheme.js.bundles.defaultExclude;
+            defaultExclude = processorOptions.bundles.defaultExclude;
 	    if(bundle.exclude) {
 	        excludes = bundle.exclude; 
 	    } else if(defaultExclude && defaultExclude != bundleUtils.getBundleName(bundle)) {
@@ -38,7 +38,7 @@ module.exports = function(activeTheme) {
         }
 
         bundleCommandStr += ' ' + bundleFilepath + ' --inject --skip-source-maps';
-        
+
         return bundleCommandStr;    
     }
 
@@ -50,7 +50,7 @@ module.exports = function(activeTheme) {
         
         var bundleFilepath = bundleUtils.getBundleFilepath(bundle, basePath);    
         
-        var bundleType = activeTheme.js.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
+        var bundleType = processorOptions.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
      	var bundleCommandStr = '';
 
         var bundleExcludes = getExcludesForBundle(bundle); 
@@ -62,8 +62,8 @@ module.exports = function(activeTheme) {
     }
 
 	function buildAllBundleCommands() {
-        var bundles = activeTheme.js.bundles;
-
+        var bundles = processorOptions.bundles;
+        
         var commands = bundles.items.map(buildCommandsForBundle); 
 
         if(activeTheme.basePath) {

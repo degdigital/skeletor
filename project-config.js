@@ -133,39 +133,43 @@ module.exports = {
 
         /* Javascript processing configuration */
         js: {
+            processors: [                
+                {
 
-            /* Processor for Javascript [jspm, none] */
-            processor: 'jspm',  
+                    /* Processor for Javascript [jspm, none] */
+                    processor: 'jspm',  
 
-            /* When to minify Javascript [all, build, export] */
-            minify: 'export', 
+                    /* When to minify Javascript [all, build, export] */
+                    minify: 'export', 
 
-            /* Enable module bundling for use with JSPM [true, false] */
-            enableBundling: true,
+                    /* Enable module bundling for use with JSPM [true, false] */
+                    enableBundling: true,
 
-            /* Module bundle config for JSPM */
-            bundles: {
+                    /* Module bundle config for JSPM */
+                    bundles: {
 
-                /* Name of bundle to exclude from all other bundles */
-                defaultExclude: 'main-bundle',
+                        /* Name of bundle to exclude from all other bundles */
+                        defaultExclude: 'main-bundle',
 
-                /* Build self-executing bundles [true, false] */
-                selfExecuting: false,
+                        /* Build self-executing bundles [true, false] */
+                        selfExecuting: false,
 
-                /* Array of module bundles config objects */
-                items: [
-                    {
-                        /* Name of entry module for this bundle */
-                        entry: 'main',
+                        /* Array of module bundles config objects */
+                        items: [
+                            {
+                                /* Name of entry module for this bundle */
+                                entry: 'main',
 
-                        /* Array of bundles to exclude from this bundle */
-                        exclude: [],
+                                /* Array of bundles to exclude from this bundle */
+                                exclude: [],
 
-                        /* Array of polyfills for this bundle */
-                        polyfills: []
+                                /* Array of polyfills for this bundle */
+                                polyfills: []
+                            }
+                        ]
                     }
-                ]
-            }
+                }
+            ]
         },
 
         patterns: {

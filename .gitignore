@@ -1,8 +1,8 @@
 tmp/
 node_modules
 public
-js/jspm_packages
-js/config.js
+source/js/jspm_packages
+source/js/config.js
 
 *.suo
 *.user

@@ -2,7 +2,7 @@ module.exports = function(grunt, activeTheme, parentTask) {
 
 	function runTasks() {
 		setProcessors();
-
+		
 		var taskTarget = activeTheme.css.enableGlobbing ? 
 			parentTask + '_globbing' : 
 			parentTask;

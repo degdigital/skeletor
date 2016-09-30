@@ -1,9 +1,9 @@
-module.exports = function(activeTheme, dest) {
+module.exports = function(activeTheme, processorOptions, dest) {
 
-	var path = require('path');
-	var bundleUtils = require('./bundle-utils');
+    var path = require('path');
+    var bundleUtils = require('./bundle-utils');
 
-	function getArrayCombinations(arr) {
+    function getArrayCombinations(arr) {
 		var result = [];
 	 	var f = function(prefix, arr) {
 	  	for (var i = 0; i < arr.length; i++) {		
@@ -17,7 +17,7 @@ module.exports = function(activeTheme, dest) {
 	  return result;
 	}
 
-	function buildConcatDefsForBundle(config, bundle) {
+    function buildConcatDefsForBundle(config, bundle) {
 		var polyfillCombos = getArrayCombinations(bundle.polyfills);
 
 		polyfillCombos.reduce(function(config, polyfillCombo){
@@ -29,7 +29,7 @@ module.exports = function(activeTheme, dest) {
 		return config;
 	}
 
-	function getSourceFiles(bundle, polyfillCombo) {
+    function getSourceFiles(bundle, polyfillCombo) {
 		var sourceFiles = polyfillCombo.map(function(polyfill) {
 			return path.join(activeTheme.source.assetPaths.js, polyfill + '.js');
 		});
@@ -40,23 +40,23 @@ module.exports = function(activeTheme, dest) {
 		return sourceFiles;
 	}
 
-	function doesBundleHavePolyfills(bundle) {
+    function doesBundleHavePolyfills(bundle) {
 		return bundle.polyfills && bundle.polyfills.length > 0;
 	}
 
-	function buildConfigForPolyfilledBundles(config) {
+    function buildConfigForPolyfilledBundles(config) {
 		if(config.hasOwnProperty("files") == false) {
 			config.files = {};
 		}
 
-		return activeTheme.js.bundles.items
+		return processorOptions.bundles.items
 			.filter(doesBundleHavePolyfills)
 			.reduce(buildConcatDefsForBundle, config);
 		
 	}
 
-	return {
-		buildConfigForPolyfilledBundles: buildConfigForPolyfilledBundles
-	};	
+    return {
+            buildConfigForPolyfilledBundles: buildConfigForPolyfilledBundles
+    };      
 
 }
