@@ -9,7 +9,9 @@ module.exports = function(grunt) {
 				files: [
 		            path.normalize('<%= activeTheme.source.assetPaths.patterns %>/**/*.mustache'),
 		            path.normalize('<%= activeTheme.source.assetPaths.patterns %>/**/*.json'),
-		            path.normalize('<%= activeTheme.source.assetPaths.patternData %>/*.json')
+		            path.normalize('<%= activeTheme.source.assetPaths.patternData %>/*.json'),
+		            path.normalize('<%= activeTheme.source.assetPaths.patternMeta %>/*.mustache'),
+		            path.normalize('<%= activeTheme.source.assetPaths.patternAnnotations %>/*.js')
 		        ],
 		        tasks: [],
 		        options: {

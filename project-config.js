@@ -25,6 +25,8 @@ module.exports = {
                 images: 'images',
                 js: 'js',
                 patterns: '_patterns',
+                patternAnnotations: '_annotations',
+                patternMeta: '_meta',
                 patternData: '_data'
             }
         },
@@ -167,9 +169,6 @@ module.exports = {
         },
 
         patterns: {
-            "ishControlsHide": {
-                "s": true
-            }
         },
 
         /* File watching options */
