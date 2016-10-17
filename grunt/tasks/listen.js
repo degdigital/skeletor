@@ -37,15 +37,19 @@ module.exports = function(grunt) {
 			path.normalize("<%= activeTheme.source.assetPaths.js %>/**/*.js")
 		];
 
-		if(activeTheme.js.processor == 'jspm') {
+		var jspmProcessor = activeTheme.js.processors.find(function(processorObj) {
+			return processorObj.processor == 'jspm';
+		});
+
+		if(jspmProcessor) {
 			files = files.concat([
-						path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*"),
-						path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle.js"),
+					path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*"),
+					path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle.js"),
 		        		path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle-*.js"),
 		        		path.normalize("!<%= activeTheme.source.assetPaths.js %>/bundleHelper.js")
-					]);
+				]);
 
-			if(activeTheme.js.bundles.selfExecuting == false) {
+			if(jspmProcessor.selfExecuting == false) {
 				files.push(path.normalize("!<%= activeTheme.source.assetPaths.js %>/config.js"));
 			}
 		}
