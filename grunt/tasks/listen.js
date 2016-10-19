@@ -43,11 +43,11 @@ module.exports = function(grunt) {
 
 		if(jspmProcessor) {
 			files = files.concat([
-					path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*"),
-					path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle.js"),
-		        		path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle-*.js"),
-		        		path.normalize("!<%= activeTheme.source.assetPaths.js %>/bundleHelper.js")
-				]);
+				path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*"),
+				path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle.js"),
+	        	path.normalize("!<%= activeTheme.source.assetPaths.js %>/**/*-bundle-*.js"),
+        		path.normalize("!<%= activeTheme.source.assetPaths.js %>/bundleHelper.js")
+			]);
 
 			if(jspmProcessor.selfExecuting == false) {
 				files.push(path.normalize("!<%= activeTheme.source.assetPaths.js %>/config.js"));

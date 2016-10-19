@@ -7,7 +7,8 @@ module.exports = function(grunt) {
 		clean: {
 	  		js_jspm_bundles: [
 	  			path.normalize('<%= activeTheme.source.assetPaths.js %>/**/*-bundle.js'),
-    			path.normalize('<%= activeTheme.source.assetPaths.js %>/**/*-bundle-*.js')
+    			path.normalize('<%= activeTheme.source.assetPaths.js %>/**/*-bundle-*.js'),
+    			path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*")
 	  		]
 	  	}
 	});
