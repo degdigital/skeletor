@@ -4,23 +4,24 @@ module.exports = function(grunt) {
         grunt.config('activeTheme', this.data);
         var activeTheme = grunt.config('activeTheme');
 
-
-        activeTheme.js.processors.forEach(function(processorOptions) {
-            if(typeof grunt.option('minifyJS') === 'undefined' && 
-                (processorOptions.minify == 'all' || processorOptions.minify == 'build')) {
-                grunt.option('minifyJS', true);
-            }
-            
-            switch(processorOptions.processor) {
-                case "none":
-               	    runRawTasks(processorOptions);
-                    break;
-                case "jspm":
-                    var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'build');
-                    jspmTaskRunner.runTasks();
-                    break;
-            }
-        });
+        if(activeTheme.source.assetPaths.js && activeTheme.public.assetPaths.js) {
+            activeTheme.js.processors.forEach(function(processorOptions) {
+                if(typeof grunt.option('minifyJS') === 'undefined' && 
+                    (processorOptions.minify == 'all' || processorOptions.minify == 'build')) {
+                    grunt.option('minifyJS', true);
+                }
+                
+                switch(processorOptions.processor) {
+                    case "none":
+                   	    runRawTasks(processorOptions);
+                        break;
+                    case "jspm":
+                        var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'build');
+                        jspmTaskRunner.runTasks();
+                        break;
+                }
+            });
+        }
 
     });
 

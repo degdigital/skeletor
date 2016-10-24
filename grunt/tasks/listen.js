@@ -19,12 +19,15 @@ module.exports = function(grunt) {
 			var listenTaskConfig = grunt.config(listenTask + 'Tasks');
 
 			for(var watchTarget in watchConfig) {
-				if(listenTaskConfig.indexOf(watchTarget) >= 0) {
+				if(listenTaskConfig.indexOf(watchTarget) >= 0 && activeTheme.source.assetPaths[watchTarget]) {
 					var watchTargetTask = listenTask + '-' + watchTarget + ':' +  themeTarget;
 					watchConfig[watchTarget].tasks.push(watchTargetTask);
+				} else {
+					delete watchConfig[watchTarget];
 				}
 			}
 		});
+		
 
 		grunt.config('watch', watchConfig);
 	}

@@ -4,23 +4,25 @@ module.exports = function(grunt) {
         grunt.config('activeTheme', this.data);
         var activeTheme = grunt.config('activeTheme');
 
-        activeTheme.js.processors.forEach(function(processorOptions) {
+        if(activeTheme.source.assetPaths.js && activeTheme.export.assetPaths.js) {
+            activeTheme.js.processors.forEach(function(processorOptions) {
 
-            if(typeof grunt.option('minifyJS') === 'undefined' && 
-              	(processorOptions.minify == 'all' || processorOptions.minify == 'export')) {
-                grunt.option('minifyJS', true);
-            }
-            
-            switch(processorOptions.processor) {
-                case "none":
-                        runRawTasks(processorOptions);
-                        break;
-                case "jspm":
-                        var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'export');
-                        jspmTaskRunner.runTasks();
-                        break;
-            }
-        });
+                if(typeof grunt.option('minifyJS') === 'undefined' && 
+                  	(processorOptions.minify == 'all' || processorOptions.minify == 'export')) {
+                    grunt.option('minifyJS', true);
+                }
+                
+                switch(processorOptions.processor) {
+                    case "none":
+                            runRawTasks(processorOptions);
+                            break;
+                    case "jspm":
+                            var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'export');
+                            jspmTaskRunner.runTasks();
+                            break;
+                }
+            });
+        }
     });
 
     function runRawTasks(processorOptions) {

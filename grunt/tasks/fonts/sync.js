@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					src: '**/*',
 					dest: '<%= activeTheme.public.assetPaths.fonts %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			},
 			fonts_export: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 					src: '**/*',
 					dest: '<%= activeTheme.export.assetPaths.fonts %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			}
 		}

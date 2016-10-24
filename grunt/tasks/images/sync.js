@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					src: [],
 					dest: '<%= activeTheme.public.assetPaths.images %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			},
 			images_export: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 					src: [],
 					dest: '<%= activeTheme.export.assetPaths.images %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			}
 		}

@@ -4,11 +4,13 @@ module.exports = function(grunt) {
 		grunt.config('activeTheme', this.data);
 		var activeTheme = grunt.config('activeTheme');
 
-		let plConfig = getPatternConfig(activeTheme);
+		if(activeTheme.source.assetPaths.patterns && activeTheme.public.assetPaths.patterns) {
+			let plConfig = getPatternConfig(activeTheme);
 
-		buildPatterns(activeTheme, plConfig);
-		
-		copyStyleguideAssets(activeTheme, plConfig);
+			buildPatterns(activeTheme, plConfig);
+			
+			copyStyleguideAssets(activeTheme, plConfig);
+		}
 	});
 
 	//Copy styleguide assets form styleguide source to public

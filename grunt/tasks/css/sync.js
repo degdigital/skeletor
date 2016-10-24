@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					src: ['**/*.css'],
 					dest: '<%= activeTheme.export.assetPaths.css %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			}
 		}

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 					dest: '<%= activeTheme.public.basePath %>/styleguide'
 				}],
 				ignoreInDest: ['data/**', 'html/**'],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			}
 		}

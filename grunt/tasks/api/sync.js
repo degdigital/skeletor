@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					src: '**/*',
 					dest: '<%= activeTheme.public.assetPaths.api %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			},
 			api_export: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 					src: '**/*',
 					dest: '<%= activeTheme.export.assetPaths.api %>'
 				}],
-				updateAndDelete:true,
+				updateAndDelete:false,
 				verbose: true
 			}
 		}

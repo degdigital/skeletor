@@ -4,8 +4,10 @@ module.exports = function(grunt) {
 		grunt.config('activeTheme', this.data);
 		var activeTheme = grunt.config('activeTheme');
 
-		var syncTasksRunner = require('./sync-tasks-runner')(grunt, activeTheme, 'build');
-		syncTasksRunner.runTasks();
+		if(activeTheme.source.assetPaths.images && activeTheme.public.assetPaths.images) {
+			var syncTasksRunner = require('./sync-tasks-runner')(grunt, activeTheme, 'build');
+			syncTasksRunner.runTasks();
+		}
 	});
 
 }

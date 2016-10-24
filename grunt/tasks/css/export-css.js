@@ -5,14 +5,16 @@ module.exports = function(grunt) {
 
 		var activeTheme = grunt.config('activeTheme');
 
-		var globbingTasksRunner = require('./globbing-tasks-runner')(grunt, activeTheme, 'export');
-		globbingTasksRunner.runTasks();
+		if(activeTheme.source.assetPaths.css && activeTheme.export.assetPaths.css) {
+			var globbingTasksRunner = require('./globbing-tasks-runner')(grunt, activeTheme, 'export');
+			globbingTasksRunner.runTasks();
 
-		var postCssTasksRunner = require('./postcss-tasks-runner')(grunt, activeTheme, 'export');
-		postCssTasksRunner.runTasks();
+			var postCssTasksRunner = require('./postcss-tasks-runner')(grunt, activeTheme, 'export');
+			postCssTasksRunner.runTasks();
 
-		if(activeTheme.css.exportSourceFiles) {
-			grunt.task.run('sync:css_export_source');
+			if(activeTheme.css.exportSourceFiles) {
+				grunt.task.run('sync:css_export_source');
+			}
 		}
 	});
 
