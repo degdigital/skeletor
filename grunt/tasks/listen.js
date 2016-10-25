@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         		path.normalize("!<%= activeTheme.source.assetPaths.js %>/bundleHelper.js")
 			]);
 
-			if(jspmProcessor.selfExecuting == false) {
+			if(jspmProcessor.bundles.selfExecuting == false) {
 				files.push(path.normalize("!<%= activeTheme.source.assetPaths.js %>/config.js"));
 			}
 		}
