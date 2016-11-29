@@ -8,7 +8,7 @@ module.exports = {
             basePath: ''
         }
     },
-    
+
     /* Default theme configuration */
     themeDefaults: {
 
@@ -84,7 +84,7 @@ module.exports = {
                     /* Files and directories to be included in globbing */
                     globbingFiles: [
                         'utilities/**/*.css',
-                        'basics/**/*.css',                  
+                        'basics/**/*.css',
                         'components/**/*.css',
                         'templates/**/*.css'
                     ]
@@ -99,15 +99,16 @@ module.exports = {
 
                 /* PostCSS processor configuration */
                 processors: [
-                    { name: 'postcss-import'},      
+                    { name: 'postcss-import'},
                     { name: 'postcss-mixins' },
                     { name: 'postcss-custom-properties'},
+                    { name: 'postcss-custom-selectors'},
                     { name: 'postcss-custom-media'},
                     { name: 'postcss-calc'},
                     { name: 'postcss-color-function'},
                     { name: 'postcss-nested'},
                     { name: 'autoprefixer', options: {browsers: 'last 2 versions'} },
-                    { name: 'csswring'} 
+                    { name: 'csswring'}
                 ]
             }
         },
@@ -133,14 +134,14 @@ module.exports = {
 
         /* Javascript processing configuration */
         js: {
-            processors: [                
+            processors: [
                 {
 
                     /* Processor for Javascript [jspm, none] */
-                    processor: 'jspm',  
+                    processor: 'jspm',
 
                     /* When to minify Javascript [all, build, export] */
-                    minify: 'export', 
+                    minify: 'export',
 
                     /* Enable module bundling for use with JSPM [true, false] */
                     enableBundling: true,
