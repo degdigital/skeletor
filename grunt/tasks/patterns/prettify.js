@@ -10,13 +10,13 @@ module.exports = function(grunt) {
 				options: {
 			    	'indent': 4
 			    },
-			    all: {
+			    files: [{
 				    expand: true,
 				    cwd: path.normalize('<%= activeTheme.export.assetPaths.patterns %>'),
 				    ext: '.html',
 				    src: ['*.html'],
 				    dest: path.normalize('<%= activeTheme.export.assetPaths.patterns %>')
-			    }
+			    }]
 			}
 		}
 	});
