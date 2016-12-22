@@ -42,8 +42,8 @@ module.exports = function(grunt) {
 		      "root": "./" + activeTheme.source.basePath + "/",
 		      "patterns" : "./" + activeTheme.source.assetPaths.patterns + "/",
 		      "data" : "./" + activeTheme.source.assetPaths.patternData + "/",
-		      "meta": "./" + activeTheme.source.basePath + "/_meta/",
-		      "annotations" : "./" + activeTheme.source.basePath + "/_annotations/",
+		      "meta": "./" + activeTheme.source.assetPaths.patternMeta + "/",
+		      "annotations" : "./" + activeTheme.source.assetPaths.patternAnnotations + "/",
 		      "styleguide" : "./node_modules/styleguidekit-assets-default/dist/",
 		      "patternlabFiles" : "./node_modules/styleguidekit-mustache-default/views/"
 		    },
