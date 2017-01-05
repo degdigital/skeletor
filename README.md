@@ -18,7 +18,8 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 ## Installation Instructions
 1. Clone the Skeletor git repository into your project's root directory or a subdirectory
 2. From the command line, type `npm install` to install all Node dependencies
-3. From the command line, type `grunt` to generate your first Pattern Lab build
+3. If using JSPM, type `jspm install` in the command line to install all JSPM dependencies. If asked to create a config.js file, type `Yes`.
+4. From the command line, type `grunt` to generate your first Pattern Lab build
 
 
 ## Atomic Design & Pattern Lab
