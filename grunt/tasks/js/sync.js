@@ -32,7 +32,8 @@ module.exports = function(grunt) {
 				  	path.normalize("polyfills/picturefill.js"),
 					path.normalize('**/*-bundle.js'),
 					path.normalize("jspm_packages/system.js"),
-		            path.normalize("jspm_packages/system-polyfills.js")
+		            path.normalize("jspm_packages/system-polyfills.js"),
+			        path.normalize("jspm_packages/npm/babel-core*/external-helpers.js")
 				  ],
 				  dest: '<%= activeTheme.public.assetPaths.js %>'
 				}],
@@ -75,7 +76,8 @@ module.exports = function(grunt) {
 					  	path.normalize("polyfills/picturefill.js"),
 						path.normalize('**/*-bundle.js'),
 						path.normalize("jspm_packages/system.js"),
-			            path.normalize("jspm_packages/system-polyfills.js")
+			            path.normalize("jspm_packages/system-polyfills.js"),
+			            path.normalize("jspm_packages/npm/babel-core*/external-helpers.js")
 					  ],
 					  dest: '<%= activeTheme.export.assetPaths.js %>'
 					}
