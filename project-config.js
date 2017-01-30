@@ -43,6 +43,10 @@ module.exports = {
                 patterns: 'patterns'
             },
             assetUrls: {
+                api: '../../api',
+                css: '../../css',
+                fonts: '../../fonts',
+                images: '../../images',
                 js: '../../js'
             }
         },
@@ -59,6 +63,10 @@ module.exports = {
                 patterns: ''
             },
             assetUrls: {
+                api: 'api',
+                css: 'css',
+                fonts: 'fonts',
+                images: 'images',
                 js: 'js'
             }
         },
