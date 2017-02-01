@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 			let plConfig = getPatternConfig(activeTheme);
 
 			buildPatterns(activeTheme, plConfig);
-			
+
 			copyStyleguideAssets(activeTheme, plConfig);
 		}
 	});
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
 	function buildPatterns(activeTheme, plConfig) {
 		let pl = require('patternlab-node')(plConfig);
-		
+
 		pl.build(function(){}, true);
 	}
 
@@ -67,8 +67,8 @@ module.exports = function(grunt) {
 		    "m": false,
 		    "l": false,
 		    "full": false,
-		    "random": false,
-		    "disco": false,
+		    "random": true,
+		    "disco": true,
 		    "hay": true,
 		    "mqs": false,
 		    "find": false,
