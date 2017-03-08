@@ -1,7 +1,7 @@
 {{# field }}
 <div class="field">
-	<label for="{{ id }}" name="{{ id }}" class="field__label {{# hasError }}field__label--error{{/ hasError }}">{{ label }}</label>
-	<select id="{{ id }}" class="field__input {{# hasError }}field__input--error{{/ hasError }}" {{# isRequired }}required{{/ isRequired}}>
+	<label for="{{ id }}" class="field__label {{# hasError }}field__label--error{{/ hasError }}">{{ label }}</label>
+	<select id="{{ id }}" name="{{ id }}" class="field__input {{# hasError }}field__input--error{{/ hasError }}" {{# isRequired }}required{{/ isRequired}}>
 	{{# options }}
 		<option value="{{value}}">{{label}}</option>
 	{{/ options }}
