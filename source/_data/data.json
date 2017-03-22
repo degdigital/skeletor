@@ -1,5 +1,6 @@
 {
 	"title" : "DEG UI Project",
+	"lang": "en-us",
 	"mainId" : "main-content",
 	"buttonClass": "",
 	"buttonText": "Learn more",
