@@ -12,7 +12,6 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 
 ## Requirements
 * [NodeJS](https://nodejs.org) version 6.0+
-* [PHP](http://php.net) version 5.3+ (for Pattern Lab)
 
 
 ## Installation Instructions
