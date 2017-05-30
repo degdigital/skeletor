@@ -115,7 +115,7 @@ module.exports = {
                     { name: 'postcss-calc'},
                     { name: 'postcss-color-function'},
                     { name: 'postcss-nested'},
-                    { name: 'autoprefixer', options: {browsers: 'last 2 versions'} },
+                    { name: 'autoprefixer' },
                     { name: 'csswring'}
                 ]
             }
