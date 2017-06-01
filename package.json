@@ -58,10 +58,7 @@
     "directories": {
       "baseURL": "source/js"
     },
-    "dependencies": {
-      "DEGJS/domUtils": "github:DEGJS/domUtils@^2.0.0",
-      "DEGJS/slipnslide": "github:DEGJS/slipnslide@^1.2.3"
-    },
+    "dependencies": {},
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
