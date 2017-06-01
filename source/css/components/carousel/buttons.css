@@ -1,0 +1,16 @@
+.slipnslide__control-button {
+	position: absolute;
+	top: 5rem;
+	appearance: none;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.slipnslide__prev-button {
+	left: 1rem;
+}
+
+.slipnslide__next-button {
+	right: 1rem;
+}

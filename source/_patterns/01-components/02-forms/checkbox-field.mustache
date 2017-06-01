@@ -1,9 +1,0 @@
-{{# field }}
-<div class="field">
-	<input id="{{ id }}" name="{{ id }}" type="checkbox" value="{{ value }}" class="field__input {{# hasError }}field__input--error{{/ hasError }}" {{# isRequired }}required{{/ isRequired}} />
-	<label for="{{ id }}" class="field__label {{# hasError }}field__label--error{{/ hasError }}">{{ label }}</label>
-	{{# hasError }}
-		<div class="field__error-message">{{errorMessage}}</div>
-	{{/ hasError }}
-</div>
-{{/ field }}
