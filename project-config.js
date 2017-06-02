@@ -157,8 +157,8 @@ module.exports = {
                     /* Module bundle config for JSPM */
                     bundles: {
 
-                        /* Name of bundle to exclude from all other bundles */
-                        defaultExclude: 'main-bundle',
+                        /* Name of module to exclude from all other bundles */
+                        defaultExclude: 'main',
 
                         /* Build self-executing bundles [true, false] */
                         selfExecuting: false,
@@ -169,7 +169,7 @@ module.exports = {
                                 /* Name of entry module for this bundle */
                                 entry: 'main',
 
-                                /* Array of bundles to exclude from this bundle */
+                                /* Array of modules to exclude from this bundle */
                                 exclude: [],
 
                                 /* Array of polyfills for this bundle */

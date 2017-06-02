@@ -1,10 +1,10 @@
 module.exports = function(activeTheme, processorOptions) {
 
-	var bundleUtils = require('./bundle-utils');
-    var path = require('path');
+	const bundleUtils = require('./bundle-utils');
+    const path = require('path');
 
 	function getExcludesForBundle(bundle) {
-		var excludes = [],
+		let excludes = [],
             defaultExclude = processorOptions.bundles.defaultExclude;
 	    if(bundle.exclude) {
 	        excludes = bundle.exclude; 
@@ -18,16 +18,16 @@ module.exports = function(activeTheme, processorOptions) {
 		if(Array.isArray(filenames) == false) {
 	    	filenames = [filenames];
 	    }
-	    var operator = (type == 'addition') ? '+' : '-';
-    	var commands = filenames.map(function(filename){
+	    const operator = (type == 'addition') ? '+' : '-';
+    	const commands = filenames.map(function(filename){
         	return operator + ' ' + filename + '.js';
       	});
 
 	    return commands.join(' ');
 	}
 
-	function buildBundleCommand(bundleType, bundleFilepath, entry, additions, subtractions) { 
-        var bundleCommandStr = 'jspm ' + bundleType + ' ' + entry;
+	function buildBundleCommandString(bundleType, bundleFilepath, entry, additions, subtractions) { 
+        let bundleCommandStr = 'jspm ' + bundleType + ' ' + entry;
         
         if(additions.length) {
         	bundleCommandStr += ' ' + buildArithmeticString(additions, 'addition');
@@ -43,28 +43,26 @@ module.exports = function(activeTheme, processorOptions) {
     }
 
 	function buildCommandsForBundle(bundle) {
-        var basePath = activeTheme.source.assetPaths.js;
+        const basePath = activeTheme.source.assetPaths.js;
         if(activeTheme.basePath) {
             basePath = basePath.replace(activeTheme.basePath + path.sep, '');
         }
         
-        var bundleFilepath = bundleUtils.getBundleFilepath(bundle, basePath);    
+        const bundleFilepath = bundleUtils.getBundleFilepath(bundle, basePath);    
         
-        var bundleType = processorOptions.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
-     	var bundleCommandStr = '';
+        const bundleType = processorOptions.bundles.selfExecuting ? 'bundle-sfx' : 'bundle';
+     	let bundleCommandStr = '';
 
-        var bundleExcludes = getExcludesForBundle(bundle); 
+        const bundleExcludes = getExcludesForBundle(bundle); 
 
         	
-        bundleCommandStr += buildBundleCommand(bundleType, bundleFilepath, bundle.entry, [], bundleExcludes)
+        bundleCommandStr += buildBundleCommandString(bundleType, bundleFilepath, bundle.entry, [], bundleExcludes)
        
         return bundleCommandStr;          
     }
 
-	function buildAllBundleCommands() {
-        var bundles = processorOptions.bundles;
-        
-        var commands = bundles.items.map(buildCommandsForBundle); 
+	function buildBundleCommands(bundles) {
+        let commands = bundles.map(buildCommandsForBundle); 
 
         if(activeTheme.basePath) {
             commands.unshift('cd ' + activeTheme.basePath);   
@@ -74,7 +72,7 @@ module.exports = function(activeTheme, processorOptions) {
 	}
 
     function buildUnbundleCommands() {
-        var commands = [];
+        let commands = [];
 
         if(activeTheme.basePath) {
             commands.push('cd ' + activeTheme.basePath);
@@ -85,7 +83,7 @@ module.exports = function(activeTheme, processorOptions) {
     }
 
 	return {
-		buildAllBundleCommands: buildAllBundleCommands,
+		buildBundleCommands: buildBundleCommands,
         buildUnbundleCommands: buildUnbundleCommands
 	};
 }

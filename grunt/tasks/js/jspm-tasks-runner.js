@@ -44,8 +44,44 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
     }
 
     function runShellBundleTask() {
-        var shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme, processorOptions);
-        grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', shellBundleCommandBuilder.buildAllBundleCommands());
+        const shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme, processorOptions);
+        const bundleFinder = require('../../lib/jspm/bundle-finder')(activeTheme, processorOptions.bundles.items);
+
+        const specifiedBundle = grunt.option('bundle');
+        const modifiedFile = grunt.config('modifiedFile');
+
+        let bundles = [];
+        
+        if(specifiedBundle) {
+            bundles = bundleFinder.findByEntryModule(specifiedBundle);
+            if(bundles.length > 0) {
+                console.log('Found bundle for specified entry module');
+            } else {
+                console.log('Could not find bundle for specified entry module');
+            }
+        } else if(modifiedFile) {
+            bundles = bundleFinder.findByFilepath(modifiedFile);
+            if(bundles.length > 0) {
+                console.log('Found modified file in existing bundle(s)');
+            } else {
+                console.log('Could not find modified file in existing bundles')
+            }
+        } 
+        
+        if(bundles.length === 0) {
+            bundles = processorOptions.bundles.items;
+        }
+
+        const bundleNames = bundles.reduce(function(accum, bundle) {
+            const bundleName = bundle.entry + '-bundle.js';
+            return accum === '' ? bundleName : accum + ', ' + bundleName; 
+        }, '');
+
+        console.log('Building bundle(s): ' + bundleNames);
+
+        const bundleCommands = shellBundleCommandBuilder.buildBundleCommands(bundles);
+       
+        grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', bundleCommands);
         grunt.task.run('shell:js_' + parentTask + '_jspm_bundle');
     }
 

@@ -3,6 +3,10 @@ module.exports = {
 		return (bundle.name ? bundle.name : bundle.entry) + '-bundle';
 	},
 
+	getBundleEntryName: function(bundleName) {
+		return bundleName.replace('-bundle.js', '');
+	},
+
 	getBundleFilepath: function(bundle, directory, polyfills) {
 		var path = require('path');
 
