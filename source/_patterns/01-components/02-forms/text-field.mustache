@@ -1,7 +1,7 @@
 {{# field }}
 <div class="field">
-	<label for="{{ id }}" name="{{ id }}" class="field__label {{# hasError }}field__label--error{{/ hasError }}">{{ label }}</label>
-	<input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" value="{{ value }}" class="field__input {{# hasError }}field__input--error{{/ hasError }}" {{# isRequired }}required{{/ isRequired}} />
+	<label for="{{ id }}" class="field__label {{# hasError }}field__label--error{{/ hasError }}">{{ label }}</label>
+	<input id="{{ id }}" name="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" value="{{ value }}" class="field__input {{# hasError }}field__input--error{{/ hasError }}" {{# isRequired }}required{{/ isRequired}} />
 	{{# hasError }}
 		<div class="field__error-message">{{errorMessage}}</div>
 	{{/ hasError }}

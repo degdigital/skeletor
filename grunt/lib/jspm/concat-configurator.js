@@ -36,7 +36,7 @@ module.exports = function(activeTheme, processorOptions, dest) {
 
 		var bundleFilepath = bundleUtils.getBundleFilepath(bundle, activeTheme.source.assetPaths.js);
 
-		sourceFiles.push(bundleFilepath);
+		sourceFiles.unshift(bundleFilepath);
 		return sourceFiles;
 	}
 
