@@ -4,15 +4,15 @@ module.exports = function(activeTheme, processorOptions) {
     const path = require('path');
 
 	function getExcludesForBundle(bundle) {
-		let excludes = [],
+        let excludes = [],
             defaultExclude = processorOptions.bundles.defaultExclude;
-	    if(bundle.exclude) {
-	        excludes = bundle.exclude; 
-	    } else if(defaultExclude && defaultExclude != bundleUtils.getBundleName(bundle)) {
-	        excludes = defaultExclude;
-	    }
-	    return excludes;
-	}
+        if(bundle.exclude) {
+            excludes = bundle.exclude; 
+        } else if(defaultExclude && defaultExclude != bundle.entry) {
+            excludes = defaultExclude;
+        }
+        return excludes;
+    }
 
 	function buildArithmeticString(filenames, type) {
 		if(Array.isArray(filenames) == false) {
