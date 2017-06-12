@@ -199,5 +199,8 @@ module.exports = {
     exportTasks: ['patterns', 'css', 'js', 'images', 'fonts', 'api'],
 
     /* Tasks that runs when a watched file event occurs [build, export] */
-    listenTasks: ['build']
+    listenTasks: ['build'],
+
+    /* Lint-related tasks */
+    lintTasks: ['js']
 };

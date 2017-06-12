@@ -1,0 +1,1 @@
+var testVar = 'variable test';

@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     grunt.loadTasks('grunt/tasks/images');
     grunt.loadTasks('grunt/tasks/fonts');
     grunt.loadTasks('grunt/tasks/api');
+    grunt.loadTasks('grunt/tasks/lint');
     grunt.registerTask('default', ['build']);
    
     
