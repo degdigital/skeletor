@@ -27,6 +27,8 @@
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "csswring": "^5.1.0",
+    "eslint-plugin-react": "^7.0.1",
+    "babel-eslint": "^7.2.3",
     "grunt": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-clean": "^1.0.0",

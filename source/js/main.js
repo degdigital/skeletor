@@ -1,1 +1,3 @@
-var testVar = 'variable test';
+let testVar = 'variable test';
+
+console.log(testVar);
