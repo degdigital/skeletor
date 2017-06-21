@@ -1,4 +1,4 @@
-module.exports = function(activeTheme, processorOptions, dest) {
+module.exports = function(activeTheme, dest) {
 
     var path = require('path');
     var bundleUtils = require('./bundle-utils');
@@ -44,12 +44,12 @@ module.exports = function(activeTheme, processorOptions, dest) {
 		return bundle.polyfills && bundle.polyfills.length > 0;
 	}
 
-    function buildConfigForPolyfilledBundles(config) {
+    function buildConfigForPolyfilledBundles(config, bundles) {
 		if(config.hasOwnProperty("files") == false) {
 			config.files = {};
 		}
 
-		return processorOptions.bundles.items
+		return bundles
 			.filter(doesBundleHavePolyfills)
 			.reduce(buildConcatDefsForBundle, config);
 		

@@ -4,7 +4,7 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
         if(processorOptions.enableBundling || parentTask == 'export') {
             runBundleTasks();
         } else {
-        	runUnbundleTasks();
+            runUnbundleTasks();
         }
     }
 
@@ -22,7 +22,9 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
     }
 
     function runBundleTasks() {
-        runShellBundleTask();
+        const bundles = getBundlesToBuild();
+
+        runShellBundleTask(bundles);
 
         if(processorOptions.bundles.selfExecuting) {
             grunt.task.run('sync:js_' + parentTask + '_jspm_bundled_sfx');                                  
@@ -32,7 +34,7 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
             grunt.task.run('concat:js_' + parentTask + '_jspm_config');
         }
 
-        runConcatBundlePolyfillsTask();
+        runConcatBundlePolyfillsTask(bundles);
 
         if(processorOptions.bundles.selfExecuting) {
                 runStringReplaceTask('js_' + parentTask + '_jspm_bundleHelper');
@@ -43,8 +45,40 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
         grunt.task.run('clean:js_jspm_bundles');
     }
 
-    function runShellBundleTask() {
+    function runShellBundleTask(bundles) {
         const shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme, processorOptions);
+        
+        const bundleNames = bundles.reduce(function(accum, bundle) {
+            const bundleName = bundle.entry + '-bundle.js';
+            return accum === '' ? bundleName : accum + ', ' + bundleName; 
+        }, '');
+
+        console.log('Building bundle(s): ' + bundleNames);
+
+        const bundleCommands = shellBundleCommandBuilder.buildBundleCommands(bundles);
+       
+        grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', bundleCommands);
+        grunt.task.run('shell:js_' + parentTask + '_jspm_bundle');
+    }
+
+    function runConcatBundlePolyfillsTask(bundles) {
+        var dest = parentTask == 'export' ? activeTheme.export : activeTheme.public;
+        var concatConfigurator = require('../../lib/jspm/concat-configurator')(activeTheme, dest);
+        grunt.config('concat.js_' + parentTask + '_jspm_bundle_polyfills', concatConfigurator.buildConfigForPolyfilledBundles({}, bundles));
+        grunt.task.run('concat:js_' + parentTask + '_jspm_bundle_polyfills');
+    }
+
+    function runStringReplaceTask(taskTarget) {
+        var stringReplaceBundlesReplacement = require('../../lib/jspm/string-replace-bundles-replacement')(processorOptions);
+        var taskWithTarget = 'string-replace:' + taskTarget;
+        var configSetting = 'string-replace.' + taskTarget + '.options.replacements';
+        var replacements = grunt.config(configSetting); 
+        replacements.push(stringReplaceBundlesReplacement.buildReplacement());
+        grunt.config(configSetting, replacements);
+        grunt.task.run(taskWithTarget);
+    }
+
+    function getBundlesToBuild() {
         const bundleFinder = require('../../lib/jspm/bundle-finder')(activeTheme, processorOptions.bundles.items);
 
         const specifiedBundle = grunt.option('bundle');
@@ -68,38 +102,7 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
             }
         } 
         
-        if(bundles.length === 0) {
-            bundles = processorOptions.bundles.items;
-        }
-
-        const bundleNames = bundles.reduce(function(accum, bundle) {
-            const bundleName = bundle.entry + '-bundle.js';
-            return accum === '' ? bundleName : accum + ', ' + bundleName; 
-        }, '');
-
-        console.log('Building bundle(s): ' + bundleNames);
-
-        const bundleCommands = shellBundleCommandBuilder.buildBundleCommands(bundles);
-       
-        grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', bundleCommands);
-        grunt.task.run('shell:js_' + parentTask + '_jspm_bundle');
-    }
-
-    function runConcatBundlePolyfillsTask() {
-        var dest = parentTask == 'export' ? activeTheme.export : activeTheme.public;
-        var concatConfigurator = require('../../lib/jspm/concat-configurator')(activeTheme, processorOptions, dest);
-        grunt.config('concat.js_' + parentTask + '_jspm_bundle_polyfills', concatConfigurator.buildConfigForPolyfilledBundles({}));
-        grunt.task.run('concat:js_' + parentTask + '_jspm_bundle_polyfills');
-    }
-
-    function runStringReplaceTask(taskTarget) {
-        var stringReplaceBundlesReplacement = require('../../lib/jspm/string-replace-bundles-replacement')(processorOptions);
-        var taskWithTarget = 'string-replace:' + taskTarget;
-        var configSetting = 'string-replace.' + taskTarget + '.options.replacements';
-        var replacements = grunt.config(configSetting); 
-        replacements.push(stringReplaceBundlesReplacement.buildReplacement());
-        grunt.config(configSetting, replacements);
-        grunt.task.run(taskWithTarget);
+        return bundles.length === 0 ? processorOptions.bundles.items : bundles;
     }
 
     return {
