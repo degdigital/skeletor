@@ -2,7 +2,7 @@
   "name": "SKELETOR",
   "description": "Boilerplate and build tools for a front-end web project",
   "license": "MIT",
-  "version": "4.2.6",
+  "version": "4.2.7",
   "bugs": "https://github.com/degdigital/skeletor/issues",
   "author": "Ryan Heap <heaper@gmail.com>",
   "contributors": [
