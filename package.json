@@ -48,6 +48,7 @@
     "postcss-import": "^8.1.2",
     "postcss-mixins": "^5.0.1",
     "postcss-nested": "^1.0.0",
+    "postcss-place": "^1.0.2",
     "time-grunt": "^1.4.0",
     "jspm": "^0.16.45",
     "patternlab-node": "^2.5.1",
