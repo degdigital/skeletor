@@ -36,8 +36,14 @@ module.exports = function(grunt, activeTheme, parentTask) {
 
 	function getSourceFilepath(filename) {
 		var path = require('path');
-		return path.normalize(path.join(activeTheme.source.assetPaths.css, filename));
-				
+		var isExclusion = filename.startsWith('!');
+		filename = isExclusion ? filename.substr(1) : filename;
+		
+		var sourceFilepath = path.normalize(path.join(activeTheme.source.assetPaths.css, filename));
+		if(isExclusion) {
+			sourceFilepath = "!" + sourceFilepath;
+		}
+		return sourceFilepath;				
 	}
 
 	return {

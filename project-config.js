@@ -110,6 +110,7 @@ module.exports = {
                     { name: 'postcss-import'},
                     { name: 'postcss-mixins' },
                     { name: 'postcss-custom-properties'},
+                    { name: 'postcss-place'},
                     { name: 'postcss-custom-selectors'},
                     { name: 'postcss-custom-media'},
                     { name: 'postcss-calc'},
