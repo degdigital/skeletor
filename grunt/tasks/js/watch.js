@@ -14,4 +14,8 @@ module.exports = function(grunt) {
 		    }
 		}
 	});
+
+	grunt.event.on('watch', function(action, filepath) {
+	  grunt.config('modifiedFile', filepath);
+	});
 }

@@ -155,19 +155,19 @@
         "space-in-parens": 2,               // require or disallow spaces inside parentheses (off by default)
         "space-infix-ops": 2,               // require spaces around operators
         "space-unary-ops": 2,               // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-        "spaced-comment": 2,                // require or disallow a space immediately following the // in a line comment (off by default)
+        "spaced-comment": 1,                // require or disallow a space immediately following the // in a line comment (off by default)
         "wrap-regex": 2,                    // require regex literals to be wrapped in parentheses (off by default)
 
         ////////// ECMAScript 6 //////////
         "no-var": 2,                            // require let or const instead of var (off by default)
-        "generator-star": [2, "middle"],        // enforce the position of the * in generator functions (off by default)
+        "generator-star-spacing": ["error", {"before": true, "after": false}],        // enforce the position of the * in generator functions (off by default)
         "arrow-body-style": 1,                  // enforces no braces where they can be omitted
         "arrow-parens": 0,                      // require parens in arrow function arguments
         "arrow-spacing": [2, {"before": true, "after": true}], // require space before/after arrow function's arrow
         "constructor-super": 0,                 // verify super() callings in constructors
         "no-class-assign": 0,                   // disallow modifying variables of class declarations
         "no-confusing-arrow": 0,                // disallow arrow functions where they could be confused with comparisons
-        "no-const-assign": 2                    // disallow modifying variables that are declared using const
+        "no-const-assign": 2,                    // disallow modifying variables that are declared using const
         "no-dupe-class-members": 0,             // disallow duplicate class members
         "no-duplicate-imports": 2,              // disallow importing from the same path more than once
         "no-new-symbol": 0,                     // disallow symbol constructor

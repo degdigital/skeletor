@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         var activeTheme = grunt.config('activeTheme');
 
         if(activeTheme.source.assetPaths.js) {
-            grunt.task.run('eslint:lint_js');
+            grunt.task.run('eslint:all');
         }
 
     });

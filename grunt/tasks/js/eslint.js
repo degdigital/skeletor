@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 	grunt.config.merge({
 		eslint: {
-			lint_js: {
+			all: {
 				src: [
 					path.normalize('<%= activeTheme.source.assetPaths.js %>/**/*.js'),
     				path.normalize("!<%= activeTheme.source.assetPaths.js %>/jspm_packages/**/*"),
@@ -18,6 +18,12 @@ module.exports = function(grunt) {
 				options: {
 					rulePaths: ['/']
 		        }	
+			},
+			single: {
+				src: [],
+				options: {
+					rulePaths: ['/']
+		        }
 			}
 	  	}
 	});

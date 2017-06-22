@@ -143,6 +143,9 @@ module.exports = {
 
         /* Javascript processing configuration */
         js: {
+            linter: {
+                enable: 'all'
+            },
             processors: [
                 {
 
@@ -199,9 +202,9 @@ module.exports = {
     /* Tasks that run on an export */
     exportTasks: ['patterns', 'css', 'js', 'images', 'fonts', 'api'],
 
-    /* Tasks that runs when a watched file event occurs [build, export] */
+    /* Tasks that run when a watched file event occurs [build, export] */
     listenTasks: ['build'],
 
-    /* Lint-related tasks */
+    /* Tasks that run on a lint */
     lintTasks: ['js']
 };
