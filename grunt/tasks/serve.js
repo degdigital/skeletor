@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 					},
 					open: true,
 					port: 9000,
+					protocol: 'http',
 					useAvailablePort: true
 				}
 			}
