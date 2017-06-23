@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 						middlewares.unshift(function(req, res, next) {
 							// console.log(req);
 							// console.log(res);
+							next();
           				});
 						return middlewares;
 					},
