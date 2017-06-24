@@ -515,7 +515,7 @@ The task(s) that the `listen` task will run when file changes occur. Possible va
 
 
 ## Local Server
-Skeletor contains its own [Express](https://expressjs.com/)-based local server. Using the included server is convenient, but is not required (other local server software such as MAMP also works fine). To launch, type `grunt serve`. By default, the Skeletor server will launch and automatically open a new browser window on the closest available port number to 9000 (i.e. `http://localhost:9000` or `http://localhost:9001` if port 9000 is already in use). 
+Skeletor contains its own [Express](https://expressjs.com/)-based local server. Using the included server is convenient, but is not required (other local server software such as MAMP should also work fine). To launch, type `grunt serve`. By default, the Skeletor server will launch and automatically open a new browser window on the closest available port number to 9000 (i.e. `http://localhost:9000` or `http://localhost:9001` if port 9000 is already in use). 
 
 The included server also allows you to write middleware, which can be very useful for manipulating HTTP requests to the local server (for example, when simulating REST endpoints). For detailed instructions on adding middleware, visit the grunt-contrib-connect [middleware documentation](https://github.com/gruntjs/grunt-contrib-connect#middleware).
 
