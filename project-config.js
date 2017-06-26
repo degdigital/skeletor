@@ -141,8 +141,15 @@ module.exports = {
             ]
         },
 
-        /* Javascript processing configuration */
+        /* Javascript Configuration */
         js: {
+
+            /* Enable Javascript Linting [all, build, export] */
+            linter: {
+                enable: 'all'
+            },
+
+            /* Javscript Processor Configuration */
             processors: [
                 {
 
@@ -199,6 +206,9 @@ module.exports = {
     /* Tasks that run on an export */
     exportTasks: ['patterns', 'css', 'js', 'images', 'fonts', 'api'],
 
-    /* Tasks that runs when a watched file event occurs [build, export] */
-    listenTasks: ['build']
+    /* Tasks that run when a watched file event occurs [build, export] */
+    listenTasks: ['build'],
+
+    /* Tasks that run on a lint */
+    lintTasks: ['js']
 };

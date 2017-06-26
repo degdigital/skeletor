@@ -5,35 +5,10 @@ module.exports = function(grunt) {
         var activeTheme = grunt.config('activeTheme');
 
         if(activeTheme.source.assetPaths.js && activeTheme.export.assetPaths.js) {
-            activeTheme.js.processors.forEach(function(processorOptions) {
 
-                if(typeof grunt.option('minifyJS') === 'undefined' && 
-                  	(processorOptions.minify == 'all' || processorOptions.minify == 'export')) {
-                    grunt.option('minifyJS', true);
-                }
-                
-                switch(processorOptions.processor) {
-                    case "none":
-                            runRawTasks(processorOptions);
-                            break;
-                    case "jspm":
-                            var jspmTaskRunner = require('./jspm-tasks-runner')(grunt, activeTheme, processorOptions, 'export');
-                            jspmTaskRunner.runTasks();
-                            break;
-                }
-            });
+            require('./lint-task-runner')(grunt, activeTheme.js.linter, 'export').runTasks();
+            require('./processor-runner')(grunt, activeTheme, 'export').run();  
         }
     });
-
-    function runRawTasks(processorOptions) {
-        if(processorOptions.files) {
-                grunt.config('sync.js_export_raw.files.0.src', processorOptions.files);
-        }
-        grunt.task.run('sync:js_export_raw');
-
-           if(grunt.option('minifyJS')) {
-			grunt.task.run('uglify:js_export_raw');
-		}
-    }
 }
  
