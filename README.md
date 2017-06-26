@@ -9,6 +9,7 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 * [Workflows](#workflows)
 * [Configuration](#configuration)
 * [Javascript Module Bundling](#javascript-module-bundling)
+* [Local Server](#local-server)
 
 ## Requirements
 * [NodeJS](https://nodejs.org) version 6.0+
@@ -19,6 +20,7 @@ Skeletor is a [Grunt](http://gruntjs.com)-powered, [Pattern Lab](http://patternl
 2. From the command line, type `npm install` to install all Node dependencies. You should also install grunt globally, if you haven't already.
 3. If using JSPM: install JSPM globally, then type `jspm install` in the command line to install all JSPM dependencies. If asked to create a config.js file, type `Yes`.
 4. From the command line, type `grunt` to generate your first Pattern Lab build.
+5. From the command line, type `grunt serve` to launch Skeletor's included local server (optional).
 
 
 ## Atomic Design & Pattern Lab
@@ -511,6 +513,7 @@ By default, the `listen` task will watch for asset file changes and run a `build
 Type: `Array` Default: '[build]'
 The task(s) that the `listen` task will run when file changes occur. Possible values include `build` and `export`.
 
+
 ## Javascript Module Bundling
 Skeletor will generate module bundles for you based on the `bundles` configuration setting in `project-config.js`. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands on each. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the `bundles.selfExecuting` setting).
 
@@ -605,3 +608,9 @@ Adding a new polyfill to your project is a three-step process:
 1. Add the polyfill script to the `js/polyfills/` directory
 2. Add the polyfill test to the `polyfillTests` object in the `polyfillTests.js` script as a function. Make sure the test function name matches the filename (minus the `.js` extension) of your polyfill script
 3. Add a reference to the polyfill in the appropriate `bundle.polyfills` setting in `project-config.js`
+
+
+## Local Server
+Skeletor contains its own [Express](https://expressjs.com/)-based local server. Using the included server is convenient, but is not required (other local server software such as MAMP should also work fine). To launch, type `grunt serve`. By default, the Skeletor server will launch and automatically open a new browser window on the closest available port number to 9000 (i.e. `http://localhost:9000` or `http://localhost:9001` if port 9000 is already in use). 
+
+The included server also allows you to write middleware, which can be very useful for manipulating HTTP responses (for example, when simulating REST endpoints). For detailed instructions on adding middleware, visit the grunt-contrib-connect [middleware documentation](https://github.com/gruntjs/grunt-contrib-connect#middleware).
