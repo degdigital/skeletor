@@ -153,8 +153,8 @@ module.exports = {
             processors: [
                 {
 
-                    /* Processor for Javascript [jspm, none] */
-                    processor: 'jspm',
+                    /* Processor type [jspm, none] */
+                    type: 'jspm',
 
                     /* When to minify Javascript [all, build, export] */
                     minify: 'export',

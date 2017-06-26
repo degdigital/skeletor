@@ -420,8 +420,8 @@ theme1: {
         /* Javscript Processor Configuration */
         processors: [
             {
-                /* Processor for Javascript [jspm, none] */
-                processor: 'jspm',
+                /* Processor type [jspm, none] */
+                type: 'jspm',
 
                 /* When to minify Javascript [all, build, export] */
                 minify: 'export',
@@ -431,8 +431,8 @@ theme1: {
 
                 /* Module bundle config for JSPM */
                 bundles: {
-                    /* Name of bundle to exclude from all other bundles */
-                    defaultExclude: 'main-bundle',
+                    /* Name of module to exclude from all other bundles */
+                    defaultExclude: 'main',
 
                     /* Build self-executing bundles [true, false] */
                     selfExecuting: false,
@@ -441,12 +441,12 @@ theme1: {
                     items: [
                         {
                             /* Name of this bundle (optional) */
-                            name: 'home',
+                            name: 'main',
 
                             /* Name of entry module for this bundle */
                             entry: 'main',
 
-                            /* Array of bundles to exclude from this bundle */
+                            /* Array of modules to exclude from this bundle */
                             exclude: [],
 
                             /* Array of polyfills for this bundle */
@@ -459,7 +459,7 @@ theme1: {
                            /* Name of entry module for this bundle */
                             entry: 'home',
 
-                            /* Array of bundles to exclude from this bundle */
+                            /* Array of modules to exclude from this bundle */
                             exclude: [],
 
                             /* Array of polyfills for this bundle */
@@ -478,31 +478,35 @@ theme1: {
 Type: `String` Default: `all`
 Specifies when Javascript linting should take place. Possible values include `all`, `build` and `export`. A value of `all` will result in Javascript linting during both the `build` and `export` tasks.
 
-##### js.processor
-Type: `String` Default: `jspm`
-Specifies the Javascript processor to be used. Possible values include `jspm` and `none`. A value of `none` will result in straight copy of the source Javascript files to the public and export directories.
+##### js.processors
+Type: `Array`
+An array of one or more Javascript processors to be used. Most projects will only require one processor, but multiple are allowed.
 
-##### js.minify
+##### processor.type
+Type: `String` Default: `jspm`
+Specifies the type of Javascript processor. Possible values include `jspm` and `none`. A value of `none` will result in straight copy of the source Javascript files to the public and export directories.
+
+##### processor.minify
 Type: `String` Default: `export`
 Specifies when Javascript files should be minified. Possible values include `all`, `build`, `export`, and `none`.
 
-##### js.enableBundling
+##### processor.enableBundling
 Type: `Boolean` Default: `true`
 Specifies whether Javascript modules should be bundled during the development workflow. If set to false, Javascript modules will be copied directly to the public directory and loaded individually by the SystemJS module loader. This can facilitate quicker Javascript processing (as bundling can take several seconds) and easier debugging. This setting does not apply to the export workflow, during which bundling is always enabled.
 
-##### js.bundles
+##### processor.bundles
 Type: `Object`
 Configuration settings for JSPM module bundling. See the [Javascript Module Bundling](#javascript-module-bundling) section for more information.
 
-##### js.bundles.defaultExclude
+##### processor.bundles.defaultExclude
 Type: `string`
 The name of the bundle to exclude from all other bundles. This setting can be useful when you have a common bundle that loads on every page.
 
-##### js.bundles.selfExecuting
+##### processor.bundles.selfExecuting
 Type: `Boolean` Default: `false`
 Specifies whether or not to create self-executing bundles that are independent of the SystemJS module loader.
 
-##### js.bundles.items
+##### processor.bundles.items
 Type: `Array`
 A list of module bundle configuration objects.
 
@@ -533,7 +537,7 @@ The task(s) that the `listen` task will run when file changes occur. Possible va
 ## Javascript Module Bundling
 Skeletor will generate module bundles for you based on the `bundles` configuration setting in `project-config.js`. Under the hood, Skeletor will iterate through your defined bundles and execute 'jspm bundle' commands on each. These bundles can either be standard SystemJS bundles or stand-alone, self-executing bundles (as specified in the `bundles.selfExecuting` setting).
 
-Skeletor is configured to create SystemJS bundles by default. SystemJS bundles are not referenced in a web page directly, but rather by a modules within it:
+Skeletor is configured to create SystemJS bundles by default. SystemJS bundles are not referenced in a web page directly, but rather by an entry module within it:
 
 ```html
 <!-- Load the SystemJS script and its configuration file -->
@@ -595,7 +599,7 @@ var polyfillTests = {
     return typeof Element.prototype.closest === 'function';
   },
 
-  /* Test for Object.assign() method
+  /* Test for Object.assign() method */
   assign: function() {
     return typeof Object.assign == 'function';
   }

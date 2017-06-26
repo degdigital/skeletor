@@ -7,7 +7,7 @@ const processorRunner = function(grunt, activeTheme, parentTask) {
 	            grunt.option('minifyJS', true);
 	        }
 	        
-	        switch(processorOptions.processor) {
+	        switch(processorOptions.type) {
 	            case "none":
 	            	var rawTasksRunner = require('./raw-tasks-runner')(grunt, processorOptions, parentTask);
 	                rawTasksRunner.runTasks();
