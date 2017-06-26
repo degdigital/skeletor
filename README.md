@@ -112,6 +112,9 @@ The `build`, `listen`, and `export` tasks are created as [multi tasks](http://gr
 
 For example, to run the `build` task on theme1, you would type `grunt build:theme1` into the command line. To run the build task for all themes, simply omit the theme name postfix and type `grunt build`.
 
+### Linting
+Skeletor supports [ESLint](http://eslint.org/) for linting Javascript files. By default, linting takes places on individual modules before any transpilation occurs and is based on the settings within `.eslintrc` in the root of Skeletor. By default, linting takes place during both the `build` and `export` tasks, but is configurable in `project-config.js`. Linting can also be run independently using the `lint` or `lint-js` tasks.
+
 ## Configuration
 Skeletor is built to be highly-configurable. The majority, if not all, of the configuration settings exist in the `project-config.js` file.
 
@@ -405,62 +408,75 @@ Specifies the files/directories to be copied.
 By default, Skeletor uses [JSPM](http://jspm.io) as a Javascript package manager, module bundler, module loader, and transpiler. There are several Javascript configuration options available to you in `project-config.js`:
 
 ```js
-/* Javascript processing configuration */
+/* Javascript Configuration */
 theme1: {
     js: {
 
-      /* Processor for Javascript [jspm, none] */
-      processor: 'jspm',
+        /* Enable Javascript Linting [all, build, export] */
+        linter: {
+            enable: 'all'
+        },
 
-      /* When to minify Javascript [all, build, export] */
-      minify: 'export',
+        /* Javscript Processor Configuration */
+        processors: [
+            {
+                /* Processor for Javascript [jspm, none] */
+                processor: 'jspm',
 
-      /* Enable module bundling for use with JSPM [true, false] */
-      enableBundling: true,
+                /* When to minify Javascript [all, build, export] */
+                minify: 'export',
 
-      /* Module bundle config for JSPM */
-      bundles: {
+                /* Enable module bundling for use with JSPM [true, false] */
+                enableBundling: true,
 
-        /* Name of bundle to exclude from all other bundles */
-        defaultExclude: 'main-bundle',
+                /* Module bundle config for JSPM */
+                bundles: {
+                    /* Name of bundle to exclude from all other bundles */
+                    defaultExclude: 'main-bundle',
 
-        /* Build self-executing bundles [true, false] */
-        selfExecuting: false,
+                    /* Build self-executing bundles [true, false] */
+                    selfExecuting: false,
 
-        /* Array of module bundles config objects */
-        items: [
-          {
-            /* Name of this bundle (optional) */
-            name: 'main',
+                    /* Array of module bundles config objects */
+                    items: [
+                        {
+                            /* Name of this bundle (optional) */
+                            name: 'home',
 
-            /* Name of entry module for this bundle */
-            entry: 'main',
+                            /* Name of entry module for this bundle */
+                            entry: 'main',
 
-            /* Array of bundles to exclude from this bundle */
-            exclude: [],
+                            /* Array of bundles to exclude from this bundle */
+                            exclude: [],
 
-            /* Array of polyfills for this bundle */
-            polyfills: []
-          },
-          {
-            /* Name of this bundle (optional) */
-            name: 'home',
+                            /* Array of polyfills for this bundle */
+                            polyfills: []
+                        },
+                        {
+                            /* Name of this bundle (optional) */
+                            name: 'home',
 
-           /* Name of entry module for this bundle */
-            entry: 'home',
+                           /* Name of entry module for this bundle */
+                            entry: 'home',
 
-            /* Array of bundles to exclude from this bundle */
-            exclude: [],
+                            /* Array of bundles to exclude from this bundle */
+                            exclude: [],
 
-            /* Array of polyfills for this bundle */
-            polyfills: []
-          }
+                            /* Array of polyfills for this bundle */
+                            polyfills: []
+                        }
+                    ]
+                }
+            }
         ]
-      }
     },
     ...
 }
 ```
+
+##### js.linter.enable
+Type: `String` Default: `all`
+Specifies when Javascript linting should take place. Possible values include `all`, `build` and `export`. A value of `all` will result in Javascript linting during both the `build` and `export` tasks.
 
 ##### js.processor
 Type: `String` Default: `jspm`

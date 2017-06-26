@@ -141,11 +141,15 @@ module.exports = {
             ]
         },
 
-        /* Javascript processing configuration */
+        /* Javascript Configuration */
         js: {
+
+            /* Enable Javascript Linting [all, build, export] */
             linter: {
                 enable: 'all'
             },
+
+            /* Javscript Processor Configuration */
             processors: [
                 {
 
