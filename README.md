@@ -113,7 +113,7 @@ The `build`, `listen`, and `export` tasks are created as [multi tasks](http://gr
 For example, to run the `build` task on theme1, you would type `grunt build:theme1` into the command line. To run the build task for all themes, simply omit the theme name postfix and type `grunt build`.
 
 ### Linting
-Skeletor supports [ESLint](http://eslint.org/) for linting Javascript files. By default, linting takes places on individual modules before any transpilation occurs and is based on the settings within `.eslintrc` in the root of Skeletor. By default, linting takes place during both the `build` and `export` tasks, but is configurable in `project-config.js`. Linting can also be run independently using the `lint` or `lint-js` tasks.
+Skeletor supports [ESLint](http://eslint.org/) for linting Javascript files. Linting occurs before transpilation and is based on the settings within `.eslintrc` in the root of Skeletor. By default, linting runs during both the `build` and `export` tasks (this setting is [configurable](#jslinterenable)). Linting can also be run independently using the `lint` or `lint-js` tasks.
 
 ## Configuration
 Skeletor is built to be highly-configurable. The majority, if not all, of the configuration settings exist in the `project-config.js` file.
