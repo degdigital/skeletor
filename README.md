@@ -38,8 +38,6 @@ Skeletor can be the entirety of your web project or live side-by-side with your 
 
 ```
 skeletor
-|-- config/
-|-- core/
 |-- export/
 |   |-- css/
 |   |-- images/
@@ -52,12 +50,15 @@ skeletor
 |   |-- js/
 |   |-- patterns/
 |-- source/
+|   |-- _annotations/
+|   |-- _data/
+|   |-- _meta/
+|   |-- _patterns/
 |   |-- css/
 |   |-- images/
 |   |-- js/
-|   |-- _patterns/
 |-- Gruntfile.js
-|-- project.config.js
+|-- project-config.js
 ```
 
 ### Pattern Lab Directories
@@ -76,21 +77,15 @@ An example of a multi-theme directory structure is below:
 ```
 skeletor
 |-- baseTheme/
-|   |-- config/
-|   |-- core/
 |   |-- export/
 |   |-- public/
 |   |-- source/
 |-- grunt/
 |-- theme1/
-|   |-- config/
-|   |-- core/
 |   |-- export/
 |   |-- public/
 |   |-- source/
 |-- theme2/
-|   |-- config/
-|   |-- core/
 |   |-- export/
 |   |-- public/
 |   |-- source/
