@@ -4,7 +4,8 @@ module.exports = function(grunt) {
 		var activeTheme = grunt.config('activeTheme');
 		
 		if(activeTheme.source.assetPaths.api && activeTheme.public.assetPaths.api) {
-			grunt.task.run('sync:api_build');
+			var syncTasksRunner = require('./sync-tasks-runner')(grunt, activeTheme, 'build');
+			syncTasksRunner.runTasks();
 		}
 	});
 

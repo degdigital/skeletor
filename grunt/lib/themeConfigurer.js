@@ -28,17 +28,16 @@ module.exports = function(grunt) {
 	function configureThemeDir(themeDir, defaultDir, themeBasePath, canAssetPathBeEmpty) {
 		if(typeof themeDir === 'undefined') {
 			themeDir = {};
-		}
-
+		} 
 
 		var mergedDir = Object.assign({}, defaultDir, themeDir);
 		mergedDir.assetPaths = Object.assign({}, defaultDir.assetPaths, themeDir.assetPaths);
 		mergedDir.assetUrls = Object.assign({}, defaultDir.assetUrls, themeDir.assetUrls);
-		var basePath = mergedDir.basePath ? path.join(themeBasePath, mergedDir.basePath) : themeBasePath;
-
+		mergedDir.basePath = mergedDir.basePath ? path.join(themeBasePath, mergedDir.basePath) : themeBasePath;
+		
 		for(var assetPath in mergedDir.assetPaths) {
 			if(mergedDir.assetPaths[assetPath] || canAssetPathBeEmpty) {
-				mergedDir.assetPaths[assetPath] = path.join(basePath, mergedDir.assetPaths[assetPath]);
+				mergedDir.assetPaths[assetPath] = path.join(mergedDir.basePath, mergedDir.assetPaths[assetPath]);
 			} else {
 				delete mergedDir.assetPaths[assetPath];
 			}

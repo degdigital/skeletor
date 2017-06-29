@@ -77,9 +77,6 @@ module.exports = {
             /* Export CSS source files along with compiled files */
             exportSourceFiles: false,
 
-            /* Enable globbing of CSS files */
-            enableGlobbing: true,
-
             /* CSS files to be processed */
             files: [
                 {
@@ -87,15 +84,7 @@ module.exports = {
                     dest: "global.css",
 
                     /* When to process file [all, build, export] */
-                    process: 'all',
-
-                    /* Files and directories to be included in globbing */
-                    globbingFiles: [
-                        'utilities/**/*.css',
-                        'basics/**/*.css',
-                        'components/**/*.css',
-                        'templates/**/*.css'
-                    ]
+                    process: 'all'
                 }
             ],
 
@@ -107,7 +96,7 @@ module.exports = {
 
                 /* PostCSS processor configuration */
                 processors: [
-                    { name: 'postcss-import'},
+                    { name: 'postcss-easy-import'},
                     { name: 'postcss-mixins' },
                     { name: 'postcss-custom-properties'},
                     { name: 'postcss-place'},

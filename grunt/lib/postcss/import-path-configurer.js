@@ -1,6 +1,6 @@
 module.exports = function() {
-	function configureImportPath(activeTheme, themes) {
-		var theme = activeTheme; 
+    function configureImportPath(activeTheme, themes) {
+        var theme = activeTheme; 
         var cssPathStack = [theme.source.assetPaths.css];
 
         while(theme.parentTheme) {
@@ -9,9 +9,9 @@ module.exports = function() {
         }
 
         return cssPathStack;
-	}
+    }
 
     return {
-    	configureImportPath: configureImportPath
+        configureImportPath: configureImportPath
     }
 }

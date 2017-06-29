@@ -3,16 +3,11 @@ module.exports = function(grunt, activeTheme, parentTask) {
 	function runTasks() {
 		setProcessors();
 		
-		var taskTarget = activeTheme.css.enableGlobbing ? 
-			parentTask + '_globbing' : 
-			parentTask;
-
-		configureFiles(taskTarget);
-
-		grunt.task.run('postcss:' + taskTarget);
+		configureFiles(parentTask);
+		grunt.task.run('postcss:' + parentTask);
 	}
 
-	function configureFiles(taskTarget) {
+	function configureFiles(parentTask) {
 		var filesToProcess = activeTheme.css.files
 			.filter(function(file){
 				return file.process == 'all' || file.process == parentTask;
@@ -21,7 +16,7 @@ module.exports = function(grunt, activeTheme, parentTask) {
 				return file.dest;
 			});
 
-		grunt.config('postcss.' + taskTarget + '.src', filesToProcess);
+		grunt.config('postcss.' + parentTask + '.src', filesToProcess);
 	}
 
 	function setProcessors() {

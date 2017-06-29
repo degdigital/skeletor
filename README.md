@@ -31,7 +31,7 @@ In Skeletor, all primary front-end development occurs in Pattern Lab. You can th
 ## Themes
 Skeletor is a multi-theme build tool. A theme is considered a variation of a base website or set of assets. In a multi-theme environment, you have a base theme (website) and one or more child themes that vary from the base theme in some way. Skeletor is configured for one theme by default but can easily be configured for multiple themes.
 
-One benefit of using themes is the ability to have child themes inherit CSS from the base theme. This avoids repetition of code while still allowing for the overriding of CSS in a child theme when necessary.
+One benefit of using themes is the ability to have child themes inherit CSS, fonts, and images from the base theme. This avoids repetition of CSS code and assets while still allowing for overrides in a child theme when necessary.
 
 ## Directory Structure
 Skeletor can be the entirety of your web project or live side-by-side with your CMS source directory, depending on your needs. The default directory structure is as follows:
@@ -159,8 +159,7 @@ Skeletor has a single theme configuration object that contains default theme set
 ```js
   var themeDefaults = {
     css: {
-      exportSourceFiles: false,
-      enableGlobbing: true
+      exportSourceFiles: false
     }
   };
 
@@ -271,9 +270,6 @@ theme1: {
         /* Export CSS source files along with compiled files */
         exportSourceFiles: false,
 
-        /* Enable globbing of CSS files */
-        enableGlobbing: true,
-
         /* CSS files to be processed */
         files: [
             {
@@ -281,16 +277,7 @@ theme1: {
                 dest: "global.css",
 
                 /* When to process file [all, build, export] */
-                process: 'all',
-
-                /* Files and directories to be included in globbing */
-                globbingFiles: [
-                    'utilities/**/*.css',
-                    'atoms/**/*.css',
-                    'molecules/**/*.css',
-                    'organisms/**/*.css',
-                    'templates/**/*.css'
-                ]
+                process: 'all'
             }
         ],
 
@@ -322,10 +309,6 @@ theme1: {
 Type: `Boolean` Default: `false`
 In addition to the processed CSS files, source CSS files are copied to the export directory during an export.
 
-##### css.enableGlobbing
-Type: `Boolean` Default: `true`
-CSS @import statements are generated automatically using a globbing plugin and the files and directories specified in `globbingFiles`.
-
 ##### css.files
 Type: `Array`
 A list of processed CSS file configuration objects.
@@ -337,10 +320,6 @@ The destination filename of the processed CSS file.
 ##### file.process
 Type: `String` Default: `all`
 Specifies when the CSS file should be processed. Possible values include `all`, `build`, and `export`.
-
-#### file.globbingFiles
-Type: `Array`
-A list of files and/or directories to be used for globbing.
 
 ##### css.postcss
 Type: `Object`

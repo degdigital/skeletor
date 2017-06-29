@@ -3,23 +3,8 @@ module.exports = function(grunt) {
 	
 	grunt.config.merge({
 		sync: {
-			images_build: {
-				files: [{
-					expand: true,
-					cwd: '<%= activeTheme.source.assetPaths.images %>',
-					src: [],
-					dest: '<%= activeTheme.public.assetPaths.images %>'
-				}],
-				updateAndDelete:false,
-				verbose: true
-			},
-			images_export: {
-				files: [{
-					expand: true,
-					cwd: '<%= activeTheme.source.assetPaths.images %>',
-					src: [],
-					dest: '<%= activeTheme.export.assetPaths.images %>'
-				}],
+			images: {
+				files: [],
 				updateAndDelete:false,
 				verbose: true
 			}

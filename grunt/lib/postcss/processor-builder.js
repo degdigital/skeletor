@@ -7,13 +7,13 @@ module.exports = function(activeTheme, themes) {
 
 		if(Array.isArray(processors)) {
 			return processors.map(createProcessorInstance);
-		}
+		}		
 	}
 
 	function createProcessorInstance(processor) {
 		processor.options = processor.options ? processor.options : {};
 
-		if(processor.name == 'postcss-import') {
+		if(processor.name == 'postcss-easy-import') {
 			setImportProcessorPathOption(processor);
 		}
 

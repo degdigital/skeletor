@@ -5,13 +5,8 @@ module.exports = function(grunt) {
 		var activeTheme = grunt.config('activeTheme');
 
 		if(activeTheme.source.assetPaths.css && activeTheme.public.assetPaths.css) {
-			var globbingTasksRunner = require('./globbing-tasks-runner')(grunt, activeTheme, 'build');
-			globbingTasksRunner.runTasks();
-
 			var postCssTasksRunner = require('./postcss-tasks-runner')(grunt, activeTheme, 'build');
 			postCssTasksRunner.runTasks();
 		}
-
-
 	});
 }
