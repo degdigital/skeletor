@@ -179,6 +179,19 @@ module.exports = {
         },
 
         patterns: {
+            plConfig: {},
+            'export': [
+                {
+                    patternType: 'pages',
+                    patterns: '*',
+                    dest: '' 
+                },
+                {
+                    patternType: 'components',
+                    patterns: ['checkbox-field', 'text-field'],
+                    dest: 'components' 
+                }
+            ]
         },
 
         /* File watching options */

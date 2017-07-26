@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 	function getPatternConfig(activeTheme) {
 		let mergeDeep = require('../../lib/utils/mergeDeep');
 		let defaultConfig = getDefaultPatternLabConfig(activeTheme);
-		return mergeDeep(defaultConfig, activeTheme.patterns);
+		return mergeDeep(defaultConfig, activeTheme.patterns.plConfig);
 	}
 
 	function getDefaultPatternLabConfig(activeTheme) {

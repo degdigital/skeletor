@@ -1,14 +1,10 @@
 module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	var path = require('path');
-
 	grunt.config.merge({
 		watch: {
 			api: {
-				files: [
-		            path.normalize('<%= activeTheme.source.assetPaths.api %>/**/*')
-		        ],
+				files: [],
 		        tasks: [],
 		        options: {
 		            "spawn": false,

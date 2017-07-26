@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				    expand: true,
 				    cwd: path.normalize('<%= activeTheme.export.assetPaths.patterns %>'),
 				    ext: '.html',
-				    src: ['*.html'],
+				    src: [path.normalize('**/*.html')],
 				    dest: path.normalize('<%= activeTheme.export.assetPaths.patterns %>')
 			    }]
 			}
