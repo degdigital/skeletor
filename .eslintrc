@@ -3,7 +3,7 @@
         "es6": true // enable all ECMAScript 6 features except for modules (this automatically sets the ecmaVersion parser option to 6).
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2017,
         "sourceType": "module",
         "ecmaFeatures": {
             "binaryLiterals": true,                     // enable binary literals
