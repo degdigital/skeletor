@@ -43,6 +43,10 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
         }
 
         grunt.task.run('clean:js_jspm_bundles');
+        if (grunt.option('minifyJS')) {
+            grunt.task.run('uglify:js_' + parentTask + '_jspm_bundled');
+        }
+
     }
 
     function runShellBundleTask(bundles) {
