@@ -1,28 +1,22 @@
-input[type="text"],
-input[type="password"],
-input[type="search"],
-input[type="url"],
-input[type="number"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-select,
-textarea {
+.input {
+
+	&:disabled {
+
+	}
+}
+
+.input--select-menu {
 
 }
 
-select {
-	
+.input--radio, .input--checkbox {
+
 }
 
-input[type="checkbox"], input[type="radio"] {
-	
+.input--textarea {
+
 }
 
-textarea {
-	
-}
+.input--invalid {
 
-.field__input {
-	
 }

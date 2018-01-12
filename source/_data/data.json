@@ -2,15 +2,23 @@
 	"title" : "DEG UI Project",
 	"lang": "en-us",
 	"mainId" : "main-content",
-	"buttonClass": "",
-	"buttonText": "Learn more",
-	"field": {
-		"id": "field",
-		"label": "Field Label",
+	"primaryNav": [
+		{}, {}, {}, {}
+	],
+	"description" : "So, setting about it as methodically as men might smoke out a wasps' nest, the Martians spread this strange stifling vapour over the Londonward country. The horns of the crescent slowly moved apart, until at last they formed a line from Hanwell to Coombe and Malden. All night through their destructive tubes advanced.",
+	"label": "Label",
+	"url" : "#",
+	"button": {
+		"content": "Button"
+	},
+	"label": {
+		"content": "Label"
+	},
+	"input": {
+		"name": "input",
 		"type": "text",
-		"placeholder": "Placeholder text",
-		"isRequired": true,
-		"hasError": false,
+		"value": "",
+		"placeholder": "",
 		"options": [
 			{
 				"label": "Option 1",
@@ -21,16 +29,43 @@
 				"value": "2"
 			},
 			{
-				"label": "Option 2",
+				"label": "Option 3",
 				"value": "3"
 			}
 		]
 	},
-	"primaryNav": [
-		{}, {}, {}, {}
-	],
-	"description" : "So, setting about it as methodically as men might smoke out a wasps' nest, the Martians spread this strange stifling vapour over the Londonward country. The horns of the crescent slowly moved apart, until at last they formed a line from Hanwell to Coombe and Malden. All night through their destructive tubes advanced.",
-	"label": "Label",
-	"url" : "#"
+	"fieldErrorMessages": {
+		"items": [
+			{
+				"content": "This is a validation error message"
+			}
+		]
+	},
+	"field": {
+		"id": "input"
+	},
+	"fieldGroup": {
+		"label": {
+			"content": "Field Group Label"
+		},
+		"items": [
+			{
+				"field": {
+					"id": "input-1",
+					"label": {
+						"content": "Item 1"
+					}
+				}
+			},
+			{
+				"field": {
+					"id": "input-2",
+					"label": {
+						"content": "Item 2"
+					}
+				}
+			}
+		]
+	}
 
 }
