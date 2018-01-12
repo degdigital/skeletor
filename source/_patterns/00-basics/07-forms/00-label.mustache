@@ -1,7 +1,7 @@
 {{# label }}
 	<label 
 		for="{{id}}" 
-		class="label {{styleModifier}} {{# isHidden }}is-vishidden{{/ isHidden }} {{#isInvalid}}label--invalid{{/ isInvalid }}">
+		class="label {{#isInline}}label--inline{{/isInline}} {{styleModifier}} {{# isHidden }}is-vishidden{{/ isHidden }} {{#isInvalid}}label--invalid{{/ isInvalid }}">
 		{{content}}
 	</label>
 {{/ label }}

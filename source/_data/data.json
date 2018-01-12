@@ -45,27 +45,5 @@
 		"id": "input"
 	},
 	"fieldGroup": {
-		"label": {
-			"content": "Field Group Label"
-		},
-		"items": [
-			{
-				"field": {
-					"id": "input-1",
-					"label": {
-						"content": "Item 1"
-					}
-				}
-			},
-			{
-				"field": {
-					"id": "input-2",
-					"label": {
-						"content": "Item 2"
-					}
-				}
-			}
-		]
 	}
-
 }

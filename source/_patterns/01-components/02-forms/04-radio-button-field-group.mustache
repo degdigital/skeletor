@@ -1,18 +1,1 @@
-{{# fieldGroup }}
-	<fieldset class="field-group {{styleModifier}}">
-		{{> basics-field-group-label }}
-		<ul class="field-list">
-		{{# items}}
-			<li class="field field-list__item">
-				{{#field}}
-					{{> basics-radio-button }}
-					{{> basics-inline-label }}
-				{{/field}}
-			</li>
-		{{/ items }}
-		</ul>	
-		{{# isInvalid }}
-			{{> components-field-error-messages }}
-		{{/ isInvalid }}
-	</fieldset>
-{{/ fieldGroup }}
+{{> components-field-group }}

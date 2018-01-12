@@ -1,7 +1,7 @@
 {{#input}}
 	<input 
 		class="input {{#isInvalid}}input--invalid{{/isInvalid}} {{class}} {{styleModifier}}" 
-		id="{{id}}" 
+		id="{{# id }}{{ id }}{{/ id }}{{^ id }}{{ name }}{{/ id }}" 
 		name="{{name}}" 
 		type="{{type}}" 
 		value="{{value}}" 

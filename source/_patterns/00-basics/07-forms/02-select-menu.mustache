@@ -1,7 +1,7 @@
 {{#input}}
 	<select 
 		class="input input--select-menu {{#isInvalid}}input--invalid{{/isInvalid}} {{class}} {{styleModifier}}" 
-		id="{{id}}" 
+		id="{{# id }}{{ id }}{{/ id }}{{^ id }}{{ name }}{{/ id }}" 
 		name="{{name}}" 
 		{{#isRequired}}required{{/isRequired}}
 		{{#isDisabled}}disabled{{/isDisabled}}>

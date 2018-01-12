@@ -1,0 +1,33 @@
+{
+	"fieldGroup": {
+		"label": {
+			"content": "Checkbox Field Group"
+		},
+		"isInputFirst": true,
+		"isInline": true,
+		"input": {
+			"type": "checkbox",
+			"name": "checkbox"
+		},
+		"items": [
+			{
+				"field": {
+					"id": "checkbox-1",
+					"label": {
+						"content": "Item 1"
+					}
+				}
+			},
+			{
+				"field": {
+					"id": "checkbox-2",
+					"label": {
+						"content": "Item 2"
+					}
+				}
+			}
+		]
+
+	}
+}
+
