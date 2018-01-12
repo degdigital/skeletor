@@ -1,21 +1,29 @@
 .button {
 
-	&:hover {
+	&:hover, &:focus {
 
 	}
 
 	&:active {
+
+	}
+
+	&:disabled {
 
 	}
 }
 
 .button--alt {
 	
-	&:hover {
+	&:hover, &:focus {
 		
 	}
 
 	&:active {
 
+	}
+
+	&:disabled {
+		
 	}
 }

@@ -1,0 +1,9 @@
+{{# field }}
+	<div class="field {{styleModifier}}">
+		{{> basics-label }}
+		{{> basics-select-menu }}
+		{{# isInvalid }}
+			{{> components-field-error-messages}}
+		{{/ isInvalid }}
+	</div>
+{{/ field }}

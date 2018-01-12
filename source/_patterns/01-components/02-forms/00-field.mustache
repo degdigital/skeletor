@@ -1,0 +1,15 @@
+{{# field }}
+	<div class="field {{styleModifier}}">
+		{{# isInputFirst }}
+			{{> basics-input }}
+			{{> basics-label }}			
+		{{/ isInputFirst }}
+		{{^ isInputFirst }}
+			{{> basics-label }}
+			{{> basics-input }}
+		{{/ isInputFirst }}		
+		{{# isInvalid }}
+			{{> components-field-error-messages}}
+		{{/ isInvalid }}
+	</div>
+{{/ field }}

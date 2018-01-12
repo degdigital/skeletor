@@ -1,1 +1,3 @@
-<a class="button {{buttonClass}}" href="{{ url }}">{{buttonText}}</a>
+{{#button}}
+	<button class="button {{class}} {{styleModifier}}" {{#isDisabled}}disabled{{/isDisabled}}>{{{content}}}</button>
+{{/button}}
