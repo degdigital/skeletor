@@ -68,7 +68,7 @@ module.exports = function(activeTheme, processorOptions) {
             commands.unshift('cd ' + activeTheme.basePath);   
         }
         
-        return commands.join(' && ');
+        return commands;
 	}
 
     function buildUnbundleCommands() {
@@ -79,7 +79,7 @@ module.exports = function(activeTheme, processorOptions) {
         }
         commands.push('jspm unbundle');
 
-        return commands.join(' && ');
+        return commands;
     }
 
 	return {

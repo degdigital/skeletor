@@ -17,8 +17,12 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
 
     function runShellUnbundleTask() {
         var shellBundleCommandBuilder = require('../../lib/jspm/shell-bundle-command-builder')(activeTheme, processorOptions);
-        grunt.config('shell.js_build_jspm_unbundle.command', shellBundleCommandBuilder.buildUnbundleCommands());
-        grunt.task.run('shell:js_build_jspm_unbundle');
+            
+        const unbundleCommands = shellBundleCommandBuilder.buildUnbundleCommands();     
+        const shellConfig = buildShellConfig(unbundleCommands, 'js_jspm_unbundle_');
+
+        grunt.config('shell', shellConfig);
+        grunt.task.run('shell');
     }
 
     function runBundleTasks() {
@@ -60,9 +64,18 @@ module.exports = function(grunt, activeTheme, processorOptions, parentTask) {
         console.log('Building bundle(s): ' + bundleNames);
 
         const bundleCommands = shellBundleCommandBuilder.buildBundleCommands(bundles);
-       
-        grunt.config('shell.js_' + parentTask + '_jspm_bundle.command', bundleCommands);
-        grunt.task.run('shell:js_' + parentTask + '_jspm_bundle');
+
+        const shellConfig = buildShellConfig(bundleCommands, 'js_jspm_bundle_');
+
+        grunt.config('shell', shellConfig);
+        grunt.task.run('shell');
+    }
+
+    function buildShellConfig(commands, targetPrefix) {
+        return commands.reduce((obj, command, index) => {
+            obj[targetPrefix + index.toString()] = command;
+            return obj;
+        }, {});
     }
 
     function runConcatBundlePolyfillsTask(bundles) {
